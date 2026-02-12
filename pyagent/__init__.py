@@ -100,6 +100,24 @@ def __getattr__(name):
         _cache[name] = _mod
         return _mod
     
+    # NEW: Advanced features (competitive with OpenAI Agents, Strands)
+    elif name == "handoff":
+        from pyagent.easy.handoff import handoff as _handoff
+        _cache[name] = _handoff
+        return _handoff
+    elif name == "mcp":
+        from pyagent.easy.mcp import mcp as _mcp
+        _cache[name] = _mcp
+        return _mcp
+    elif name == "guardrails":
+        from pyagent.easy.guardrails import guardrails as _guardrails
+        _cache[name] = _guardrails
+        return _guardrails
+    elif name == "trace":
+        from pyagent.easy.trace import trace as _trace
+        _cache[name] = _trace
+        return _trace
+    
     # Core components
     elif name == "Agent":
         from pyagent.core.agent import Agent as _Agent
@@ -213,6 +231,12 @@ __all__ = [
     
     # Quick agent factory
     "agent",         # Create custom agents in one line
+    
+    # Advanced features (competitive with OpenAI Agents, Strands)
+    "handoff",       # Multi-agent handoffs and team routing
+    "mcp",           # Model Context Protocol server support
+    "guardrails",    # Input/output validation and safety
+    "trace",         # Tracing and observability
     
     # =========================================================================
     # LOW-LEVEL API (For power users)
