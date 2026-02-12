@@ -2,7 +2,16 @@
 Example: Custom Skills
 
 This example demonstrates how to create custom skills for agents.
+
+NOTE: This is a REFERENCE example showing the skill system architecture.
+      For simpler one-liner usage, see: comprehensive_examples.py
 """
+
+import os
+import sys
+
+# Add pyagent to path for local development
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from typing import Any, Dict, List
 from pyagent.skills import Skill, SkillResult, SkillParameter

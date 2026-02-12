@@ -1,8 +1,17 @@
 """
 Example: Basic Agent Usage
 
-This example demonstrates how to create and use a simple agent.
+This example demonstrates the lower-level Agent API.
+For simpler one-liner usage, see: comprehensive_examples.py
+
+NOTE: This is a REFERENCE example showing the core Agent architecture.
 """
+
+import os
+import sys
+
+# Add pyagent to path for local development
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import asyncio
 from pyagent import Agent

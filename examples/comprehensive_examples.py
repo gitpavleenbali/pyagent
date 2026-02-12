@@ -321,7 +321,7 @@ def example_research():
     print("\n6a. Quick Research:")
     print("    Code: result = research('quantum computing basics')")
     result = research("quantum computing basics", depth="quick")
-    print(f"    Result: {result[:150]}...")
+    print(f"    Result: {str(result)[:150]}...")
     
     print("\n6b. Summarize Text:")
     long_text = """
@@ -369,8 +369,8 @@ def example_extract():
     """
     
     print("\n7a. Extract Structured Data:")
-    print("    Code: data = extract(text, fields=['names', 'dates', 'amounts'])")
-    data = extract(text, fields=["names", "dates", "amounts"])
+    print("    Code: data = extract(text, ['names', 'dates', 'amounts'])")
+    data = extract(text, ["names", "dates", "amounts"])
     print(f"    Extracted: {data}")
     
     success = isinstance(data, dict) or len(str(data)) > 10

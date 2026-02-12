@@ -4,12 +4,30 @@ PyAgent Quick Start Examples - Revolutionary AI in 3 Lines or Less
 This file demonstrates the power of PyAgent's pandas-like simplicity.
 Each example shows a complete, working solution to common AI tasks.
 
-Before running:
+NOTE: This is a REFERENCE file showing API examples.
+      For runnable examples, see: comprehensive_examples.py
+
+Before running individual snippets:
     export OPENAI_API_KEY=sk-...
-    # or
-    import pyagent
-    pyagent.configure(api_key="sk-...")
+    # or for Azure:
+    export AZURE_OPENAI_ENDPOINT=https://...
+    export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
 """
+
+import os
+import sys
+
+# Add pyagent to path for local development
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Auto-configure Azure if available
+if os.environ.get("AZURE_OPENAI_ENDPOINT"):
+    import pyagent
+    pyagent.configure(
+        provider="azure",
+        azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+        model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
+    )
 
 # =============================================================================
 # 1. ASK - The Simplest AI Function

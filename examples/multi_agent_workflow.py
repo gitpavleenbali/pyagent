@@ -3,7 +3,16 @@ Example: Multi-Agent Workflow
 
 This example demonstrates how to create a multi-agent workflow
 where different agents collaborate on a task.
+
+NOTE: This is a REFERENCE example showing the workflow architecture.
+      For simpler one-liner usage, see: comprehensive_examples.py
 """
+
+import os
+import sys
+
+# Add pyagent to path for local development
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import asyncio
 from pyagent import Agent
