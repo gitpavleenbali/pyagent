@@ -28,12 +28,13 @@ Usage:
 
 from typing import Dict, Any, List, Optional
 
+# Import submodules for easy access
+from pyagent.integrations import langchain_adapter as langchain
+from pyagent.integrations import semantic_kernel_adapter as semantic_kernel
+from pyagent.integrations import vector_db
+
 __all__ = [
     "langchain",
     "semantic_kernel", 
-    "llamaindex",
     "vector_db",
-    "huggingface",
-    "openai_plugins",
-    "mcp_external",
 ]
