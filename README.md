@@ -1,12 +1,13 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/🐼-PYAI-orange?style=for-the-badge&labelColor=black" alt="PYAI"/>
+  <img src="https://img.shields.io/badge/PYAI-Intelligence%20Engine-blueviolet?style=for-the-badge&logo=python&logoColor=white" alt="PYAI"/>
 </p>
 
-<h1 align="center">🐼🤖 PYAI - Three Dimensional Intelligence Engine</h1>
+<h1 align="center">🧠 PYAI</h1>
+<h3 align="center">Three-Dimensional Intelligence Engine</h3>
 
 <p align="center">
-  <strong>The Pandas of AI Development</strong><br/>
-  <em>What pandas did for data, PYAI does for intelligence.</em>
+  <strong>The Intelligence Engine for Software Factories</strong><br/>
+  <em>Build, Orchestrate, and Scale AI-Native Applications</em>
 </p>
 
 <p align="center">
@@ -17,39 +18,227 @@
 </p>
 
 <p align="center">
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-one-liner-apis">One-Liners</a> •
-  <a href="#-agent-framework">Agents</a> •
-  <a href="#-multi-agent-systems">Multi-Agent</a> •
-  <a href="#-enterprise-features">Enterprise</a>
+  <a href="#-the-three-dimensions">Three Dimensions</a> •
+  <a href="#-software-factories">Software Factories</a> •
+  <a href="#-the-ecosystem">Ecosystem</a> •
+  <a href="#-complete-feature-guide">Features</a> •
+  <a href="#-get-started">Get Started</a>
 </p>
 
 ---
 
-## 🌟 What is PYAI?
+## 🎯 What is PYAI?
 
-**PYAI** is a revolutionary Python framework that transforms AI development. Built on **PyAgent**, our core SDK, PYAI provides:
+**PYAI is not just another AI library. It's an Intelligence Engine.**
 
-- **🚀 One-liner APIs** - Common AI tasks in a single line of code
-- **🤖 Full Agent Framework** - Build sophisticated autonomous agents
-- **🔗 Multi-Agent Systems** - Orchestrate teams of specialized agents
-- **🏢 Enterprise Ready** - Azure AD auth, sessions, evaluation, tracing
-- **🎯 25+ Modules** - 150+ classes covering every AI use case
+While other frameworks help you *call* AI models, PYAI embeds intelligence *into* your software architecture. It's the foundation for building **Software Factories** — systems that don't just use AI, but think, adapt, and create.
+
+> *"The best code is the code you never had to write. The best software is the software that writes itself."*
+
+Built on **PyAgent**, our core SDK, PYAI provides **25+ modules** with **150+ classes** covering every AI use case — from one-liner operations to enterprise-grade multi-agent orchestration.
+
+---
+
+## 🔺 The Three Dimensions
+
+PYAI operates across **three dimensions of intelligence**, each building upon the last:
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                          🐼 PYAI                                │
-│            Three Dimensional Intelligence Engine                 │
-├─────────────────────────────────────────────────────────────────┤
-│  DIMENSION 1: SIMPLICITY     │  ask() summarize() research()   │
-│  DIMENSION 2: POWER          │  Agent, Runner, Workflow        │
-│  DIMENSION 3: ENTERPRISE     │  Azure AD, Sessions, Evaluation │
-└─────────────────────────────────────────────────────────────────┘
+                    ┌─────────────────────────────────┐
+                    │     DIMENSION 3: CREATION       │
+                    │   Software Factory Intelligence  │
+                    │ ┌─────────────────────────────┐ │
+                    │ │ • Self-generating systems   │ │
+                    │ │ • Code synthesis engines    │ │
+                    │ │ • Autonomous development    │ │
+                    │ └─────────────────────────────┘ │
+                    └───────────────┬─────────────────┘
+                                    │
+                    ┌───────────────▼─────────────────┐
+                    │    DIMENSION 2: ORCHESTRATION   │
+                    │     Multi-Agent Intelligence     │
+                    │ ┌─────────────────────────────┐ │
+                    │ │ • Agent coordination        │ │
+                    │ │ • Workflow automation       │ │
+                    │ │ • Knowledge synthesis       │ │
+                    │ └─────────────────────────────┘ │
+                    └───────────────┬─────────────────┘
+                                    │
+                    ┌───────────────▼─────────────────┐
+                    │     DIMENSION 1: COGNITION      │
+                    │      Core AI Operations          │
+                    │ ┌─────────────────────────────┐ │
+                    │ │ • ask() • research()        │ │
+                    │ │ • summarize() • analyze()   │ │
+                    │ │ • extract() • generate()    │ │
+                    │ └─────────────────────────────┘ │
+                    └─────────────────────────────────┘
+```
+
+### Dimension 1️⃣ — Cognition
+The foundation. Single-purpose AI operations that **just work**.
+
+```python
+from pyagent import ask, summarize, extract
+
+# Instant intelligence
+answer = ask("Explain quantum entanglement")
+summary = summarize(long_document)
+entities = extract(text, fields=["names", "dates", "amounts"])
+```
+
+### Dimension 2️⃣ — Orchestration
+Coordinated intelligence. Multiple agents working in harmony.
+
+```python
+from pyagent import Agent
+from pyagent.blueprint import Workflow, Step
+
+# Specialized agents
+researcher = Agent(name="Researcher", instructions="Find information.")
+analyst = Agent(name="Analyst", instructions="Analyze data deeply.")
+writer = Agent(name="Writer", instructions="Write compelling content.")
+
+# Orchestrated workflow
+workflow = (Workflow("ResearchPipeline")
+    .add_step(Step("research", researcher))
+    .add_step(Step("analyze", analyst))
+    .add_step(Step("write", writer))
+    .build())
+```
+
+### Dimension 3️⃣ — Creation
+Self-generating systems. **The Software Factory.**
+
+```python
+from pyagent import code, generate
+
+# The factory builds software
+api_code = code.write("REST API for user management with JWT auth")
+# → Generates models, routes, middleware, tests
+
+# Intelligent code operations
+review = code.review(existing_code)
+improved = code.refactor(old_code, goal="async architecture")
+fixed = code.debug("TypeError: cannot unpack non-iterable NoneType")
 ```
 
 ---
 
+## 🏭 Software Factories
+
+A **Software Factory** is a system that generates software, not just code snippets. PYAI provides the intelligence engine to build them.
+
+### Traditional Development vs Software Factory
+
+| Traditional | Software Factory |
+|-------------|------------------|
+| Write code manually | Describe what you need |
+| Debug line by line | Self-healing systems |
+| Copy-paste patterns | Intelligent pattern synthesis |
+| Manual testing | Auto-generated test suites |
+| Static architecture | Evolving, adaptive systems |
+
+### The Intelligence Stack
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                    YOUR APPLICATION                       │
+├──────────────────────────────────────────────────────────┤
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐     │
+│  │ PyAgent │  │ PyFlow  │  │PyVision │  │ PyVoice │     │
+│  │ Agents  │  │Workflow │  │ Vision  │  │  Audio  │     │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘     │
+│       │            │            │            │           │
+│  ┌────▼────────────▼────────────▼────────────▼────┐     │
+│  │              PYAI INTELLIGENCE ENGINE           │     │
+│  │  • Unified Memory  • Context Management         │     │
+│  │  • Model Routing   • Intelligent Caching        │     │
+│  └────────────────────────────────────────────────┘     │
+├──────────────────────────────────────────────────────────┤
+│     Azure OpenAI  |  OpenAI  |  Anthropic  |  Ollama    │
+└──────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📦 The Ecosystem
+
+### 🤖 PyAgent — *Available Now*
+**The Core Intelligence SDK**
+
+Build AI-powered applications with elegant simplicity. 25+ modules, 150+ classes, 671 tests.
+
+```python
+from pyagent import ask, Agent, Runner, rag
+
+# One-liner AI
+answer = ask("What is the meaning of life?")
+
+# Powerful agents
+agent = Agent(name="Coder", instructions="Expert Python developer")
+result = Runner.run_sync(agent, "Optimize this for O(log n)")
+
+# RAG in 2 lines
+knowledge = rag.index("./research/")
+insight = knowledge.ask("What are the key findings?")
+```
+
+[📚 Documentation](./docs/QUICKSTART.md) | [🚀 API Reference](./docs/API_REFERENCE.md) | [💡 Examples](./examples/)
+
+---
+
+### 🔮 Coming Soon — The PYAI Product Suite
+
+| Library | Purpose | Dimension |
+|---------|---------|-----------|
+| **PyFlow** | Visual AI workflow orchestration | Orchestration |
+| **PyVision** | Computer vision made simple | Cognition |
+| **PyVoice** | Speech & audio intelligence | Cognition |
+| **PyFactory** | Software generation engine | Creation |
+| **PyMind** | Autonomous reasoning systems | Creation |
+
+---
+
+## 🧬 Design Philosophy
+
+### 1. **Intelligence as Infrastructure**
+AI shouldn't be bolted on — it should be woven in. PYAI treats intelligence as a first-class architectural component.
+
+### 2. **Progressive Complexity**
+Start with one line. Scale to software factories. Same API, same patterns, infinite scale.
+
+```python
+# Level 1: One line
+answer = ask("Translate to French: Hello")
+
+# Level 2: Agent with tools
+translator = Agent(name="Translator", instructions="Expert linguist", tools=[...])
+result = Runner.run_sync(translator, "Translate to all languages: Hello")
+
+# Level 3: Multi-agent orchestration
+workflow = Workflow("TranslationService").add_step(...).add_step(...).build()
+```
+
+### 3. **Zero Friction**
+No boilerplate. No ceremony. If it takes more than 3 lines for a common task, we failed.
+
+### 4. **Production Ready**
+Type hints. Error handling. Retry logic. Rate limiting. Caching. Azure AD auth. Built in, not bolted on.
+
+---
+
 ## ✨ Why PYAI?
+
+| Other Frameworks | PYAI |
+|-----------------|------|
+| 50 lines for RAG | 2 lines |
+| Agent = configuration hell | `Agent(name="Bot", instructions="...")` |
+| Memory = complex setup | Built-in, automatic |
+| Workflows = YAML nightmares | Python functions |
+| "Hello World" = 30 minutes | "Hello World" = 30 seconds |
+
+### Framework Comparison
 
 | Framework | Lines for RAG | Lines for Agent | Lines for Research | Multi-Agent |
 |-----------|--------------|-----------------|-------------------|-------------|
@@ -58,60 +247,72 @@
 | CrewAI | 30+ | 25+ | 35+ | 50+ |
 | **PYAI** | **2** | **5** | **1** | **10** |
 
+### Feature Comparison
+
+| Feature | PYAI | OpenAI Agents | Google ADK | Semantic Kernel | LangChain |
+|---------|------|---------------|------------|-----------------|-----------|
+| One-liner APIs | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Multi-provider LLM | ✅ | ❌ | ✅ | ✅ | ✅ |
+| Azure AD Auth | ✅ | ❌ | ❌ | ✅ | ❌ |
+| Session Management | ✅ | ✅ | ✅ | ❌ | ✅ |
+| Evaluation Framework | ✅ | ❌ | ✅ | ❌ | ❌ |
+| Voice Streaming | ✅ | ✅ | ❌ | ❌ | ❌ |
+| MCP Protocol | ✅ | ❌ | ❌ | ❌ | ❌ |
+| A2A Protocol | ✅ | ❌ | ✅ | ❌ | ❌ |
+| Guardrails | ✅ | ✅ | ❌ | ❌ | ✅ |
+| Workflow Patterns | ✅ | ❌ | ❌ | ✅ | ✅ |
+| Plugin System | ✅ | ❌ | ❌ | ✅ | ❌ |
+| YAML Config | ✅ | ❌ | ✅ | ❌ | ❌ |
+
 ---
 
-## 📦 Installation
+## 🚀 Get Started
+
+### Installation
 
 ```bash
+# Basic install
 pip install pyagent
 
 # With providers
 pip install pyagent[openai]      # OpenAI models
-pip install pyagent[anthropic]   # Claude models
+pip install pyagent[anthropic]   # Anthropic Claude
 pip install pyagent[azure]       # Azure OpenAI + Azure AD
+
+# With integrations
+pip install pyagent[langchain]   # LangChain integration
+pip install pyagent[vector]      # Vector databases
+
+# Full installation
 pip install pyagent[all]         # Everything
 ```
 
----
+### Configuration
 
-## 🚀 Quick Start
+```bash
+# OpenAI
+export OPENAI_API_KEY=sk-your-key
 
-### Hello World
+# Azure OpenAI (with Azure AD - no API key needed!)
+export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
+```
+
+### Hello, Intelligence
 
 ```python
 from pyagent import ask
 
-answer = ask("What is the capital of France?")
-print(answer)  # Paris
-```
-
-### Agent with Tools
-
-```python
-from pyagent import Agent, Runner
-from pyagent.skills import tool
-
-@tool(description="Get weather for a city")
-async def get_weather(city: str) -> str:
-    return f"Weather in {city}: Sunny, 72°F"
-
-agent = Agent(
-    name="WeatherBot",
-    instructions="Help users with weather information.",
-    tools=[get_weather]
-)
-
-result = Runner.run_sync(agent, "What's the weather in Tokyo?")
-print(result.final_output)
+# Your first intelligent operation
+answer = ask("What makes PYAI revolutionary?")
+print(answer)
 ```
 
 ---
 
 # 📚 Complete Feature Guide
 
-## 🎯 One-Liner APIs
-
-The **easy/** module provides pandas-like simplicity for AI tasks.
+## 🎯 One-Liner APIs (easy/ module)
 
 ### ask() - Universal Question Answering
 
@@ -128,7 +329,7 @@ answer = ask("List 5 tips", format="bullet")
 ```python
 from pyagent import research
 
-result = research("AI trends 2024")
+result = research("AI trends in enterprise")
 print(result.summary)          # Executive summary
 print(result.key_points)       # Main takeaways
 print(result.insights)         # Analysis
@@ -140,16 +341,9 @@ print(result.sources)          # References
 ```python
 from pyagent import summarize
 
-# From text
 summary = summarize("Long article text here...")
-
-# From file
 summary = summarize("./report.pdf")
-
-# From URL
 summary = summarize("https://example.com/article")
-
-# With options
 summary = summarize(text, length="short", bullet_points=True)
 ```
 
@@ -158,7 +352,6 @@ summary = summarize(text, length="short", bullet_points=True)
 ```python
 from pyagent import rag
 
-# Index and query
 docs = rag.index("./documents")
 answer = docs.ask("What is the main conclusion?")
 
@@ -193,9 +386,6 @@ from pyagent import extract
 text = "John is 30 years old and lives in New York"
 data = extract(text, ["name", "age", "city"])
 # {"name": "John", "age": 30, "city": "New York"}
-
-emails = extract(document, "all email addresses")
-# ["john@email.com", "jane@company.com"]
 ```
 
 ### fetch - Real-Time Data
@@ -204,17 +394,9 @@ emails = extract(document, "all email addresses")
 from pyagent import fetch
 
 weather = fetch.weather("New York")
-print(f"{weather.temperature}°C, {weather.conditions}")
-
 news = fetch.news("artificial intelligence")
-for article in news:
-    print(article.title)
-
 stock = fetch.stock("AAPL")
-print(f"${stock.price} ({stock.change_percent}%)")
-
 crypto = fetch.crypto("BTC")
-print(f"Bitcoin: ${crypto.price}")
 ```
 
 ### analyze - Data Analysis
@@ -223,9 +405,6 @@ print(f"Bitcoin: ${crypto.price}")
 from pyagent import analyze
 
 insights = analyze.data(sales_data)
-print(insights.summary)
-print(insights.recommendations)
-
 sentiment = analyze.sentiment("I love this product!")
 # {"sentiment": "positive", "confidence": 0.95}
 ```
@@ -235,22 +414,10 @@ sentiment = analyze.sentiment("I love this product!")
 ```python
 from pyagent import code
 
-# Write code
 python_code = code.write("REST API for todo app")
-
-# Review code
 review = code.review(my_code)
-print(review.issues)
-print(review.suggestions)
-print(review.score)
-
-# Debug errors
-solution = code.debug("TypeError: cannot unpack non-iterable NoneType")
-
-# Explain code
+solution = code.debug("TypeError: cannot unpack...")
 explanation = code.explain(complex_function)
-
-# Refactor
 improved = code.refactor(old_code, goal="readability")
 ```
 
@@ -262,28 +429,11 @@ from pyagent import chat
 session = chat(persona="teacher")
 session("Explain machine learning")
 session("What about deep learning?")  # Continues conversation
-session("Give me an example")          # Still has context
-```
-
-### agent() - Custom Agents
-
-```python
-from pyagent import agent
-
-# Custom agent with memory
-coder = agent("You are an expert Python developer")
-result = coder("Write a REST API")
-
-# Prebuilt personas
-researcher = agent(persona="researcher")
-findings = researcher("Research quantum computing")
 ```
 
 ---
 
-## 🤖 Agent Framework
-
-The **core/** module provides the full Agent infrastructure.
+## 🤖 Agent Framework (core/ module)
 
 ### Agent Class
 
@@ -297,7 +447,7 @@ agent = Agent(
     instructions="You are a helpful assistant."
 )
 
-# Configured agent
+# Configured agent with Azure AD
 agent = Agent(
     name="Coder",
     instructions="You are an expert Python developer.",
@@ -314,7 +464,7 @@ agent = Agent(
 
 ```python
 from pyagent import Agent, Runner
-from pyagent.runner import RunConfig
+from pyagent.runner import RunConfig, StreamingRunner
 
 agent = Agent(name="Bot", instructions="Be helpful")
 
@@ -330,7 +480,6 @@ config = RunConfig(max_turns=10, timeout=60)
 result = Runner.run_sync(agent, "Complex task", config=config)
 
 # Streaming
-from pyagent.runner import StreamingRunner
 async for event in StreamingRunner.stream(agent, "Hello"):
     print(event.data, end="", flush=True)
 ```
@@ -346,18 +495,12 @@ memory = ConversationMemory(max_messages=50)
 # Vector memory (semantic search)
 memory = VectorMemory(provider="chromadb")
 
-agent = Agent(
-    name="Bot",
-    instructions="...",
-    memory=memory
-)
+agent = Agent(name="Bot", instructions="...", memory=memory)
 ```
 
 ---
 
-## 🔗 Multi-Agent Systems
-
-The **blueprint/** module enables sophisticated multi-agent orchestration.
+## 🔗 Multi-Agent Systems (blueprint/ module)
 
 ### Workflows
 
@@ -393,7 +536,6 @@ triage_agent = Agent(
 )
 
 result = Runner.run_sync(triage_agent, "Hola, como estas?")
-# Routes to SpanishAgent automatically
 ```
 
 ### Orchestration Patterns
@@ -401,38 +543,53 @@ result = Runner.run_sync(triage_agent, "Hola, como estas?")
 ```python
 from pyagent.blueprint import ChainPattern, RouterPattern, MapReducePattern, SupervisorPattern
 
-# Chain: Sequential processing
+# Chain: Sequential agent processing
 chain = ChainPattern()
 chain.add("draft", writer)
 chain.add("edit", editor)
 result = await chain.run("Write about AI")
 
-# Router: Route to specialists
+# Router: Route to specialist agents
 router = RouterPattern()
 router.add_route("code", coder, keywords=["code", "python", "function"])
 router.add_route("math", calculator, keywords=["calculate", "compute"])
 result = await router.run("Write a fibonacci function")
 
-# MapReduce: Parallel processing
+# MapReduce: Parallel processing with aggregation
 mapreduce = MapReducePattern(
     map_agents=[researcher1, researcher2, researcher3],
     reduce_agent=synthesizer
 )
 result = await mapreduce.run("Research AI from different angles")
 
-# Supervisor: Hierarchical management
+# Supervisor: Hierarchical agent management
 supervisor = SupervisorPattern(
     manager=manager_agent,
     workers=[worker1, worker2, worker3]
 )
-result = await supervisor.run("Complex project")
+result = await supervisor.run("Complex project requiring coordination")
+
+# Consensus: Voting-based decision making
+from pyagent.orchestrator import AgentPatterns
+
+decision = AgentPatterns.consensus(
+    task="Should we approve this feature?",
+    agents=[security_expert, ux_expert, perf_expert],
+    threshold=0.66
+)
+
+# Debate: Adversarial reasoning
+verdict = AgentPatterns.debate(
+    topic="AI open-source vs proprietary",
+    pro_agent=advocate,
+    con_agent=skeptic,
+    judge=arbiter
+)
 ```
 
 ---
 
-## 🛠️ Skills & Tools
-
-The **skills/** module provides composable agent capabilities.
+## 🛠️ Skills & Tools (skills/ module)
 
 ### Creating Tools
 
@@ -446,17 +603,12 @@ async def web_search(query: str, limit: int = 10) -> list:
 
 @tool(description="Send an email")
 async def send_email(to: str, subject: str, body: str) -> str:
-    # Send email logic
     return f"Email sent to {to}"
-
-@action(name="approve", description="Approve a request")
-async def approve_action(request_id: str) -> dict:
-    return {"status": "approved", "request_id": request_id}
 
 agent = Agent(
     name="Assistant",
     instructions="Help users with tasks.",
-    tools=[web_search, send_email, approve_action]
+    tools=[web_search, send_email]
 )
 ```
 
@@ -472,26 +624,18 @@ agent = Agent(
 )
 ```
 
-### OpenAPI Tools
+### OpenAPI Tools (Auto-generate from specs)
 
 ```python
 from pyagent.openapi import create_tools_from_openapi
 
-# Auto-generate tools from OpenAPI spec
 tools = create_tools_from_openapi("petstore.yaml")
-
-agent = Agent(
-    name="PetStoreBot",
-    instructions="Help users manage pets.",
-    tools=tools
-)
+agent = Agent(name="PetStoreBot", instructions="Help manage pets.", tools=tools)
 ```
 
 ---
 
-## 🔌 Plugin System
-
-The **plugins/** module enables reusable, shareable capabilities.
+## 🔌 Plugin System (plugins/ module)
 
 ```python
 from pyagent.plugins import plugin, function, Plugin
@@ -507,12 +651,6 @@ class WeatherPlugin(Plugin):
     def get_forecast(self, city: str, days: int = 5) -> str:
         return f"5-day forecast for {city}..."
 
-# Use with agent
-from pyagent.plugins import PluginRegistry
-
-registry = PluginRegistry()
-registry.register(WeatherPlugin())
-
 agent = Agent(
     name="WeatherBot",
     instructions="Help with weather.",
@@ -522,14 +660,13 @@ agent = Agent(
 
 ---
 
-## 🧠 Kernel Registry
+## 🧠 Kernel Registry (kernel/ module)
 
-The **kernel/** module provides MS Semantic Kernel-style service management.
+MS Semantic Kernel-style service management:
 
 ```python
-from pyagent.kernel import Kernel, KernelBuilder, Service, ServiceType
+from pyagent.kernel import Kernel, KernelBuilder
 
-# Build kernel
 kernel = (KernelBuilder()
     .add_llm(openai_client, name="gpt4", is_default=True)
     .add_llm(azure_client, name="azure-gpt4")
@@ -537,31 +674,22 @@ kernel = (KernelBuilder()
     .add_plugin(WeatherPlugin())
     .build())
 
-# Use kernel
 result = await kernel.invoke("weather", "get_weather", city="NYC")
-
-# Switch services
 kernel.set_default_service("llm", "azure-gpt4")
 ```
 
 ---
 
-## 💾 Session Management
-
-The **sessions/** module provides persistent conversation state.
+## 💾 Session Management (sessions/ module)
 
 ```python
 from pyagent.sessions import SessionManager, SQLiteSessionStore, RedisSessionStore
 
 # SQLite (local)
-manager = SessionManager(
-    store=SQLiteSessionStore("sessions.db")
-)
+manager = SessionManager(store=SQLiteSessionStore("sessions.db"))
 
 # Redis (distributed)
-manager = SessionManager(
-    store=RedisSessionStore(host="localhost", port=6379)
-)
+manager = SessionManager(store=RedisSessionStore(host="localhost", port=6379))
 
 # Use sessions
 session = manager.get_or_create("user-123")
@@ -571,189 +699,89 @@ manager.save(session)
 
 # Resume later
 session = manager.get("user-123")
-print(session.messages)  # Previous conversation
 ```
 
 ---
 
-## 📊 Evaluation Framework
-
-The **evaluation/** module enables systematic agent testing.
+## 📊 Evaluation Framework (evaluation/ module)
 
 ```python
-from pyagent.evaluation import (
-    Evaluator, EvalSet, TestCase,
-    ExactMatch, ContainsMatch, SemanticSimilarity, LLMJudge
-)
+from pyagent.evaluation import Evaluator, EvalSet, TestCase, ExactMatch, LLMJudge
 
-# Create test cases
 eval_set = EvalSet([
-    TestCase(
-        input="What is 2+2?",
-        expected="4",
-        criteria=ExactMatch()
-    ),
-    TestCase(
-        input="Explain Python",
-        expected_contains=["programming", "language"],
-        criteria=ContainsMatch()
-    ),
-    TestCase(
-        input="Write a haiku about AI",
-        criteria=LLMJudge(prompt="Is this a valid haiku?")
-    ),
+    TestCase(input="What is 2+2?", expected="4", criteria=ExactMatch()),
+    TestCase(input="Write a haiku", criteria=LLMJudge(prompt="Is this valid?")),
 ])
 
-# Run evaluation
 evaluator = Evaluator(agent)
 results = await evaluator.run(eval_set)
-
 print(f"Pass Rate: {results.metrics.pass_rate}%")
-print(f"Average Score: {results.metrics.avg_score}")
-results.to_csv("eval_results.csv")
 ```
 
 ---
 
-## 🎤 Voice & Audio
-
-The **voice/** module enables real-time voice interactions.
+## 🎤 Voice & Audio (voice/ module)
 
 ```python
-from pyagent.voice import VoiceSession, AudioFormat
+from pyagent.voice import VoiceSession
 
 async with VoiceSession(agent) as session:
-    # Stream audio in
     session.send_audio(audio_chunk)
-    
-    # Get transcription
     text = await session.get_transcription()
-    
-    # Get audio response
     response_audio = await session.get_audio_response()
 ```
 
 ---
 
-## 🖼️ Multimodal
-
-The **multimodal/** module supports images, audio, and video.
+## 🖼️ Multimodal (multimodal/ module)
 
 ```python
-from pyagent.multimodal import Image, Audio, MultimodalContent
+from pyagent.multimodal import Image
 
-# Image analysis
 img = Image.from_file("photo.png")
 result = Runner.run_sync(agent, "Describe this image", images=[img])
 
-# From URL
 img = Image.from_url("https://example.com/photo.jpg")
-
-# Base64
-img = Image.from_base64(base64_string)
 ```
 
 ---
 
-## 🔄 Agent-to-Agent Protocol
-
-The **a2a/** module implements Google's A2A protocol.
+## 🔄 Agent-to-Agent Protocol (a2a/ module)
 
 ```python
 from pyagent.a2a import A2AServer, A2AClient, AgentCard
 
 # Server: Expose agent
 server = A2AServer(agent)
-server.set_card(AgentCard(
-    name="WeatherAgent",
-    capabilities=["weather_lookup", "forecast"]
-))
+server.set_card(AgentCard(name="WeatherAgent", capabilities=["weather"]))
 await server.start(port=8080)
 
 # Client: Connect to remote agents
 client = A2AClient()
-remote_agent = await client.connect("http://weather-agent:8080")
-result = await remote_agent.run("Weather in NYC?")
+remote = await client.connect("http://weather-agent:8080")
+result = await remote.run("Weather in NYC?")
 ```
 
 ---
 
-## 🗄️ Vector Database Connectors
-
-The **vectordb/** module provides unified vector storage.
+## 🗄️ Vector Database Connectors (vectordb/ module)
 
 ```python
 from pyagent.vectordb import ChromaStore, PineconeStore, QdrantStore, Document
 
-# ChromaDB
-store = ChromaStore(collection="my_docs")
+store = ChromaStore(collection="my_docs")  # Or PineconeStore, QdrantStore
 
-# Pinecone
-store = PineconeStore(index="my-index", api_key="...")
-
-# Qdrant
-store = QdrantStore(url="http://localhost:6333")
-
-# Index documents
-docs = [
-    Document(content="AI is transforming...", metadata={"topic": "ai"}),
-    Document(content="Machine learning...", metadata={"topic": "ml"}),
-]
+docs = [Document(content="AI is transforming...", metadata={"topic": "ai"})]
 await store.add(docs)
 
-# Search
 results = await store.search("What is AI?", limit=5)
-for result in results:
-    print(f"{result.score}: {result.document.content}")
-```
-
----
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-```bash
-# OpenAI
-export OPENAI_API_KEY=sk-...
-
-# Azure OpenAI (with Azure AD - no API key!)
-export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
-
-# Anthropic
-export ANTHROPIC_API_KEY=sk-ant-...
-```
-
-### YAML Configuration
-
-```yaml
-# agents/research_assistant.yaml
-name: ResearchAssistant
-instructions: |
-  You are a research assistant that helps users find information.
-model: gpt-4o-mini
-temperature: 0.7
-tools:
-  - web_search
-  - summarize
-memory:
-  type: conversation
-  max_messages: 50
-```
-
-```python
-from pyagent.config import load_agent, AgentBuilder
-
-config = load_agent("agents/research_assistant.yaml")
-agent = AgentBuilder.from_config(config).build()
 ```
 
 ---
 
 ## 🔐 Azure AD Authentication
 
-Enterprise-grade authentication without API keys.
+Enterprise-grade authentication without API keys:
 
 ```python
 import os
@@ -761,7 +789,6 @@ os.environ["AZURE_OPENAI_ENDPOINT"] = "https://your-resource.openai.azure.com/"
 os.environ["AZURE_OPENAI_DEPLOYMENT"] = "gpt-4o-mini"
 
 from pyagent import ask
-
 # Uses az login / VS Code / Managed Identity automatically
 answer = ask("Hello!")
 ```
@@ -773,17 +800,9 @@ answer = ask("Hello!")
 ```python
 from pyagent.easy import guardrails
 
-# Wrap any function with safety rails
-safe_ask = guardrails.wrap(
-    ask,
-    block_pii=True,
-    block_harmful=True,
-    max_tokens=1000
-)
-
+safe_ask = guardrails.wrap(ask, block_pii=True, block_harmful=True, max_tokens=1000)
 result = safe_ask("Tell me about...")
 
-# Check for violations
 if result.violations:
     print(f"Blocked: {result.violations}")
 ```
@@ -795,38 +814,36 @@ if result.violations:
 ```python
 from pyagent.easy import trace
 
-# Enable tracing
 trace.enable()
-
-# Run operations
 ask("What is AI?")
-research("ML trends")
-
-# View trace
 trace.show()
-
-# Export
 trace.export("trace.json")
 ```
 
 ---
 
-## 🎮 Pre-built Use Case Agents
+## 🎮 Industry Use Cases (usecases/ module)
+
+Pre-built agents for common business scenarios:
 
 ```python
 from pyagent.usecases import get_agent
+from pyagent.usecases.industry import telecom, healthcare, finance
 
-# Customer service
+# Customer Service
 support = get_agent("support_agent")
 tech_support = get_agent("technical_agent")
+billing = get_agent("billing_agent")
 
 # Development
 code_reviewer = get_agent("code_reviewer")
 debugger = get_agent("debugger")
+doc_writer = get_agent("documentation_writer")
 
-# Research
-data_analyst = get_agent("data_analyst")
-market_researcher = get_agent("market_researcher")
+# Industry-Specific
+plan_advisor = telecom.plan_advisor(carrier_name="MobileNet")
+scheduler = healthcare.appointment_scheduler(facility="City Hospital")
+banker = finance.banking_assistant(bank_name="First Bank")
 
 # Gaming
 npc = get_agent("npc_agent")
@@ -835,44 +852,15 @@ game_master = get_agent("game_master")
 
 ---
 
-## 🧮 Token Counting & Cost
+## 🧮 Token Counting & Cost (tokens/ module)
 
 ```python
 from pyagent.tokens import count_tokens, calculate_cost
 
-# Count tokens
 tokens = count_tokens("Hello, how are you?", model="gpt-4o-mini")
-print(f"Tokens: {tokens}")
-
-# Calculate cost
-cost = calculate_cost(
-    input_tokens=1000,
-    output_tokens=500,
-    model="gpt-4o-mini"
-)
-print(f"Cost: ${cost:.4f}")
+cost = calculate_cost(input_tokens=1000, output_tokens=500, model="gpt-4o-mini")
+print(f"Tokens: {tokens}, Cost: ${cost:.4f}")
 ```
-
----
-
-## 📊 Feature Comparison
-
-| Feature | PYAI | OpenAI Agents | Google ADK | Semantic Kernel | LangChain |
-|---------|------|---------------|------------|-----------------|-----------|
-| One-liner APIs | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Multi-provider LLM | ✅ | ❌ | ✅ | ✅ | ✅ |
-| Azure AD Auth | ✅ | ❌ | ❌ | ✅ | ❌ |
-| Session Management | ✅ | ✅ | ✅ | ❌ | ✅ |
-| Evaluation Framework | ✅ | ❌ | ✅ | ❌ | ❌ |
-| Voice Streaming | ✅ | ✅ | ❌ | ❌ | ❌ |
-| MCP Protocol | ✅ | ❌ | ❌ | ❌ | ❌ |
-| A2A Protocol | ✅ | ❌ | ✅ | ❌ | ❌ |
-| Guardrails | ✅ | ✅ | ❌ | ❌ | ✅ |
-| Workflow Patterns | ✅ | ❌ | ❌ | ✅ | ✅ |
-| Plugin System | ✅ | ❌ | ❌ | ✅ | ❌ |
-| YAML Config | ✅ | ❌ | ✅ | ❌ | ❌ |
-| Code Execution | ✅ | ✅ | ❌ | ❌ | ✅ |
-| Vector DB Connectors | ✅ | ❌ | ❌ | ✅ | ✅ |
 
 ---
 
@@ -895,12 +883,12 @@ pyagent/
 ├── openapi/        # 📜 OpenAPI tool generation
 ├── plugins/        # 🔌 Plugin architecture
 ├── config/         # ⚙️ YAML/JSON configuration
-├── tokens/         # 🧮 Token counting
+├── tokens/         # 🧮 Token counting & cost
 ├── models/         # 🤖 Multi-provider models
 ├── instructions/   # 📝 Persona and guidelines
 ├── code_executor/  # 💻 Safe code execution
 ├── integrations/   # 🔗 LangChain, SK adapters
-├── usecases/       # 🎯 Pre-built agents
+├── usecases/       # 🎯 Pre-built industry agents
 ├── devui/          # 🖥️ Development UI
 ├── cli/            # ⌨️ Command line interface
 └── errors/         # ❌ Error hierarchy
@@ -908,46 +896,59 @@ pyagent/
 
 ---
 
-## 🤝 Contributing
+## 🔌 Integrations
 
-We welcome contributions! See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
+Connect PYAI to your existing ecosystem:
+
+```python
+from pyagent.integrations import langchain, semantic_kernel, vector_db
+
+# Import LangChain tools
+search = langchain.import_tool("serpapi")
+
+# Create Semantic Kernel
+kernel = semantic_kernel.create_kernel(provider="azure", deployment="gpt-4o")
+
+# Connect to vector stores
+store = vector_db.connect("azure_ai_search", endpoint="...", index="docs")
+```
+
+| Integration | Features |
+|-------------|----------|
+| **LangChain** | Import tools, chains, retrievers; Export agents |
+| **Semantic Kernel** | Create kernels, import plugins, execute plans |
+| **Azure AI Search** | Enterprise search with hybrid retrieval |
+| **Pinecone** | Scalable cloud vector database |
+| **ChromaDB** | Open-source embedding database |
+| **FAISS** | Fast in-memory similarity search |
+| **Qdrant** | High-performance vector search |
 
 ---
 
-## 📚 Documentation
+## 👥 Community
 
-- [Getting Started](docs/QUICKSTART.md)
-- [API Reference](docs/API_REFERENCE.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Azure Setup](docs/AZURE_SETUP.md)
-- [Examples](examples/)
-- [Changelog](docs/CHANGELOG.md)
+- 📖 [Documentation](./docs/)
+- 🐛 [Report Issues](https://github.com/gitpavleenbali/PYAI/issues)
+- 💡 [Feature Requests](https://github.com/gitpavleenbali/PYAI/discussions)
+- 🤝 [Contributing Guide](./docs/CONTRIBUTING.md)
 
 ---
 
-## 🙏 Acknowledgements
+## 📜 License
 
-PYAI builds on the excellent work of:
-
-- [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) - Runner pattern
-- [Microsoft Semantic Kernel](https://github.com/microsoft/semantic-kernel) - Kernel & plugins
-- [Google ADK](https://github.com/google/adk-python) - A2A protocol
-- [Strands Agents](https://github.com/strands-agents/sdk-python) - Tool discovery
-- [Anthropic SDK](https://github.com/anthropics/anthropic-sdk-python) - Token utilities
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License — Build freely, build boldly.
 
 ---
 
 <p align="center">
-  <strong>🐼 PYAI</strong><br/>
-  <em>Because AI development should be as simple as <code>import pandas as pd</code></em>
+  <strong>🧠 PYAI</strong><br/>
+  <em>Intelligence, Embedded.</em>
 </p>
 
 <p align="center">
   <strong>25+ Modules • 150+ Classes • 671 Tests • Infinite Possibilities</strong>
+</p>
+
+<p align="center">
+  <sub>Built with 🧠 by the PYAI team</sub>
 </p>
