@@ -1,464 +1,276 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/PYAI-Intelligence%20Engine-blueviolet?style=for-the-badge&logo=python&logoColor=white" alt="PYAI"/>
-</p>
+# PyAgent
 
-<h1 align="center">🧠 PYAI</h1>
-<h3 align="center">Three-Dimensional Intelligence Engine</h3>
+**Build AI agents in Python with elegant simplicity.**
 
-<p align="center">
-  <strong>The Intelligence Engine for Software Factories</strong><br/>
-  <em>Build, Orchestrate, and Scale AI-Native Applications</em>
-</p>
+[![PyPI version](https://img.shields.io/badge/pypi-v0.4.0-blue)](https://pypi.org/project/pyagent/)
+[![Python](https://img.shields.io/badge/python-3.10+-green)](https://python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-671%20passing-brightgreen)]()
 
-<p align="center">
-  <a href="#-the-three-dimensions">Three Dimensions</a> •
-  <a href="#-software-factories">Software Factories</a> •
-  <a href="#-the-ecosystem">Ecosystem</a> •
-  <a href="#-get-started">Get Started</a>
-</p>
+PyAgent is a lightweight, model-agnostic SDK for building AI agents and multi-agent systems. From simple Q&A to complex autonomous workflows, PyAgent scales with your needs while keeping your code clean and maintainable.
+
+> **The pandas of AI development** - What pandas did for data, PyAgent does for intelligence.
 
 ---
 
-## 🎯 What is PYAI?
-
-**PYAI is not just another AI library. It's an Intelligence Engine.**
-
-While other frameworks help you *call* AI models, PYAI embeds intelligence *into* your software architecture. It's the foundation for building **Software Factories** — systems that don't just use AI, but think, adapt, and create.
-
-> *"What SAS did for statistics, what pandas did for data, PYAI does for intelligence."*
-
----
-
-## 🔺 The Three Dimensions
-
-PYAI operates across **three dimensions of intelligence**, each building upon the last:
-
-```
-                    ┌─────────────────────────────────┐
-                    │     DIMENSION 3: CREATION       │
-                    │   Software Factory Intelligence  │
-                    │ ┌─────────────────────────────┐ │
-                    │ │ • Self-generating systems   │ │
-                    │ │ • Code synthesis engines    │ │
-                    │ │ • Autonomous development    │ │
-                    │ └─────────────────────────────┘ │
-                    └───────────────┬─────────────────┘
-                                    │
-                    ┌───────────────▼─────────────────┐
-                    │    DIMENSION 2: ORCHESTRATION   │
-                    │     Multi-Agent Intelligence     │
-                    │ ┌─────────────────────────────┐ │
-                    │ │ • Agent coordination        │ │
-                    │ │ • Workflow automation       │ │
-                    │ │ • Knowledge synthesis       │ │
-                    │ └─────────────────────────────┘ │
-                    └───────────────┬─────────────────┘
-                                    │
-                    ┌───────────────▼─────────────────┐
-                    │     DIMENSION 1: COGNITION      │
-                    │      Core AI Operations          │
-                    │ ┌─────────────────────────────┐ │
-                    │ │ • ask() • research()        │ │
-                    │ │ • summarize() • analyze()   │ │
-                    │ │ • extract() • generate()    │ │
-                    │ └─────────────────────────────┘ │
-                    └─────────────────────────────────┘
-```
-
-### Dimension 1️⃣ — Cognition
-The foundation. Single-purpose AI operations that **just work**.
-
-```python
-from pyagent import ask, summarize, extract
-
-# Instant intelligence
-answer = ask("Explain quantum entanglement")
-summary = summarize(long_document)
-entities = extract(text, fields=["names", "dates", "amounts"])
-```
-
-### Dimension 2️⃣ — Orchestration
-Coordinated intelligence. Multiple agents working in harmony.
-
-```python
-from pyagent import agent, workflow
-
-# Specialized agents
-researcher = agent(persona="researcher")
-analyst = agent(persona="analyst")
-writer = agent(persona="writer")
-
-# Orchestrated workflow
-report = workflow([
-    researcher >> "Find latest AI trends",
-    analyst >> "Analyze market impact",
-    writer >> "Write executive summary"
-])
-```
-
-### Dimension 3️⃣ — Creation
-Self-generating systems. **The Software Factory.**
-
-```python
-from pyagent import factory
-
-# The factory builds software
-factory.create("Build a REST API for user management")
-# → Generates models, routes, tests, documentation
-
-factory.extend("Add authentication with JWT")
-# → Intelligently extends existing codebase
-
-factory.refactor("Convert to async architecture")
-# → Transforms architecture while preserving logic
-```
-
----
-
-## 🏭 Software Factories
-
-A **Software Factory** is a system that generates software, not just code snippets. PYAI provides the intelligence engine to build them.
-
-### Traditional Development vs Software Factory
-
-| Traditional | Software Factory |
-|-------------|------------------|
-| Write code manually | Describe what you need |
-| Debug line by line | Self-healing systems |
-| Copy-paste patterns | Intelligent pattern synthesis |
-| Manual testing | Auto-generated test suites |
-| Static architecture | Evolving, adaptive systems |
-
-### The Intelligence Stack
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                    YOUR APPLICATION                       │
-├──────────────────────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐     │
-│  │ PyAgent │  │ PyFlow  │  │PyVision │  │ PyVoice │     │
-│  │ Agents  │  │Workflow │  │ Vision  │  │  Audio  │     │
-│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘     │
-│       │            │            │            │           │
-│  ┌────▼────────────▼────────────▼────────────▼────┐     │
-│  │              PYAI INTELLIGENCE ENGINE           │     │
-│  │  • Unified Memory  • Context Management         │     │
-│  │  • Model Routing   • Intelligent Caching        │     │
-│  └────────────────────────────────────────────────┘     │
-├──────────────────────────────────────────────────────────┤
-│         Azure OpenAI  |  OpenAI  |  Anthropic            │
-└──────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📦 The Ecosystem
-
-### 🐼 PyAgent — *Available Now*
-**The Pandas of AI Agents**
-
-Build AI-powered applications in 3 lines or less. The most accessible AI agent framework ever created.
-
-```python
-from pyagent import ask, agent, rag
-
-# One-liner AI
-answer = ask("What is the meaning of life?")
-
-# Expert agents
-coder = agent(persona="coder")
-solution = coder("Optimize this algorithm for O(log n)")
-
-# RAG in 2 lines
-knowledge = rag.index(["research/*.pdf"])
-insight = knowledge.ask("What are the key findings?")
-```
-
-[📚 PyAgent Documentation](./docs/QUICKSTART.md) | [🚀 API Reference](./docs/API_REFERENCE.md)
-
-#### Key Modules
-
-| Module | Description |
-|--------|-------------|
-| **easy/** | One-liner functions: `ask()`, `research()`, `summarize()`, `generate()`, `translate()`, `extract()`, `code()` |
-| **integrations/** | Connect to LangChain, Semantic Kernel, Azure AI Search, Pinecone, ChromaDB, FAISS, Qdrant |
-| **orchestrator/** | Workflow management, task scheduling, multi-agent patterns (supervisor, consensus, debate) |
-| **usecases/** | Pre-built templates: Customer Service, Sales, Development, Gaming, Telecom, Healthcare, Finance |
-| **core/** | Agent engine, memory management, LLM abstraction |
-| **skills/** | Extensible skill system for agent capabilities |
-
-#### Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                          PyAgent                                 │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │                      easy/                                │  │
-│  │  ask() chat() research() summarize() generate() code()   │  │
-│  │  extract() analyze() translate() rag() handoff() mcp()   │  │
-│  └──────────────────────────────────────────────────────────┘  │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │ integrations │  │ orchestrator │  │   usecases   │         │
-│  │  LangChain   │  │   Workflow   │  │  Templates   │         │
-│  │Semantic Kern │  │  Scheduler   │  │  Telecom     │         │
-│  │ Vector DBs   │  │   Patterns   │  │  Finance     │         │
-│  └──────────────┘  └──────────────┘  └──────────────┘         │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────────────┐   │
-│  │  core   │  │ skills  │  │blueprint│  │  instructions   │   │
-│  └─────────┘  └─────────┘  └─────────┘  └─────────────────┘   │
-└───────────────────────────┬─────────────────────────────────────┘
-                            │
-                            ▼
-         ┌─────────────────────────────────────┐
-         │    Azure OpenAI | OpenAI | Claude   │
-         └─────────────────────────────────────┘
-```
-
----
-
-### 🔌 Integrations
-
-Connect PyAgent to your existing AI ecosystem:
-
-```python
-from pyagent.integrations import langchain, semantic_kernel, vector_db
-
-# Import LangChain tools
-search = langchain.import_tool("serpapi")
-
-# Create Semantic Kernel
-kernel = semantic_kernel.create_kernel(provider="azure", deployment="gpt-4o")
-
-# Connect to vector stores
-store = vector_db.connect("azure_ai_search", endpoint="...", index="docs")
-```
-
-| Integration | Features |
-|-------------|----------|
-| **LangChain** | Import tools, chains, retrievers; Export agents |
-| **Semantic Kernel** | Create kernels, import plugins, execute plans |
-| **Azure AI Search** | Enterprise search with hybrid retrieval |
-| **Pinecone** | Scalable cloud vector database |
-| **ChromaDB** | Open-source embedding database |
-| **FAISS** | Fast in-memory similarity search |
-| **Qdrant** | High-performance vector search |
-
----
-
-### 🎭 Multi-Agent Patterns
-
-Enterprise-ready multi-agent orchestration:
-
-```python
-from pyagent.orchestrator import AgentPatterns
-from pyagent import agent
-
-# Supervisor pattern
-result = AgentPatterns.supervisor(
-    task="Write a research report",
-    agents=[researcher, writer, editor],
-    supervisor_instructions="Coordinate the team"
-)
-
-# Consensus pattern (voting)
-decision = AgentPatterns.consensus(
-    task="Should we approve this feature?",
-    agents=[security_expert, ux_expert, perf_expert],
-    threshold=0.66
-)
-
-# Debate pattern
-verdict = AgentPatterns.debate(
-    topic="AI open-source vs proprietary",
-    pro_agent=advocate,
-    con_agent=skeptic,
-    judge=arbiter
-)
-```
-
----
-
-### 📦 Ready-to-Use Templates
-
-Pre-built agents for common scenarios:
-
-```python
-from pyagent.usecases import customer_service, development
-from pyagent.usecases.industry import telecom, healthcare, finance
-
-# Customer support
-support = customer_service.support_agent(company_name="Acme Inc")
-
-# Code review
-reviewer = development.code_reviewer(languages=["Python", "JavaScript"])
-
-# Industry-specific
-plan_advisor = telecom.plan_advisor(carrier_name="MobileNet")
-banking = finance.banking_assistant(bank_name="First Bank")
-scheduler = healthcare.appointment_scheduler(facility="City Hospital")
-```
-
----
-
-### 🔮 Coming Soon
-
-| Library | Purpose | Dimension |
-|---------|---------|-----------|
-| **PyFlow** | Visual AI workflow orchestration | 2 |
-| **PyVision** | Computer vision made simple | 1 |
-| **PyVoice** | Speech & audio intelligence | 1 |
-| **PyFactory** | Software generation engine | 3 |
-| **PyMind** | Autonomous reasoning systems | 3 |
-
----
-
-## 🚀 Get Started
+## Quick Start
 
 ### Installation
 
 ```bash
-# Basic install
 pip install pyagent
-
-# With OpenAI support
-pip install pyagent[openai]
-
-# With Azure support (recommended for enterprise)
-pip install pyagent[azure]
-
-# With LangChain integration
-pip install pyagent[langchain]
-
-# With Semantic Kernel integration
-pip install pyagent[semantic-kernel]
-
-# With vector database support
-pip install pyagent[vector]
-
-# Full installation (all features)
-pip install pyagent[all]
 ```
 
-### Installation Extras
-
-| Extra | Includes |
-|-------|----------|
-| `openai` | OpenAI SDK |
-| `anthropic` | Anthropic Claude SDK |
-| `azure` | Azure Identity, AI Search, OpenAI |
-| `langchain` | LangChain integration |
-| `semantic-kernel` | Microsoft Semantic Kernel |
-| `vector` | ChromaDB, FAISS, Pinecone, Qdrant |
-| `web` | Web scraping (aiohttp, requests, beautifulsoup) |
-| `docs` | Document processing (PDF, DOCX) |
-| `all` | Everything above |
-| `dev` | Development tools (pytest, black, mypy) |
-
-### Configuration
-
+For Azure OpenAI with Azure AD authentication:
 ```bash
-# OpenAI
-export OPENAI_API_KEY=sk-your-key
-
-# Azure OpenAI (with Azure AD - recommended)
-export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
+pip install pyagent[azure]
 ```
 
-### Hello, Intelligence
+### Hello World
+
+```python
+from pyagent import Agent, Runner
+
+agent = Agent(
+    name="Assistant",
+    instructions="You are a helpful assistant."
+)
+
+result = Runner.run_sync(agent, "Write a haiku about Python.")
+print(result.final_output)
+```
+
+Or use the simple one-liner API:
 
 ```python
 from pyagent import ask
 
-# Your first intelligent operation
-answer = ask("What makes PYAI revolutionary?")
-print(answer)
-# → "PYAI is revolutionary because it embeds intelligence into 
-#    software architecture across three dimensions, enabling 
-#    the creation of self-generating software factories..."
+answer = ask("What is the capital of France?")
+print(answer)  # Paris
 ```
 
 ---
 
-## 🧬 Design Philosophy
+## Features at a Glance
 
-### 1. **Intelligence as Infrastructure**
-AI shouldn't be bolted on — it should be woven in. PYAI treats intelligence as a first-class architectural component.
+### Python-Based Tools
 
-### 2. **Progressive Complexity**
-Start with one line. Scale to software factories. Same API, same patterns, infinite scale.
+Create tools using simple decorators:
 
 ```python
-# Level 1: One line
-answer = ask("Translate to French: Hello")
+from pyagent import Agent, Runner
+from pyagent.skills import tool
 
-# Level 2: Agent
-translator = agent(persona="translator", languages=["fr", "de", "es"])
-result = translator("Translate to all languages: Hello")
+@tool(description="Get weather for a city")
+async def get_weather(city: str) -> str:
+    return f"The weather in {city} is sunny, 72F"
 
-# Level 3: Factory
-factory.create("Build a multi-language translation service with API")
+agent = Agent(
+    name="WeatherBot",
+    instructions="Help users with weather information.",
+    tools=[get_weather]
+)
+
+result = Runner.run_sync(agent, "What's the weather in Tokyo?")
+print(result.final_output)
+# The weather in Tokyo is sunny, 72F
 ```
 
-### 3. **Zero Friction**
-No boilerplate. No ceremony. If it takes more than 3 lines for a common task, we failed.
+### Multiple Model Providers
 
-### 4. **Production Ready**
-Type hints. Error handling. Retry logic. Rate limiting. Caching. Built in, not bolted on.
+Support for OpenAI, Azure OpenAI, Anthropic, and more:
 
----
+```python
+from pyagent import Agent
+from pyagent.core import AzureOpenAIProvider, OpenAIProvider, LLMConfig
 
-## 🔥 Why PYAI?
+# OpenAI
+openai_provider = OpenAIProvider(LLMConfig(
+    api_key="sk-...",
+    model="gpt-4o-mini"
+))
 
-| Other Frameworks | PYAI |
-|-----------------|------|
-| 50 lines for RAG | 2 lines |
-| Agent = configuration hell | `agent(persona="coder")` |
-| Memory = complex setup | Built-in, automatic |
-| Workflows = YAML nightmares | Python functions |
-| "Hello World" = 30 minutes | "Hello World" = 30 seconds |
+# Azure OpenAI (with Azure AD - no API key needed!)
+azure_provider = AzureOpenAIProvider(LLMConfig(
+    api_base="https://your-resource.openai.azure.com/",
+    model="gpt-4o-mini"
+    # Uses DefaultAzureCredential automatically
+))
 
----
-
-## 🌍 The Vision
-
-We're building the **operating system for intelligent software**.
-
-```
-2024: PyAgent launches → Simple AI operations
-2025: PyFlow launches  → Orchestrated intelligence  
-2026: PyFactory       → Software Factories emerge
-2027: PyMind          → Autonomous development
-2030: ???             → Software that writes itself
+agent = Agent(name="Assistant", llm=azure_provider)
 ```
 
-**This is not hype. This is the roadmap.**
+### Multi-Agent Systems
+
+Build systems where specialized agents collaborate:
+
+```python
+from pyagent import Agent
+from pyagent.blueprint import Workflow, Step
+
+# Create specialized agents
+researcher = Agent(name="Researcher", instructions="Find information on topics.")
+writer = Agent(name="Writer", instructions="Write clear, engaging content.")
+editor = Agent(name="Editor", instructions="Review and improve writing.")
+
+# Chain them in a workflow
+workflow = (Workflow("ContentPipeline")
+    .add_step(Step("research", researcher))
+    .add_step(Step("write", writer))
+    .add_step(Step("edit", editor))
+    .build())
+```
+
+### Agent Handoffs
+
+Transfer control between agents seamlessly:
+
+```python
+from pyagent import Agent, Runner
+
+spanish_agent = Agent(
+    name="SpanishAgent",
+    instructions="You only speak Spanish."
+)
+
+english_agent = Agent(
+    name="EnglishAgent",
+    instructions="You only speak English."
+)
+
+triage_agent = Agent(
+    name="TriageAgent",
+    instructions="Route to the appropriate language agent.",
+    handoffs=[spanish_agent, english_agent]
+)
+
+result = Runner.run_sync(triage_agent, "Hola, como estas?")
+print(result.final_output)
+# Hola! Estoy bien, gracias. Y tu?
+```
 
 ---
 
-## 👥 Community
+## Key Features
 
-- 📖 [Documentation](./docs/)
-- 🐛 [Report Issues](https://github.com/gitpavleenbali/PYAI/issues)
-- 💡 [Feature Requests](https://github.com/gitpavleenbali/PYAI/discussions)
-- 🤝 [Contributing Guide](./docs/CONTRIBUTING.md)
+| Feature | Description |
+|---------|-------------|
+| **Model Agnostic** | OpenAI, Azure OpenAI, Anthropic, Ollama, and custom providers |
+| **Agent Framework** | Build modular agents with tools, memory, and planning |
+| **Multi-Agent Systems** | Orchestrate complex workflows with collaborating agents |
+| **Plugin Ecosystem** | Extend with native functions, OpenAPI specs, or MCP tools |
+| **Sessions & Memory** | SQLite and Redis session support for conversation history |
+| **Streaming** | Real-time streaming responses |
+| **Voice Support** | Voice input/output with OpenAI Realtime API |
+| **RAG Built-in** | Document Q&A with vector database connectors |
+| **Enterprise Ready** | Azure AD authentication, tracing, evaluation tools |
 
 ---
 
-## 📜 License
+## Installation Options
 
-MIT License — Build freely, build boldly.
+```bash
+# Core package
+pip install pyagent
+
+# With Azure support (Azure AD authentication)
+pip install pyagent[azure]
+
+# With voice support
+pip install pyagent[voice]
+
+# With Redis sessions
+pip install pyagent[redis]
+
+# Full installation
+pip install pyagent[all]
+```
+
+---
+
+## Model Providers
+
+PyAgent supports multiple AI model providers:
+
+| Provider | Status | Auth Methods |
+|----------|--------|--------------|
+| **OpenAI** | Supported | API Key |
+| **Azure OpenAI** | Supported | API Key, Azure AD |
+| **Anthropic** | Supported | API Key |
+| **Ollama** | Supported | Local |
+| **LiteLLM** | Supported | Various |
+| **Custom** | Supported | Configurable |
+
+### Azure OpenAI with Azure AD
+
+For enterprise scenarios, use Azure AD authentication (no API key required):
+
+```python
+import os
+os.environ["AZURE_OPENAI_ENDPOINT"] = "https://your-resource.openai.azure.com/"
+os.environ["AZURE_OPENAI_DEPLOYMENT"] = "gpt-4o-mini"
+
+from pyagent import ask
+
+# Automatically uses your Azure login (az login / VS Code)
+answer = ask("Hello!")
+```
+
+---
+
+## Documentation
+
+- [Getting Started Guide](docs/QUICKSTART.md)
+- [API Reference](docs/API_REFERENCE.md)
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [Azure Setup Guide](docs/AZURE_SETUP.md)
+- [Examples](examples/)
+
+---
+
+## Examples
+
+Explore the [examples/](examples/) directory:
+
+| Example | Description |
+|---------|-------------|
+| `basic_agent.py` | Simple agent with tools |
+| `multi_agent_workflow.py` | Multi-agent collaboration |
+| `weather_app.py` | Real-world weather assistant |
+| `smart_research_assistant.py` | RAG + research capabilities |
+| `custom_skills.py` | Creating custom tools/skills |
+
+---
+
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for:
+
+- Bug reports and feature requests
+- Development setup
+- Pull request guidelines
+- Code style guide
+
+---
+
+## Acknowledgements
+
+PyAgent builds on the excellent work of the open-source community:
+
+- [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) - Runner pattern inspiration
+- [Microsoft Semantic Kernel](https://github.com/microsoft/semantic-kernel) - Plugin architecture
+- [Google ADK](https://github.com/google/adk-python) - Agent configuration patterns
+- [Strands Agents](https://github.com/strands-agents/sdk-python) - Tool auto-discovery
+- [Anthropic SDK](https://github.com/anthropics/anthropic-sdk-python) - Token counting utilities
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 <p align="center">
-  <strong>PYAI</strong><br/>
-  <em>Intelligence, Embedded.</em>
-</p>
-
-<p align="center">
-  <sub>Built with 🧠 by the PYAI team</sub>
+  <strong>PyAgent</strong> - The Intelligence Engine for Modern Applications
 </p>

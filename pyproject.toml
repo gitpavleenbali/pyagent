@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pyagent"
-version = "0.2.0"
+version = "0.4.0"
 description = "The Pandas of AI Agents - Build AI applications in 3 lines or less"
 readme = "README.md"
 license = "MIT"
@@ -123,8 +123,17 @@ Repository = "https://github.com/gitpavleenbali/pyagent"
 Issues = "https://github.com/gitpavleenbali/pyagent/issues"
 Changelog = "https://github.com/gitpavleenbali/pyagent/blob/main/docs/CHANGELOG.md"
 
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/docs",
+    "README.md",
+    "LICENSE",
+]
+
 [tool.hatch.build.targets.wheel]
-packages = ["pyagent"]
+packages = ["src/pyagent"]
 
 [tool.black]
 line-length = 100

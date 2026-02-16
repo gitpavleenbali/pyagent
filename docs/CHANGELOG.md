@@ -1,9 +1,48 @@
-# 📝 Changelog
+# Changelog
 
 All notable changes to PyAgent will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [0.4.0] - 2026-02-16
+
+### Release Summary
+
+Major release achieving feature parity with industry-leading AI agent SDKs including OpenAI Agents SDK, Microsoft Semantic Kernel, Google ADK, Strands Agents, and Anthropic SDK.
+
+### Added
+
+#### Phase 1 Features (Core)
+- **Runner Pattern** - Structured agent execution inspired by OpenAI Agents SDK (29 tests)
+- **Agent Config YAML** - No-code agent configuration from YAML/JSON files (24 tests)
+- **Agents as Plugins** - Plugin architecture inspired by MS Semantic Kernel (22 tests)
+- **OpenAPI Tools** - Auto-generate tools from OpenAPI specs (40 tests)
+- **Token Counting** - Token counting utilities inspired by Anthropic SDK (40 tests)
+
+#### Phase 2 Features (Advanced)
+- **Tool Auto-Discovery** - Automatic tool loading from directories (12 tests)
+- **Context Caching** - Cache context for performance optimization (7 tests)
+- **Session Rewind** - Checkpoint and rollback session states (6 tests)
+- **Multimodal Vision** - Image/vision input support (12 tests)
+- **Vector DB Connectors** - ChromaDB, Pinecone, Weaviate, Qdrant, Azure AI Search (7 tests)
+
+#### Phase 3 Features (Enterprise)
+- **A2A Protocol** - Agent-to-Agent communication protocol (12 tests)
+- **Development UI** - Built-in debugging and testing UI (9 tests)
+- **Voice Streaming** - Real-time voice input/output (10 tests)
+
+#### Phase 4 Features (Architecture)
+- **Kernel Registry Pattern** - Service registry inspired by MS Semantic Kernel (35 tests)
+
+### Changed
+- **Azure AD Authentication** - AzureOpenAIProvider now auto-detects DefaultAzureCredential
+- **Professional Repository Structure** - Improved documentation, GitHub templates, workflows
+
+### Test Coverage
+- **671 tests passing** (636 core + 35 kernel)
 
 ---
 

@@ -1,0 +1,89 @@
+# PyAgent - LLM Context File
+
+> This file provides context for LLMs working with PyAgent code.
+
+## What is PyAgent?
+
+PyAgent is a Python SDK for building AI agents. It provides:
+- Simple one-liner APIs: `ask()`, `summarize()`, `research()`
+- Full agent framework: `Agent`, `Runner`, `Workflow`
+- Multi-provider support: OpenAI, Azure OpenAI, Anthropic, Ollama
+- Enterprise features: Azure AD auth, sessions, evaluation
+
+## Quick Examples
+
+### Simple Q&A
+```python
+from pyagent import ask
+answer = ask("What is Python?")
+```
+
+### Agent with Tools
+```python
+from pyagent import Agent, Runner
+from pyagent.skills import tool
+
+@tool(description="Get weather")
+async def get_weather(city: str) -> str:
+    return f"Sunny in {city}"
+
+agent = Agent(name="Bot", tools=[get_weather])
+result = Runner.run_sync(agent, "Weather in NYC?")
+```
+
+### Multi-Agent
+```python
+from pyagent import Agent
+from pyagent.blueprint import Workflow, Step
+
+researcher = Agent(name="Researcher")
+writer = Agent(name="Writer")
+
+workflow = Workflow("Pipeline")
+workflow.add_step(Step("research", researcher))
+workflow.add_step(Step("write", writer))
+```
+
+## Package Structure
+
+- `pyagent.easy` - Simple APIs (ask, summarize, research)
+- `pyagent.core` - Agent, LLM providers, memory
+- `pyagent.runner` - Execution (Runner.run, Runner.run_sync)
+- `pyagent.blueprint` - Workflows, patterns
+- `pyagent.skills` - Tools (@tool decorator)
+- `pyagent.plugins` - Plugin system
+- `pyagent.kernel` - Service registry
+- `pyagent.config` - YAML/JSON configuration
+- `pyagent.sessions` - SQLite/Redis sessions
+- `pyagent.tokens` - Token counting
+
+## Key Classes
+
+- `Agent` - Main agent class
+- `Runner` - Executes agents
+- `Workflow` - Multi-step workflows
+- `LLMConfig` - LLM configuration
+- `OpenAIProvider` - OpenAI provider
+- `AzureOpenAIProvider` - Azure OpenAI provider
+
+## Authentication
+
+```python
+# OpenAI
+export OPENAI_API_KEY=sk-...
+
+# Azure OpenAI (API Key)
+export AZURE_OPENAI_ENDPOINT=https://...
+export AZURE_OPENAI_API_KEY=...
+
+# Azure OpenAI (Azure AD - no key needed)
+export AZURE_OPENAI_ENDPOINT=https://...
+# Uses DefaultAzureCredential (az login)
+```
+
+## More Information
+
+- README.md - Full documentation
+- AGENTS.md - Detailed project context
+- examples/ - Working examples
+- docs/ - API reference

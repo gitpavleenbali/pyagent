@@ -10,21 +10,34 @@ Run: python examples/test_new_features.py
 
 import os
 import sys
+import pytest
 
 # Add pyagent to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Check for available credentials
+AZURE_CONFIGURED = bool(os.environ.get("AZURE_OPENAI_ENDPOINT"))
+OPENAI_CONFIGURED = bool(os.environ.get("OPENAI_API_KEY"))
+HAS_CREDENTIALS = AZURE_CONFIGURED or OPENAI_CONFIGURED
+
 # Auto-configure Azure if available
-if os.environ.get("AZURE_OPENAI_ENDPOINT"):
+if AZURE_CONFIGURED:
     import pyagent
     pyagent.configure(
         provider="azure",
         azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
         model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
     )
-    print("✅ Azure OpenAI configured")
+    print("✅ Azure OpenAI configured (using DefaultAzureCredential)")
+
+# Skip decorator for tests requiring live LLM
+requires_llm = pytest.mark.skipif(
+    not HAS_CREDENTIALS,
+    reason="Requires AZURE_OPENAI_ENDPOINT or OPENAI_API_KEY"
+)
 
 
+@requires_llm
 def test_handoff():
     """Test multi-agent handoffs."""
     print("\n" + "=" * 60)

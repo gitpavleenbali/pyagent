@@ -61,3 +61,5 @@ Thumbs.db
 *.log
 *.tmp
 body.json
+# Internal documentation (not for public release)
+.internal/

@@ -7,27 +7,30 @@ Each example shows a complete, working solution to common AI tasks.
 NOTE: This is a REFERENCE file showing API examples.
       For runnable examples, see: comprehensive_examples.py
 
-Before running individual snippets:
-    export OPENAI_API_KEY=sk-...
-    # or for Azure:
-    export AZURE_OPENAI_ENDPOINT=https://...
+Authentication Options:
+    # Option 1: OpenAI API Key
+    export OPENAI_API_KEY=sk-your-key
+    
+    # Option 2: Azure OpenAI with Azure AD (recommended - no key needed)
+    export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
     export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
+    # Uses your Azure login automatically (az login / VS Code)
 """
 
 import os
 import sys
 
-# Add pyagent to path for local development
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add paths for local development (works from any directory, including PyCharm)
+_examples_dir = os.path.dirname(os.path.abspath(__file__))
+_project_dir = os.path.dirname(_examples_dir)
+sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Auto-configure Azure if available
-if os.environ.get("AZURE_OPENAI_ENDPOINT"):
-    import pyagent
-    pyagent.configure(
-        provider="azure",
-        azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
-        model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
-    )
+# Configure PyAgent with available credentials (supports OpenAI, Azure API Key, or Azure AD)
+from config_helper import setup_pyagent
+if not setup_pyagent():
+    print("Please configure credentials - see instructions above")
+    sys.exit(1)
 
 # =============================================================================
 # 1. ASK - The Simplest AI Function
@@ -108,7 +111,7 @@ from pyagent import fetch
 
 # Weather
 weather = fetch.weather("Tokyo")
-print(f"Tokyo: {weather.temperature}°C, {weather.conditions}")
+print(f"Tokyo: {weather.temperature}C, {weather.conditions}")
 print(f"Humidity: {weather.humidity}%")
 
 # News
@@ -127,7 +130,7 @@ print(f"Bitcoin: ${btc.price:,.2f}")
 # Facts
 facts = fetch.facts("space exploration", count=3)
 for fact in facts:
-    print(f"• {fact}")
+    print(f" {fact}")
 
 
 # =============================================================================
@@ -199,7 +202,7 @@ from pyagent import translate
 
 # Basic
 spanish = translate("Hello, how are you?", to="spanish")
-# "¡Hola, ¿cómo estás?"
+# "Hola, cmo ests?"
 
 # With formality
 formal_japanese = translate("Thank you for your help", to="japanese", formal=True)
@@ -345,4 +348,4 @@ info = extract("Jane Doe, CEO of TechCorp, announced...", ["name", "title", "com
 # Ask anything
 answer = ask("What's the meaning of life?", creative=True)
 
-print("\n✅ All examples completed! PyAgent makes AI simple.")
+print("\n[OK] All examples completed! PyAgent makes AI simple.")

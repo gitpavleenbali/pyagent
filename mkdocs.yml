@@ -1,0 +1,62 @@
+site_name: PyAgent
+site_description: Build AI agents in Python with elegant simplicity
+site_url: https://gitpavleenbali.github.io/pyagent/
+repo_url: https://github.com/gitpavleenbali/pyagent
+repo_name: gitpavleenbali/pyagent
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quick Start: QUICKSTART.md
+    - Installation: installation.md
+    - Azure Setup: AZURE_SETUP.md
+  - User Guide:
+    - Agents: agents.md
+    - Tools: tools.md
+    - Multi-Agent: multi-agent.md
+    - Model Providers: providers.md
+  - API Reference: API_REFERENCE.md
+  - Examples: examples.md
+  - Contributing: CONTRIBUTING.md
+  - Changelog: CHANGELOG.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gitpavleenbali/pyagent

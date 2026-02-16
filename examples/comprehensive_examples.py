@@ -1,17 +1,18 @@
 """
-🐼🤖 PyAgent Comprehensive Examples
+PyAgent PyAgent Comprehensive Examples
 ====================================
 
 A complete showcase of PyAgent's capabilities - from simple one-liners
 to advanced multi-agent workflows.
 
 Setup:
-    # OpenAI
+    # Option 1: OpenAI
     export OPENAI_API_KEY=sk-your-key
     
-    # Azure OpenAI (with Azure AD - no key required)
+    # Option 2: Azure OpenAI (with Azure AD - no key required, recommended)
     export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
     export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
+    # Uses your Azure login automatically (az login / VS Code)
 
 Run:
     python comprehensive_examples.py [openai|azure]
@@ -22,8 +23,14 @@ import sys
 import time
 from typing import Tuple
 
-# Add pyagent to path for local development
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add paths for local development (works from any directory, including PyCharm)
+_examples_dir = os.path.dirname(os.path.abspath(__file__))
+_project_dir = os.path.dirname(_examples_dir)
+sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _examples_dir)  # For config_helper import
+
+# Use shared configuration helper for dual auth support
+from config_helper import setup_pyagent
 
 
 # =============================================================================
@@ -32,16 +39,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def setup_provider(provider: str = "auto") -> Tuple[bool, str]:
     """
-    Auto-detect and configure the AI provider.
+    Auto-detect and configure the AI provider using config_helper.
     
     Supports:
     - OpenAI with API key
     - Azure OpenAI with API key
     - Azure OpenAI with Azure AD (DefaultAzureCredential)
     """
-    import pyagent
-    
-    # Auto-detect provider
+    # Determine the provider type and message
     if provider == "auto":
         if os.environ.get("AZURE_OPENAI_ENDPOINT"):
             provider = "azure"
@@ -50,46 +55,17 @@ def setup_provider(provider: str = "auto") -> Tuple[bool, str]:
         else:
             return False, "No API configuration found"
     
-    if provider == "azure":
-        endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
-        api_key = os.environ.get("AZURE_OPENAI_API_KEY")
-        deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
-        
-        if not endpoint:
-            return False, "AZURE_OPENAI_ENDPOINT not set"
-        
-        # Try Azure AD authentication if no API key
-        if not api_key:
-            try:
-                from azure.identity import DefaultAzureCredential
-                DefaultAzureCredential()  # Validate credentials exist
-                pyagent.configure(
-                    provider="azure",
-                    azure_endpoint=endpoint,
-                    model=deployment
-                )
-                return True, f"Azure OpenAI (Azure AD): {endpoint}"
-            except Exception as e:
-                return False, f"Azure AD auth failed: {e}"
-        else:
-            pyagent.configure(
-                provider="azure",
-                api_key=api_key,
-                azure_endpoint=endpoint,
-                model=deployment
-            )
-            return True, f"Azure OpenAI (API Key): {endpoint}"
+    # Use config_helper for actual setup
+    if not setup_pyagent(provider=provider, verbose=True):
+        return False, f"Failed to configure {provider}"
     
-    else:  # OpenAI
-        api_key = os.environ.get("OPENAI_API_KEY")
-        if not api_key:
-            return False, "OPENAI_API_KEY not set"
-        
-        pyagent.configure(
-            provider="openai",
-            api_key=api_key,
-            model="gpt-4o-mini"
-        )
+    # Return success message
+    if provider == "azure":
+        endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", "")
+        api_key = os.environ.get("AZURE_OPENAI_API_KEY")
+        auth_type = "API Key" if api_key else "Azure AD"
+        return True, f"Azure OpenAI ({auth_type}): {endpoint}"
+    else:
         return True, "OpenAI configured"
 
 
@@ -104,7 +80,7 @@ def example_ask():
     One line to answer any question. No setup, no configuration beyond API key.
     """
     print("\n" + "=" * 60)
-    print("📝 EXAMPLE 1: ask() - Simple Q&A")
+    print("[Note] EXAMPLE 1: ask() - Simple Q&A")
     print("=" * 60)
     
     from pyagent import ask
@@ -127,9 +103,9 @@ def example_ask():
     print("\n1c. Verification Test:")
     answer = ask("What is 25 * 4? Reply with just the number.")
     success = "100" in answer
-    print(f"    Question: 25 × 4 = ?")
+    print(f"    Question: 25  4 = ?")
     print(f"    Answer: {answer}")
-    print(f"    {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"    {'[OK] PASS' if success else '[X] FAIL'}")
     
     return success
 
@@ -146,7 +122,7 @@ def example_agent():
     memory, and custom behavior.
     """
     print("\n" + "=" * 60)
-    print("🤖 EXAMPLE 2: agent() - Custom Agents")
+    print("[Bot] EXAMPLE 2: agent() - Custom Agents")
     print("=" * 60)
     
     from pyagent import agent
@@ -160,7 +136,7 @@ def example_agent():
     success = "12" in response
     print(f"    Question: Square root of 144?")
     print(f"    Answer: {response}")
-    print(f"    {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"    {'[OK] PASS' if success else '[X] FAIL'}")
     
     # Prebuilt persona
     print("\n2b. Prebuilt Personas:")
@@ -170,11 +146,11 @@ def example_agent():
     
     # Available personas
     print("\n    Available personas:")
-    print("    • coder      - Expert programmer")
-    print("    • researcher - Deep research specialist")
-    print("    • writer     - Content creation")
-    print("    • analyst    - Data analysis expert")
-    print("    • teacher    - Educational explanations")
+    print("     coder      - Expert programmer")
+    print("     researcher - Deep research specialist")
+    print("     writer     - Content creation")
+    print("     analyst    - Data analysis expert")
+    print("     teacher    - Educational explanations")
     
     return success
 
@@ -191,7 +167,7 @@ def example_chat():
     interactive assistants and chatbots.
     """
     print("\n" + "=" * 60)
-    print("💬 EXAMPLE 3: chat() - Conversations with Memory")
+    print("[Chat] EXAMPLE 3: chat() - Conversations with Memory")
     print("=" * 60)
     
     from pyagent import chat
@@ -214,7 +190,7 @@ def example_chat():
     success = "blue" in r2.lower()
     print(f"\n    User: What is my favorite color?")
     print(f"    Assistant: {r2}")
-    print(f"    Memory working: {'✅ YES' if success else '❌ NO'}")
+    print(f"    Memory working: {'[OK] YES' if success else '[X] NO'}")
     
     return success
 
@@ -231,7 +207,7 @@ def example_rag():
     in other frameworks takes just 2 lines with PyAgent.
     """
     print("\n" + "=" * 60)
-    print("📚 EXAMPLE 4: rag - RAG in 2 Lines")
+    print("[Book] EXAMPLE 4: rag - RAG in 2 Lines")
     print("=" * 60)
     
     from pyagent import rag
@@ -255,7 +231,7 @@ def example_rag():
     answer = indexed.ask("What year was PyAgent created?")
     success = "2026" in answer
     print(f"    Answer: {answer}")
-    print(f"    {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"    {'[OK] PASS' if success else '[X] FAIL'}")
     
     # Comparison
     print("\n4c. Framework Comparison:")
@@ -279,7 +255,7 @@ def example_code():
     Write, review, debug, and refactor code with AI.
     """
     print("\n" + "=" * 60)
-    print("💻 EXAMPLE 5: code - Code Operations")
+    print("[Code] EXAMPLE 5: code - Code Operations")
     print("=" * 60)
     
     from pyagent import code
@@ -291,15 +267,15 @@ def example_code():
     
     # Verify it looks like Python code
     success = "def " in result or "fibonacci" in result.lower()
-    print(f"\n    {'✅ PASS' if success else '❌ FAIL'} - Generated valid code")
+    print(f"\n    {'[OK] PASS' if success else '[X] FAIL'} - Generated valid code")
     
     print("\n5b. Available Operations:")
-    print("    • code.write()    - Generate code from description")
-    print("    • code.review()   - Review code quality")
-    print("    • code.debug()    - Debug errors")
-    print("    • code.explain()  - Explain code")
-    print("    • code.refactor() - Refactor code")
-    print("    • code.convert()  - Convert between languages")
+    print("     code.write()    - Generate code from description")
+    print("     code.review()   - Review code quality")
+    print("     code.debug()    - Debug errors")
+    print("     code.explain()  - Explain code")
+    print("     code.refactor() - Refactor code")
+    print("     code.convert()  - Convert between languages")
     
     return success
 
@@ -313,7 +289,7 @@ def example_research():
     Example 6: research() & summarize() - Deep research made simple
     """
     print("\n" + "=" * 60)
-    print("🔍 EXAMPLE 6: research() & summarize()")
+    print("[Search] EXAMPLE 6: research() & summarize()")
     print("=" * 60)
     
     from pyagent import research, summarize
@@ -338,7 +314,7 @@ def example_research():
     print(f"    Summary: {summary[:120]}...")
     
     success = len(summary) > 20
-    print(f"\n    {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"\n    {'[OK] PASS' if success else '[X] FAIL'}")
     return success
 
 
@@ -351,7 +327,7 @@ def example_extract():
     Example 7: extract() - Structured data extraction
     """
     print("\n" + "=" * 60)
-    print("📊 EXAMPLE 7: extract() - Data Extraction")
+    print("[Chart] EXAMPLE 7: extract() - Data Extraction")
     print("=" * 60)
     
     from pyagent import extract
@@ -374,7 +350,7 @@ def example_extract():
     print(f"    Extracted: {data}")
     
     success = isinstance(data, dict) or len(str(data)) > 10
-    print(f"\n    {'✅ PASS' if success else '❌ FAIL'}")
+    print(f"\n    {'[OK] PASS' if success else '[X] FAIL'}")
     return success
 
 
@@ -385,16 +361,16 @@ def example_extract():
 def run_all_examples(provider: str = "auto"):
     """Run all examples with comprehensive output."""
     
-    print("\n" + "🚀" * 30)
+    print("\n" + "" * 30)
     print("      PYAGENT COMPREHENSIVE EXAMPLES")
-    print("🚀" * 30)
+    print("" * 30)
     
     # Setup provider
     success, message = setup_provider(provider)
-    print(f"\n🔧 Provider: {message}")
+    print(f"\n[Wrench] Provider: {message}")
     
     if not success:
-        print(f"\n❌ Setup failed: {message}")
+        print(f"\n[X] Setup failed: {message}")
         print("\nConfiguration options:")
         print("  OpenAI:     export OPENAI_API_KEY=sk-your-key")
         print("  Azure:      export AZURE_OPENAI_ENDPOINT=https://...")
@@ -420,26 +396,26 @@ def run_all_examples(provider: str = "auto"):
             passed = example_fn()
             results.append((name, passed))
         except Exception as e:
-            print(f"    ❌ ERROR: {e}")
+            print(f"    [X] ERROR: {e}")
             import traceback
             traceback.print_exc()
             results.append((name, False))
     
     # Summary
     print("\n" + "=" * 60)
-    print("📊 RESULTS SUMMARY")
+    print("[Chart] RESULTS SUMMARY")
     print("=" * 60)
     
     passed = sum(1 for _, r in results if r)
     for name, result in results:
-        status = "✅ PASS" if result else "❌ FAIL"
+        status = "[OK] PASS" if result else "[X] FAIL"
         print(f"    {name}: {status}")
     
     print(f"\n    Total: {passed}/{len(results)} passed")
     
     # Quick Reference
     print("\n" + "=" * 60)
-    print("📖 QUICK REFERENCE - PyAgent One-Liners")
+    print("[RAG] QUICK REFERENCE - PyAgent One-Liners")
     print("=" * 60)
     print("""
     from pyagent import ask, agent, chat, rag, code
@@ -471,11 +447,11 @@ def run_all_examples(provider: str = "auto"):
     """)
     
     if passed == len(results):
-        print("\n🎉 All examples passed! PyAgent is working perfectly.")
+        print("\n[Done] All examples passed! PyAgent is working perfectly.")
     else:
-        print(f"\n⚠️  {len(results) - passed} example(s) had issues.")
+        print(f"\n[WARN]  {len(results) - passed} example(s) had issues.")
     
-    print("\n🐼 PyAgent - Because AI development should be as simple as pandas!")
+    print("\n PyAgent - Because AI development should be as simple as pandas!")
 
 
 if __name__ == "__main__":

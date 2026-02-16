@@ -6,13 +6,32 @@ where different agents collaborate on a task.
 
 NOTE: This is a REFERENCE example showing the workflow architecture.
       For simpler one-liner usage, see: comprehensive_examples.py
+
+Authentication (if running with LLM):
+    # Option 1: OpenAI API Key
+    export OPENAI_API_KEY=sk-your-key
+    
+    # Option 2: Azure OpenAI with Azure AD (recommended - no key needed)
+    export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+    export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
 """
 
 import os
 import sys
 
-# Add pyagent to path for local development
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add paths for local development (works from any directory, including PyCharm)
+_examples_dir = os.path.dirname(os.path.abspath(__file__))
+_project_dir = os.path.dirname(_examples_dir)
+sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _examples_dir)  # For config_helper import
+
+# Optional: Configure PyAgent for LLM-powered features
+# This example demonstrates workflow structure without requiring LLM calls
+try:
+    from config_helper import setup_pyagent
+    setup_pyagent(verbose=False)  # Silent - this example doesn't require LLM
+except Exception:
+    pass  # Workflow definitions work without LLM configuration
 
 import asyncio
 from pyagent import Agent
