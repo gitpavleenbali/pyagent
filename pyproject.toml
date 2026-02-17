@@ -185,6 +185,17 @@ disable_error_code = [
     "no-any-return",
 ]
 
+[tool.pyright]
+# Lenient settings for lazy-loading module pattern
+pythonVersion = "3.10"
+typeCheckingMode = "basic"
+reportUndefinedVariable = false
+reportMissingImports = false
+reportAttributeAccessIssue = false
+reportOptionalMemberAccess = false
+reportGeneralTypeIssues = false
+reportPrivateUsage = false
+
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]

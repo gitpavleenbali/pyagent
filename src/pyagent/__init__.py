@@ -33,14 +33,179 @@ ADVANCED USAGE (when you need more control):
     >>> from pyagent import Agent, Blueprint, Workflow
     >>> # Full access to underlying components
 """
+from __future__ import annotations
 
 __version__ = "0.3.0"
 __author__ = "PyAgent Contributors"
 
 import importlib
+from typing import TYPE_CHECKING, Any, Optional
+
+# Type stubs for static analysis - these imports are never executed at runtime
+# but satisfy type checkers like Pylance/mypy for __all__ exports
+if TYPE_CHECKING:
+    # One-liner functions
+    from pyagent.easy.ask import ask as ask
+    from pyagent.easy.research import research as research
+    from pyagent.easy.summarize import summarize as summarize
+    from pyagent.easy.extract import extract as extract
+    from pyagent.easy.generate import generate as generate
+    from pyagent.easy.translate import translate as translate
+    from pyagent.easy.chat import chat as chat
+    from pyagent.easy.agent_factory import agent as agent
+    
+    # Modules
+    from pyagent.easy import rag as rag
+    from pyagent.easy import fetch as fetch
+    from pyagent.easy import analyze as analyze
+    from pyagent.easy import code as code
+    
+    # Advanced features
+    from pyagent.easy.handoff import handoff as handoff
+    from pyagent.easy.mcp import mcp as mcp
+    from pyagent.easy.guardrails import guardrails as guardrails
+    from pyagent.easy.trace import trace as trace
+    
+    # Core components
+    from pyagent.core.agent import Agent as Agent
+    from pyagent.core.memory import Memory as Memory
+    from pyagent.core.memory import ConversationMemory as ConversationMemory
+    from pyagent.core.memory import VectorMemory as VectorMemory
+    from pyagent.core.llm import OpenAIProvider as OpenAIProvider
+    from pyagent.core.llm import OpenAIProvider as LLM
+    from pyagent.core.llm import OpenAIProvider as AzureProvider
+    from pyagent.core.llm import AnthropicProvider as AnthropicProvider
+    
+    # Instructions
+    from pyagent.instructions import Instruction as Instruction
+    from pyagent.instructions import SystemPrompt as SystemPrompt
+    from pyagent.instructions import Context as Context
+    from pyagent.instructions import Persona as Persona
+    from pyagent.instructions import Guidelines as Guidelines
+    
+    # Skills
+    from pyagent.skills import Skill as Skill
+    from pyagent.skills import ToolSkill as ToolSkill
+    from pyagent.skills import ActionSkill as ActionSkill
+    from pyagent.skills import SkillRegistry as SkillRegistry
+    
+    # Blueprint
+    from pyagent.blueprint import Blueprint as Blueprint
+    from pyagent.blueprint import Workflow as Workflow
+    from pyagent.blueprint import Pipeline as Pipeline
+    from pyagent.blueprint import Orchestrator as Orchestrator
+    
+    # Models module
+    from pyagent import models as models
+    from pyagent.models import get_model as get_model
+    
+    # Sessions module
+    from pyagent import sessions as sessions
+    from pyagent.sessions import Session as Session
+    from pyagent.sessions import SessionManager as SessionManager
+    
+    # Evaluation module
+    from pyagent import evaluation as evaluation
+    from pyagent.evaluation.evaluator import evaluate_agent as evaluate_agent
+    from pyagent.evaluation.base import EvalSet as EvalSet
+    from pyagent.evaluation.base import TestCase as TestCase
+    
+    # CLI module
+    from pyagent import cli as cli
+    
+    # Code executor module
+    from pyagent import code_executor as code_executor
+    from pyagent.code_executor.executor import execute_python as execute_python
+    
+    # Runner module
+    from pyagent import runner as runner
+    from pyagent.runner import Runner as Runner
+    from pyagent.runner import RunConfig as RunConfig
+    from pyagent.runner import RunResult as RunResult
+    
+    # Config module
+    from pyagent import config as config
+    from pyagent.config import load_agent as load_agent
+    from pyagent.config import AgentConfig as AgentConfig
+    from pyagent.config import AgentBuilder as AgentBuilder
+    
+    # Plugins module
+    from pyagent import plugins as plugins
+    from pyagent.plugins import Plugin as Plugin
+    from pyagent.plugins import PluginRegistry as PluginRegistry
+    
+    # Kernel module
+    from pyagent import kernel as kernel
+    from pyagent.kernel import Kernel as Kernel
+    from pyagent.kernel import KernelBuilder as KernelBuilder
+    from pyagent.kernel import ServiceRegistry as ServiceRegistry
+    
+    # OpenAPI module
+    from pyagent import openapi as openapi
+    from pyagent.openapi import OpenAPITools as OpenAPITools
+    from pyagent.openapi import create_tools_from_openapi as create_tools_from_openapi
+    
+    # Tokens module
+    from pyagent import tokens as tokens
+    from pyagent.tokens import TokenCounter as TokenCounter
+    from pyagent.tokens import count_tokens as count_tokens
+    from pyagent.tokens import calculate_cost as calculate_cost
+    from pyagent.tokens import CostTracker as CostTracker
+    
+    # Errors module
+    from pyagent import errors as errors
+    from pyagent.errors import PyAgentError as PyAgentError
+    
+    # Tools module
+    from pyagent import tools as tools
+    from pyagent.skills import Tool as Tool
+    from pyagent.skills import ToolDiscovery as ToolDiscovery
+    from pyagent.skills import discover_tools as discover_tools
+    from pyagent.skills import ToolWatcher as ToolWatcher
+    
+    # Context caching
+    from pyagent.core.context_cache import ContextCache as ContextCache
+    from pyagent.core.context_cache import cache_context as cache_context
+    
+    # Multimodal module
+    from pyagent import multimodal as multimodal
+    from pyagent.multimodal import Image as Image
+    from pyagent.multimodal import Audio as Audio
+    from pyagent.multimodal import Video as Video
+    from pyagent.multimodal import MultimodalContent as MultimodalContent
+    
+    # VectorDB module
+    from pyagent import vectordb as vectordb
+    from pyagent.vectordb import VectorStore as VectorStore
+    from pyagent.vectordb import ChromaStore as ChromaStore
+    from pyagent.vectordb import PineconeStore as PineconeStore
+    from pyagent.vectordb import MemoryVectorStore as MemoryVectorStore
+    from pyagent.vectordb import ChromaConnector as ChromaConnector
+    from pyagent.vectordb import PineconeConnector as PineconeConnector
+    
+    # A2A module
+    from pyagent import a2a as a2a
+    from pyagent.a2a import A2AServer as A2AServer
+    from pyagent.a2a import A2AClient as A2AClient
+    from pyagent.a2a import RemoteAgent as RemoteAgent
+    from pyagent.a2a import AgentCard as AgentCard
+    
+    # DevUI module
+    from pyagent import devui as devui
+    from pyagent.devui import DevUI as DevUI
+    from pyagent.devui import launch_ui as launch_ui
+    from pyagent.devui import AgentDashboard as AgentDashboard
+    from pyagent.devui import AgentDebugger as AgentDebugger
+    
+    # Voice module
+    from pyagent import voice as voice
+    from pyagent.voice import VoiceSession as VoiceSession
+    from pyagent.voice import AudioStream as AudioStream
+    from pyagent.voice import Transcriber as Transcriber
+    from pyagent.voice import Synthesizer as Synthesizer
 
 # Cache for loaded modules
-_cache = {}
+_cache: dict[str, Any] = {}
 
 
 def __getattr__(name):
@@ -771,7 +936,7 @@ __all__ = [
 # =============================================================================
 
 def configure(
-    api_key: str = None,
+    api_key: Optional[str] = None,
     model: str = "gpt-4o-mini",
     provider: str = "openai",
     **kwargs
