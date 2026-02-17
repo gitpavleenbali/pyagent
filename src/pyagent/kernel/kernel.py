@@ -11,7 +11,7 @@ Manages services, plugins, filters, and provides unified execution.
 from __future__ import annotations
 
 import asyncio
-from typing import Any, Dict, List, Optional, Union, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
 from .context import KernelContext
 from .filters import Filter, FilterContext, FilterRegistry
@@ -80,6 +80,7 @@ class Kernel:
 
         # Import here to avoid circular dependency
         from ..plugins import PluginRegistry
+
         self._plugins = plugins or PluginRegistry()
 
         self._context = KernelContext()
@@ -97,7 +98,7 @@ class Kernel:
         service: Union[Service, Any],
         name: Optional[str] = None,
         service_type: ServiceType = ServiceType.CUSTOM,
-        is_default: bool = False
+        is_default: bool = False,
     ) -> "Kernel":
         """Add a service to the kernel.
 
@@ -118,14 +119,12 @@ class Kernel:
                 name=service_name,
                 instance=service,
                 service_type=service_type,
-                is_default=is_default
+                is_default=is_default,
             )
         return self
 
     def get_service(
-        self,
-        name: Optional[str] = None,
-        service_type: Optional[ServiceType] = None
+        self, name: Optional[str] = None, service_type: Optional[ServiceType] = None
     ) -> Optional[Any]:
         """Get a service.
 
@@ -162,11 +161,7 @@ class Kernel:
         """Get the plugin registry."""
         return self._plugins
 
-    def add_plugin(
-        self,
-        plugin: Any,
-        name: Optional[str] = None
-    ) -> "Kernel":
+    def add_plugin(self, plugin: Any, name: Optional[str] = None) -> "Kernel":
         """Add a plugin to the kernel.
 
         Args:
@@ -190,11 +185,7 @@ class Kernel:
         """
         return self._plugins.get_plugin(name)
 
-    def get_function(
-        self,
-        plugin_name: str,
-        function_name: str
-    ) -> Optional[Any]:
+    def get_function(self, plugin_name: str, function_name: str) -> Optional[Any]:
         """Get a function from a plugin.
 
         Args:
@@ -213,11 +204,7 @@ class Kernel:
         """Get the filter registry."""
         return self._filters
 
-    def add_filter(
-        self,
-        filter_instance: Filter,
-        priority: int = 100
-    ) -> "Kernel":
+    def add_filter(self, filter_instance: Filter, priority: int = 100) -> "Kernel":
         """Add a filter to the kernel.
 
         Args:
@@ -273,12 +260,7 @@ class Kernel:
 
     # ========== Invocation ==========
 
-    async def invoke_async(
-        self,
-        plugin_name: str,
-        function_name: str,
-        **arguments
-    ) -> Any:
+    async def invoke_async(self, plugin_name: str, function_name: str, **arguments) -> Any:
         """Invoke a plugin function asynchronously.
 
         Args:
@@ -295,32 +277,23 @@ class Kernel:
         # Get function
         func = self.get_function(plugin_name, function_name)
         if func is None:
-            raise ValueError(
-                f"Function '{function_name}' not found in plugin '{plugin_name}'"
-            )
+            raise ValueError(f"Function '{function_name}' not found in plugin '{plugin_name}'")
 
         # Create invocation context
         inv = self._context.create_invocation(
-            plugin_name=plugin_name,
-            function_name=function_name,
-            arguments=arguments
+            plugin_name=plugin_name, function_name=function_name, arguments=arguments
         )
 
         # Create filter context
         filter_ctx = FilterContext(
-            kernel=self,
-            plugin_name=plugin_name,
-            function_name=function_name,
-            arguments=arguments
+            kernel=self, plugin_name=plugin_name, function_name=function_name, arguments=arguments
         )
 
         try:
             inv.start()
 
             # Apply pre-invocation filters
-            modified_args = self._filters.apply_function_invoking(
-                filter_ctx, arguments
-            )
+            modified_args = self._filters.apply_function_invoking(filter_ctx, arguments)
 
             # Invoke function
             if asyncio.iscoroutinefunction(func):
@@ -338,12 +311,7 @@ class Kernel:
             inv.fail(e)
             raise
 
-    def invoke(
-        self,
-        plugin_name: str,
-        function_name: str,
-        **arguments
-    ) -> Any:
+    def invoke(self, plugin_name: str, function_name: str, **arguments) -> Any:
         """Invoke a plugin function (sync wrapper).
 
         For async invocation, use invoke_async().
@@ -359,14 +327,10 @@ class Kernel:
         try:
             asyncio.get_running_loop()
             # Already in async context
-            return asyncio.create_task(
-                self.invoke_async(plugin_name, function_name, **arguments)
-            )
+            return asyncio.create_task(self.invoke_async(plugin_name, function_name, **arguments))
         except RuntimeError:
             # No running loop, run synchronously
-            return asyncio.run(
-                self.invoke_async(plugin_name, function_name, **arguments)
-            )
+            return asyncio.run(self.invoke_async(plugin_name, function_name, **arguments))
 
     # ========== Agent Creation ==========
 
@@ -378,7 +342,7 @@ class Kernel:
         model: Optional[str] = None,
         tools: Optional[List[Any]] = None,
         plugins: Optional[List[str]] = None,
-        **kwargs
+        **kwargs,
     ) -> Any:
         """Create an agent using kernel services.
 
@@ -397,7 +361,7 @@ class Kernel:
 
         # Collect tools from specified plugins
         all_tools = list(tools or [])
-        for plugin_name in (plugins or []):
+        for plugin_name in plugins or []:
             plugin = self.get_plugin(plugin_name)
             if plugin:
                 # Get all functions from plugin as tools
@@ -415,7 +379,7 @@ class Kernel:
             instructions=instructions,
             model=model,
             tools=all_tools if all_tools else None,
-            **kwargs
+            **kwargs,
         )
 
         # Register agent
@@ -441,11 +405,7 @@ class Kernel:
     # ========== Prompt Execution ==========
 
     async def invoke_prompt_async(
-        self,
-        prompt: str,
-        *,
-        model: Optional[str] = None,
-        **kwargs
+        self, prompt: str, *, model: Optional[str] = None, **kwargs
     ) -> str:
         """Invoke a prompt on the default LLM.
 
@@ -458,21 +418,17 @@ class Kernel:
             LLM response
         """
         # Create filter context
-        filter_ctx = FilterContext(
-            kernel=self,
-            metadata={"type": "prompt"}
-        )
+        filter_ctx = FilterContext(kernel=self, metadata={"type": "prompt"})
 
         # Apply prompt filters
-        modified_prompt = self._filters.apply_prompt_rendering(
-            filter_ctx, prompt
-        )
+        modified_prompt = self._filters.apply_prompt_rendering(filter_ctx, prompt)
 
         # Get LLM service
         llm = self.get_llm(model)
         if llm is None:
             # Use easy.ask as fallback
             from ..easy.ask import ask as ask_func
+
             result = ask_func(modified_prompt)
         else:
             # Use LLM service
@@ -489,9 +445,7 @@ class Kernel:
 
         # Apply post-prompt filters
         result_str: str = str(result) if not isinstance(result, str) else result
-        result_str = self._filters.apply_prompt_rendered(
-            filter_ctx, prompt, result_str
-        )
+        result_str = self._filters.apply_prompt_rendered(filter_ctx, prompt, result_str)
 
         return result_str
 
@@ -507,13 +461,9 @@ class Kernel:
         """
         try:
             asyncio.get_running_loop()
-            return asyncio.create_task(
-                self.invoke_prompt_async(prompt, **kwargs)
-            )
+            return asyncio.create_task(self.invoke_prompt_async(prompt, **kwargs))
         except RuntimeError:
-            return asyncio.run(
-                self.invoke_prompt_async(prompt, **kwargs)
-            )
+            return asyncio.run(self.invoke_prompt_async(prompt, **kwargs))
 
     # ========== Utilities ==========
 
@@ -560,6 +510,7 @@ class KernelBuilder:
         self._filters = FilterRegistry()
 
         from ..plugins import PluginRegistry
+
         self._plugins = PluginRegistry()
 
     def add_service(self, service: Service) -> "KernelBuilder":
@@ -574,11 +525,7 @@ class KernelBuilder:
         self._services.add(service)
         return self
 
-    def add_plugin(
-        self,
-        plugin: Any,
-        name: Optional[str] = None
-    ) -> "KernelBuilder":
+    def add_plugin(self, plugin: Any, name: Optional[str] = None) -> "KernelBuilder":
         """Add a plugin to the kernel.
 
         Args:
@@ -591,11 +538,7 @@ class KernelBuilder:
         self._plugins.register(plugin, name=name)
         return self
 
-    def add_filter(
-        self,
-        filter_instance: Filter,
-        priority: int = 100
-    ) -> "KernelBuilder":
+    def add_filter(self, filter_instance: Filter, priority: int = 100) -> "KernelBuilder":
         """Add a filter to the kernel.
 
         Args:
@@ -614,8 +557,4 @@ class KernelBuilder:
         Returns:
             Configured Kernel instance
         """
-        return Kernel(
-            services=self._services,
-            filters=self._filters,
-            plugins=self._plugins
-        )
+        return Kernel(services=self._services, filters=self._filters, plugins=self._plugins)
