@@ -63,3 +63,4 @@ Thumbs.db
 body.json
 # Internal documentation (not for public release)
 .internal/site/
+site/
