@@ -7,7 +7,7 @@ Write-Host "================================" -ForegroundColor Cyan
 # Check if wiki repo exists
 $wikiUrl = "https://github.com/gitpavleenbali/PYAI.wiki.git"
 $wikiPath = Join-Path $PSScriptRoot ".." "PYAI.wiki"
-$wikiSourcePath = Join-Path $PSScriptRoot ".." "wiki"
+$wikiSourcePath = Join-Path $PSScriptRoot ".." "docs" "wiki"
 
 Write-Host "`nStep 1: Checking if wiki repository exists..." -ForegroundColor Yellow
 
@@ -24,7 +24,7 @@ if ($LASTEXITCODE -eq 0) {
     # Commit and push
     Set-Location $wikiPath
     git add -A
-    git commit -m "Deploy PYAI wiki documentation - 11 pages"
+    git commit -m "Deploy PYAI wiki documentation"
     git push
     
     Write-Host "`n✅ Wiki deployed successfully!" -ForegroundColor Green
