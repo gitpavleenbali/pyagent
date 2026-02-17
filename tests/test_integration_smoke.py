@@ -1,4 +1,6 @@
-# pyright: reportMissingImports=false, reportUnusedVariable=false, reportUnusedImport=false, reportPrivateUsage=false, reportAttributeAccessIssue=false, reportGeneralTypeIssues=false
+# pyright: reportMissingImports=false, reportUnusedVariable=false, reportUnusedImport=false, reportPrivateUsage=false, reportAttributeAccessIssue=false, reportGeneralTypeIssues=false, reportOptionalMemberAccess=false
+# pylint: disable=all
+# type: ignore
 # Copyright (c) 2026 PyAgent Contributors
 # Licensed under the MIT License
 

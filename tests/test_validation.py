@@ -1,3 +1,6 @@
+# pyright: reportMissingImports=false, reportUnusedVariable=false, reportGeneralTypeIssues=false
+# pylint: disable=all
+# type: ignore
 """
 PyAgent Validation Tests
 =========================

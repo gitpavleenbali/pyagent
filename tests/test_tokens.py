@@ -1,10 +1,13 @@
+# pyright: reportMissingImports=false, reportUnusedVariable=false, reportUnusedImport=false, reportGeneralTypeIssues=false
+# pylint: disable=all
+# type: ignore
 """
 Tests for PyAgent Token Counting Module.
 
 Tests token counting and cost calculation utilities.
 """
 
-import pytest
+import pytest  # noqa: F401
 from typing import List, Dict
 
 
