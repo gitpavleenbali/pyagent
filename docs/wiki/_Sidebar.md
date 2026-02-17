@@ -5,80 +5,93 @@
 ---
 
 ### 🚀 Getting Started
-- [[Quick Start]]
+- [[Quick-Start|Quick Start]]
 - [[Installation]]
 - [[Configuration]]
 
 ---
 
 ### 💡 Core Concepts
-- [[Three Dimensions]]
-- [[Software Factories]]
-- [[Design Philosophy]]
-
----
-
-### 🎯 One-Liner APIs
-- [[ask]]
-- [[research]]
-- [[summarize]]
-- [[rag]]
-- [[generate]]
-- [[translate]]
-- [[extract]]
-- [[fetch]]
-- [[analyze]]
-- [[code]]
-- [[chat]]
-
----
-
-### 🤖 Agent Framework
 - [[Agent]]
-- [[Runner]]
-- [[Memory]]
-- [[LLM Providers]]
+- [[Three-Dimensions|Three Dimensions]]
+- [[Software-Factories|Software Factories]]
+- [[Design-Philosophy|Design Philosophy]]
 
 ---
 
-### 🔗 Multi-Agent
-- [[Workflows]]
-- [[Handoffs]]
-- [[Orchestration Patterns]]
+### 🔬 Enterprise
+- [[Evaluation-Module|Evaluation Module]]
+  - [[Evaluator]]
+  - [[TestCase]]
+  - [[EvalSet]]
 
 ---
 
-### 🛠️ Tools & Skills
-- [[Creating Tools]]
-- [[Built-in Skills]]
-- [[OpenAPI Tools]]
-- [[Plugins]]
+### 🎙️ Voice
+- [[Voice-Module|Voice Module]]
+  - [[VoiceSession]]
+  - [[Transcription]]
+  - [[Synthesis]]
 
 ---
 
-### 🏢 Enterprise
-- [[Kernel Registry]]
-- [[Sessions]]
-- [[Evaluation]]
-- [[Azure AD Auth]]
+### 🖼️ Multimodal
+- [[Multimodal-Module|Multimodal Module]]
+  - [[ImageContent]]
+  - [[AudioContent]]
+  - [[VideoContent]]
+
+---
+
+## 🔗 Integrations
+
+### 📊 Vector DB
+- [[VectorDB-Module|VectorDB Module]]
+  - [[ChromaDB]]
+  - [[Pinecone]]
+  - [[Qdrant]]
+  - [[Weaviate]]
+
+---
+
+### 🌐 OpenAPI
+- [[OpenAPI-Module|OpenAPI Module]]
+  - [[OpenAPIClient]]
+  - [[OpenAPIParser]]
+
+---
+
+### 🔌 Plugins
+- [[Plugins-Module|Plugins Module]]
+  - [[PluginBase]]
+  - [[PluginRegistry]]
+
+---
+
+### 🤝 A2A Protocol
+- [[A2A-Module|A2A Module]]
+  - [[A2AClient]]
+  - [[A2AServer]]
+
+---
+
+## 🔒 Security
+- [[Azure-AD-Auth|Azure AD Auth]]
 - [[Guardrails]]
 - [[Tracing]]
 
 ---
 
-### 🔬 Advanced
-- [[Voice]]
-- [[Multimodal]]
-- [[A2A Protocol]]
-- [[Vector Database]]
-
----
-
-### 📚 Reference
-- [[API Reference]]
+## 📚 Reference
+- [[API-Reference|API Reference]]
 - [[Architecture]]
 - [[Changelog]]
 - [[Contributing]]
+
+---
+
+### 🔗 Multi-Agent
+- [[Workflows]]
 
 ---
 
