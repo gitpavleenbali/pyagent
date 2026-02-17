@@ -13,14 +13,14 @@ A2AServer provides:
 ## Installation
 
 ```python
-from pyagent.a2a import A2AServer
+from pyai.a2a import A2AServer
 ```
 
 ## Basic Usage
 
 ```python
-from pyagent import Agent
-from pyagent.a2a import A2AServer
+from pyai import Agent
+from pyai.a2a import A2AServer
 
 # Create agent
 agent = Agent(
@@ -51,7 +51,7 @@ A2AServer(
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `agent` | `Agent` | `None` | PyAgent Agent instance |
+| `agent` | `Agent` | `None` | pyai Agent instance |
 | `endpoint` | `A2AEndpoint` | `None` | Custom endpoint configuration |
 | `host` | `str` | `"0.0.0.0"` | Host to bind |
 | `port` | `int` | `8080` | Port to listen on |
@@ -114,7 +114,7 @@ def is_running(self) -> bool
 For custom request handling:
 
 ```python
-from pyagent.a2a import A2AEndpoint, A2AServer, A2ATask, A2AResponse
+from pyai.a2a import A2AEndpoint, A2AServer, A2ATask, A2AResponse
 
 def custom_handler(task: A2ATask) -> A2AResponse:
     """Custom task handler."""
@@ -193,8 +193,8 @@ Get task status for async tasks.
 ### With Agent
 
 ```python
-from pyagent import Agent
-from pyagent.a2a import A2AServer
+from pyai import Agent
+from pyai.a2a import A2AServer
 
 agent = Agent(
     name="research-agent",
@@ -212,7 +212,7 @@ server = A2AServer(
 ### With Custom Skills
 
 ```python
-from pyagent.a2a import A2AEndpoint, A2AServer
+from pyai.a2a import A2AEndpoint, A2AServer
 
 endpoint = A2AEndpoint(
     name="specialist-agent",
@@ -254,8 +254,8 @@ CMD ["python", "agent.py"]
 
 ```python
 # agent.py
-from pyagent import Agent
-from pyagent.a2a import A2AServer
+from pyai import Agent
+from pyai.a2a import A2AServer
 
 agent = Agent(name="dockerized-agent")
 server = A2AServer(agent=agent, port=8080)

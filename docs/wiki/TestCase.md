@@ -5,7 +5,7 @@ A `TestCase` represents a single evaluation scenario for testing agent behavior.
 ## Import
 
 ```python
-from pyagent.evaluation import TestCase
+from pyai.evaluation import TestCase
 ```
 
 ## Constructor

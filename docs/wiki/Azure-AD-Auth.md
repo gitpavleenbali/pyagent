@@ -67,7 +67,7 @@ export AZURE_TENANT_ID=your-tenant-id
 ### Step 3: Use PYAI
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Just works! Uses your Azure credentials automatically
 answer = ask("Hello, world!")
@@ -91,8 +91,8 @@ az role assignment create \
 ## Explicit Provider
 
 ```python
-from pyagent import Agent
-from pyagent.core import AzureOpenAIProvider, LLMConfig
+from pyai import Agent
+from pyai.core import AzureOpenAIProvider, LLMConfig
 
 # Azure AD authentication (no api_key)
 provider = AzureOpenAIProvider(LLMConfig(
@@ -120,7 +120,7 @@ import os
 os.environ["AZURE_OPENAI_ENDPOINT"] = "https://myorg.openai.azure.com/"
 os.environ["AZURE_OPENAI_DEPLOYMENT"] = "gpt-4o-mini"
 
-from pyagent import ask
+from pyai import ask
 
 # Uses the app's Managed Identity
 answer = ask("Process this request...")

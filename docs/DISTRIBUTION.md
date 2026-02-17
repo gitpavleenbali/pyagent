@@ -1,4 +1,4 @@
-# PyAgent Distribution Guide
+# pyai Distribution Guide
 
 ## Installation Methods
 
@@ -6,24 +6,24 @@
 
 ```bash
 # Basic installation
-pip install pyagent
+pip install pyai
 
 # With OpenAI support
-pip install pyagent[openai]
+pip install pyai[openai]
 
 # With Azure support (recommended for enterprise)
-pip install pyagent[azure]
+pip install pyai[azure]
 
 # All features
-pip install pyagent[all]
+pip install pyai[all]
 ```
 
 ### 2. Install from Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/gitpavleenbali/pyagent.git
-cd pyagent
+git clone https://github.com/gitpavleenbali/pyai.git
+cd pyai
 
 # Install in development mode
 pip install -e .[all]
@@ -31,11 +31,11 @@ pip install -e .[all]
 
 ### 3. Install from ZIP Distribution
 
-1. Download `pyagent-X.X.X-release.zip`
+1. Download `pyai-X.X.X-release.zip`
 2. Extract to your preferred location
 3. Install:
    ```bash
-   cd pyagent-X.X.X-release
+   cd pyai-X.X.X-release
    pip install .
    ```
 
@@ -58,13 +58,13 @@ pip install -e .[all]
 
 ```bash
 # For Azure enterprise deployment
-pip install pyagent[azure,web,docs]
+pip install pyai[azure,web,docs]
 
 # For RAG applications
-pip install pyagent[openai,vector,web]
+pip install pyai[openai,vector,web]
 
 # For LangChain users
-pip install pyagent[openai,langchain]
+pip install pyai[openai,langchain]
 
 # For development
 pip install -e .[all,dev]
@@ -106,14 +106,14 @@ pip install build wheel
 # Build distribution packages
 python -m build
 
-# Output: dist/pyagent-X.X.X.tar.gz and dist/pyagent-X.X.X-py3-none-any.whl
+# Output: dist/pyai-X.X.X.tar.gz and dist/pyai-X.X.X-py3-none-any.whl
 ```
 
 ## Package Structure
 
 ```
-pyagent-X.X.X-release/
-├── pyagent/                 # Main package
+pyai-X.X.X-release/
+├── pyai/                 # Main package
 │   ├── __init__.py          # Package root
 │   ├── py.typed             # PEP 561 marker
 │   ├── easy/                # One-liner functions
@@ -134,19 +134,19 @@ pyagent-X.X.X-release/
 
 ## Verification
 
-After installation, verify PyAgent is working:
+After installation, verify pyai is working:
 
 ```python
 # Basic verification
-import pyagent
-print(f"PyAgent version: {pyagent.__version__}")
+import pyai
+print(f"pyai version: {pyai.__version__}")
 
 # Check available functions
-from pyagent import ask, agent, research
+from pyai import ask, agent, research
 print("Core functions available!")
 
 # Test with mock (no API key needed)
-from pyagent.easy.config import config
+from pyai.easy.config import config
 config.enable_mock(True)
 
 response = ask("Hello!")
@@ -161,20 +161,20 @@ For Azure OpenAI deployment:
 
 ```powershell
 # Create resource group
-az group create --name rg-pyagent --location eastus2
+az group create --name rg-pyai --location eastus2
 
 # Create Azure OpenAI resource
 az cognitiveservices account create \
-  --name pyagent-openai \
-  --resource-group rg-pyagent \
+  --name pyai-openai \
+  --resource-group rg-pyai \
   --kind OpenAI \
   --sku S0 \
   --location eastus2
 
 # Deploy a model
 az cognitiveservices account deployment create \
-  --name pyagent-openai \
-  --resource-group rg-pyagent \
+  --name pyai-openai \
+  --resource-group rg-pyai \
   --deployment-name gpt-4o-mini \
   --model-name gpt-4o-mini \
   --model-version "2024-07-18" \
@@ -183,30 +183,30 @@ az cognitiveservices account deployment create \
   --sku-name Standard
 ```
 
-### 2. Configure PyAgent
+### 2. Configure pyai
 
 ```python
-from pyagent.easy.config import config
+from pyai.easy.config import config
 
 # Option 1: Using Azure AD (recommended)
 config.use_azure(
-    endpoint="https://pyagent-openai.openai.azure.com",
+    endpoint="https://pyai-openai.openai.azure.com",
     deployment="gpt-4o-mini",
     api_version="2024-02-15-preview"
 )
 
 # Option 2: Using API key
 config.use_azure(
-    endpoint="https://pyagent-openai.openai.azure.com",
+    endpoint="https://pyai-openai.openai.azure.com",
     deployment="gpt-4o-mini",
     api_key="your-api-key"
 )
 ```
 
-### 3. Use PyAgent
+### 3. Use pyai
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Now uses Azure OpenAI
 response = ask("What is Azure?")
@@ -244,7 +244,7 @@ pip install twine
 twine upload --repository testpypi dist/*
 
 # Test installation
-pip install --index-url https://test.pypi.org/simple/ pyagent
+pip install --index-url https://test.pypi.org/simple/ pyai
 
 # If successful, upload to production PyPI
 twine upload dist/*
@@ -290,29 +290,29 @@ steps:
 mkdir /path/to/packages
 
 # Copy wheel file
-cp dist/pyagent-*.whl /path/to/packages/
+cp dist/pyai-*.whl /path/to/packages/
 
 # Install from local
-pip install --find-links=/path/to/packages pyagent
+pip install --find-links=/path/to/packages pyai
 ```
 
 ## Troubleshooting
 
 ### Common Issues
 
-**Import Error: No module named 'pyagent'**
+**Import Error: No module named 'pyai'**
 - Ensure you installed in the correct Python environment
-- Check: `pip show pyagent`
+- Check: `pip show pyai`
 
 **Azure Authentication Error**
 - Run `az login` to authenticate
 - Ensure `azure-identity` is installed: `pip install azure-identity`
 
 **Optional dependency not found**
-- Install the specific extra: `pip install pyagent[extra_name]`
+- Install the specific extra: `pip install pyai[extra_name]`
 
 ### Getting Help
 
-- GitHub Issues: https://github.com/gitpavleenbali/pyagent/issues
+- GitHub Issues: https://github.com/gitpavleenbali/pyai/issues
 - Documentation: See `/docs` folder
 - Examples: See `/examples` folder

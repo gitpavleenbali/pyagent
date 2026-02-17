@@ -1,4 +1,4 @@
-"""# pyright: reportMissingImports=false, reportGeneralTypeIssues=falsePyAgent Examples Configuration Helper
+"""# pyright: reportMissingImports=false, reportGeneralTypeIssues=falsepyai Examples Configuration Helper
 ======================================
 
 Provides dual authentication support for all examples:
@@ -7,14 +7,14 @@ Provides dual authentication support for all examples:
 3. Azure OpenAI with Azure AD (AZURE_OPENAI_ENDPOINT only - uses DefaultAzureCredential)
 
 Usage in examples:
-    from config_helper import setup_pyagent
+    from config_helper import setup_pyai
     
-    if not setup_pyagent():
+    if not setup_pyai():
         print("Please configure credentials - see instructions above")
         exit(1)
     
-    # Now use pyagent normally
-    from pyagent import ask
+    # Now use pyai normally
+    from pyai import ask
     print(ask("Hello!"))
 
 Environment Variables:
@@ -38,12 +38,12 @@ import sys
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 
 
-def setup_pyagent(provider: str = "auto", verbose: bool = True) -> bool:
+def setup_pyai(provider: str = "auto", verbose: bool = True) -> bool:
     """
-    Configure PyAgent with available credentials.
+    Configure pyai with available credentials.
     
     Args:
         provider: "auto", "azure", or "openai"
@@ -54,15 +54,15 @@ def setup_pyagent(provider: str = "auto", verbose: bool = True) -> bool:
         
     Examples:
         # Auto-detect (recommended)
-        setup_pyagent()
+        setup_pyai()
         
         # Force Azure
-        setup_pyagent(provider="azure")
+        setup_pyai(provider="azure")
         
         # Force OpenAI
-        setup_pyagent(provider="openai")
+        setup_pyai(provider="openai")
     """
-    import pyagent
+    import pyai
     
     # Auto-detect provider
     if provider == "auto":
@@ -76,12 +76,12 @@ def setup_pyagent(provider: str = "auto", verbose: bool = True) -> bool:
             return False
     
     if provider == "azure":
-        return _setup_azure(pyagent, verbose)
+        return _setup_azure(pyai, verbose)
     else:
-        return _setup_openai(pyagent, verbose)
+        return _setup_openai(pyai, verbose)
 
 
-def _setup_azure(pyagent, verbose: bool) -> bool:
+def _setup_azure(pyai, verbose: bool) -> bool:
     """Configure Azure OpenAI (API key or Azure AD)."""
     endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
     api_key = os.environ.get("AZURE_OPENAI_API_KEY")
@@ -95,7 +95,7 @@ def _setup_azure(pyagent, verbose: bool) -> bool:
     
     # Try API key first
     if api_key:
-        pyagent.configure(
+        pyai.configure(
             provider="azure",
             api_key=api_key,
             azure_endpoint=endpoint,
@@ -114,7 +114,7 @@ def _setup_azure(pyagent, verbose: bool) -> bool:
         # Validate credentials work
         credential.get_token("https://cognitiveservices.azure.com/.default")
         
-        pyagent.configure(
+        pyai.configure(
             provider="azure",
             azure_endpoint=endpoint,
             model=deployment
@@ -138,7 +138,7 @@ def _setup_azure(pyagent, verbose: bool) -> bool:
         return False
 
 
-def _setup_openai(pyagent, verbose: bool) -> bool:
+def _setup_openai(pyai, verbose: bool) -> bool:
     """Configure OpenAI with API key."""
     api_key = os.environ.get("OPENAI_API_KEY")
     model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
@@ -149,7 +149,7 @@ def _setup_openai(pyagent, verbose: bool) -> bool:
             print_setup_instructions()
         return False
     
-    pyagent.configure(
+    pyai.configure(
         provider="openai",
         api_key=api_key,
         model=model
@@ -164,7 +164,7 @@ def print_setup_instructions():
     """Print setup instructions for users."""
     print("""
 +======================================================================+
-|                    PyAgent Configuration Required                     |
+|                    pyai Configuration Required                     |
 +======================================================================+
 |                                                                       |
 |  Option 1: OpenAI API Key                                            |
@@ -190,12 +190,12 @@ def print_setup_instructions():
 
 # Run if executed directly
 if __name__ == "__main__":
-    print("Testing PyAgent configuration...\n")
+    print("Testing pyai configuration...\n")
     
-    if setup_pyagent():
+    if setup_pyai():
         print("\n[OK] Configuration successful! Running quick test...\n")
-        from pyagent import ask
-        response = ask("Say 'Hello from PyAgent!' in exactly those words")
+        from pyai import ask
+        response = ask("Say 'Hello from pyai!' in exactly those words")
         print(f"Response: {response}")
     else:
         print("\n[X] Configuration failed. Please set up credentials.")

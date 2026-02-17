@@ -13,7 +13,7 @@ The A2A protocol enables:
 ## Quick Start
 
 ```python
-from pyagent.a2a import A2AServer, A2AClient, AgentCard
+from pyai.a2a import A2AServer, A2AClient, AgentCard
 
 # Server: Expose your agent
 server = A2AServer(agent, port=8080)
@@ -81,8 +81,8 @@ result = await client.send("Research topic X")
 ### 1. Expose Agent as Server
 
 ```python
-from pyagent import Agent
-from pyagent.a2a import A2AServer
+from pyai import Agent
+from pyai.a2a import A2AServer
 
 # Create your agent
 agent = Agent(
@@ -106,7 +106,7 @@ server.start_background()  # Non-blocking
 ### 2. Connect to Remote Agent
 
 ```python
-from pyagent.a2a import A2AClient
+from pyai.a2a import A2AClient
 
 # Connect to remote agent
 client = A2AClient(
@@ -130,7 +130,7 @@ print(response.content)
 ### 3. Multi-Agent Collaboration
 
 ```python
-from pyagent.a2a import A2AClient, discover_agents
+from pyai.a2a import A2AClient, discover_agents
 
 # Discover available agents
 agents = discover_agents("http://registry:8000")
@@ -154,7 +154,7 @@ result = await client.send_task(
 The Agent Card follows the A2A specification:
 
 ```python
-from pyagent.a2a import AgentCard
+from pyai.a2a import AgentCard
 
 card = AgentCard(
     name="my-agent",

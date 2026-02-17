@@ -21,22 +21,22 @@ import sys
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Optional: Configure PyAgent for LLM-powered features
+# Optional: Configure pyai for LLM-powered features
 # This example demonstrates workflow structure without requiring LLM calls
 try:
-    from config_helper import setup_pyagent
-    setup_pyagent(verbose=False)  # Silent - this example doesn't require LLM
+    from config_helper import setup_pyai
+    setup_pyai(verbose=False)  # Silent - this example doesn't require LLM
 except Exception:
     pass  # Workflow definitions work without LLM configuration
 
 import asyncio
-from pyagent import Agent
-from pyagent.instructions import SystemPrompt
-from pyagent.blueprint import Workflow, Step, StepType
-from pyagent.blueprint.patterns import ChainPattern, SupervisorPattern
+from pyai import Agent
+from pyai.instructions import SystemPrompt
+from pyai.blueprint import Workflow, Step, StepType
+from pyai.blueprint.patterns import ChainPattern, SupervisorPattern
 
 
 async def create_research_workflow():

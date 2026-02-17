@@ -1,4 +1,4 @@
-"""# pyright: reportMissingImports=false, reportUnusedVariable=false, reportGeneralTypeIssues=falseTest script for new PyAgent features:
+"""# pyright: reportMissingImports=false, reportUnusedVariable=false, reportGeneralTypeIssues=falseTest script for new pyai features:
 - Multi-agent handoffs
 - MCP server support  
 - Guardrails
@@ -11,7 +11,7 @@ import os
 import sys
 import pytest
 
-# Add pyagent to path
+# Add pyai to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Check for available credentials
@@ -21,8 +21,8 @@ HAS_CREDENTIALS = AZURE_CONFIGURED or OPENAI_CONFIGURED
 
 # Auto-configure Azure if available
 if AZURE_CONFIGURED:
-    import pyagent
-    pyagent.configure(
+    import pyai
+    pyai.configure(
         provider="azure",
         azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
         model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
@@ -43,7 +43,7 @@ def test_handoff():
     print("🤝 TEST: Multi-Agent Handoffs")
     print("=" * 60)
     
-    from pyagent import handoff, agent
+    from pyai import handoff, agent
     
     # Create agents
     researcher = agent(persona="researcher", name="Researcher")
@@ -92,7 +92,7 @@ def test_mcp():
     print("🔌 TEST: MCP Server Support")
     print("=" * 60)
     
-    from pyagent import mcp
+    from pyai import mcp
     
     # Create tools
     @mcp.tool("calculator")
@@ -121,9 +121,9 @@ def test_mcp():
     print("\n3. Connect and call tools:")
     client = mcp.connect(server)
     result1 = client.call("calculator", a=5, b=3)
-    result2 = client.call("greeter", name="PyAgent")
+    result2 = client.call("greeter", name="pyai")
     print(f"   add(5, 3) = {result1}")
-    print(f"   greet('PyAgent') = {result2}")
+    print(f"   greet('pyai') = {result2}")
     
     success = result1 == 8 and "Hello" in result2
     print(f"   {'✅ PASS' if success else '❌ FAIL'}")
@@ -137,7 +137,7 @@ def test_guardrails():
     print("🛡️ TEST: Guardrails System")
     print("=" * 60)
     
-    from pyagent import guardrails
+    from pyai import guardrails
     
     # Test PII detection
     print("\n1. PII Detection:")
@@ -178,7 +178,7 @@ def test_guardrails():
     
     # Test wrap function
     print("\n5. Wrap function with guardrails:")
-    from pyagent import ask
+    from pyai import ask
     safe_ask = guardrails.wrap(ask, block_pii=True, redact_pii=True)
     print(f"   Created: safe_ask = guardrails.wrap(ask, ...)")
     print("   ✅ PASS")
@@ -192,7 +192,7 @@ def test_trace():
     print("📊 TEST: Tracing System")
     print("=" * 60)
     
-    from pyagent import trace
+    from pyai import trace
     
     # Enable tracing
     trace.enable()
@@ -241,7 +241,7 @@ def test_trace():
 def run_all_tests():
     """Run all new feature tests."""
     print("\n" + "🚀" * 30)
-    print("   PYAGENT NEW FEATURES TEST SUITE")
+    print("   pyai NEW FEATURES TEST SUITE")
     print("🚀" * 30)
     
     results = []
@@ -282,7 +282,7 @@ def run_all_tests():
     print("📖 NEW FEATURES QUICK REFERENCE")
     print("=" * 60)
     print("""
-    from pyagent import handoff, mcp, guardrails, trace
+    from pyai import handoff, mcp, guardrails, trace
 
     # Multi-agent handoffs
     result = handoff(agent1, agent2, "task")

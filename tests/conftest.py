@@ -1,5 +1,5 @@
 # pyright: reportPrivateUsage=false
-"""PyAgent Test Configuration
+"""pyai Test Configuration
 ===========================
 
 Pytest configuration and fixtures.
@@ -22,14 +22,14 @@ def mock_llm_response():
 @pytest.fixture
 def sample_agent():
     """Fixture providing a sample agent."""
-    from pyagent.easy.agent_factory import agent
+    from pyai.easy.agent_factory import agent
     return agent("You are a test agent")
 
 
 @pytest.fixture
 def enable_mock_mode():
     """Fixture that enables mock mode for testing without API calls."""
-    from pyagent.easy.config import config
+    from pyai.easy.config import config
     original = config._mock_mode if hasattr(config, '_mock_mode') else False
     config.enable_mock(True)
     yield

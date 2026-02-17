@@ -1,10 +1,10 @@
 # pyright: reportMissingImports=false, reportUnusedImport=false, reportGeneralTypeIssues=false
 """
-[Brain] PyAgent Smart Research Assistant
+[Brain] pyai Smart Research Assistant
 ====================================
 
 This example demonstrates how to build a powerful AI-powered research
-assistant using PyAgent's revolutionary simple API.
+assistant using pyai's revolutionary simple API.
 
 Features:
 - [Book] Document analysis and Q&A (RAG)
@@ -13,16 +13,16 @@ Features:
 - [Persona] Role-based expert personas
 - [Chat] Interactive chat with memory
 
-This showcases the TRUE POWER of PyAgent:
+This showcases the TRUE POWER of pyai:
 What would take 50+ lines in other frameworks takes just 2-3 lines here!
 
 Usage:
-    $env:AZURE_OPENAI_ENDPOINT = "https://openai-pyagent.openai.azure.com/"
+    $env:AZURE_OPENAI_ENDPOINT = "https://openai-pyai.openai.azure.com/"
     $env:AZURE_OPENAI_DEPLOYMENT = "gpt-4o-mini"
     python smart_research_assistant.py
 
 Requirements:
-    - PyAgent library
+    - pyai library
     - Azure OpenAI or OpenAI API key
 """
 
@@ -30,23 +30,23 @@ import os
 import sys
 
 # =============================================================================
-# SETUP: Configure PyAgent (supports OpenAI, Azure API Key, or Azure AD)
+# SETUP: Configure pyai (supports OpenAI, Azure API Key, or Azure AD)
 # =============================================================================
 
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Configure PyAgent with available credentials
-from config_helper import setup_pyagent
-if not setup_pyagent():
+# Configure pyai with available credentials
+from config_helper import setup_pyai
+if not setup_pyai():
     print("Please configure credentials - see instructions above")
     sys.exit(1)
 
-# Import ALL the amazing PyAgent functions
-from pyagent import (  # noqa: F401 - Imports shown for demonstration
+# Import ALL the amazing pyai functions
+from pyai import (  # noqa: F401 - Imports shown for demonstration
     ask,           # Ask any question
     research,      # Deep research on topics
     summarize,     # Summarize anything
@@ -65,7 +65,7 @@ from pyagent import (  # noqa: F401 - Imports shown for demonstration
 
 def demo_research():
     """
-    Demonstrate PyAgent's research() function.
+    Demonstrate pyai's research() function.
     
     In other frameworks, this would require:
     - Setting up search APIs
@@ -73,7 +73,7 @@ def demo_research():
     - Result aggregation
     - Custom prompt engineering
     
-    In PyAgent? ONE LINE. 
+    In pyai? ONE LINE. 
     """
     print("=" * 60)
     print("[Book] FEATURE 1: Instant Research")
@@ -96,7 +96,7 @@ def demo_research():
 
 def demo_rag():
     """
-    Demonstrate PyAgent's RAG (Retrieval-Augmented Generation) capabilities.
+    Demonstrate pyai's RAG (Retrieval-Augmented Generation) capabilities.
     
     Traditional RAG setup requires:
     - Document loaders (20+ lines)
@@ -106,7 +106,7 @@ def demo_rag():
     - Retrieval chain (15+ lines)
     Total: 70+ lines
     
-    PyAgent? TWO LINES! !
+    pyai? TWO LINES! !
     """
     print("\n" + "=" * 60)
     print("[RAG] FEATURE 2: Document Q&A (RAG)")
@@ -115,13 +115,13 @@ def demo_rag():
     # Sample documents (in real use, these could be files or URLs)
     documents = [
         """
-        PyAgent is a revolutionary Python library for AI development.
+        pyai is a revolutionary Python library for AI development.
         It was created in 2026 to make AI accessible to everyone.
         The main philosophy is: complex AI tasks should be ONE LINE of code.
-        PyAgent supports OpenAI, Anthropic, and Azure OpenAI providers.
+        pyai supports OpenAI, Anthropic, and Azure OpenAI providers.
         """,
         """
-        Key features of PyAgent include:
+        Key features of pyai include:
         1. ask() - Ask any question and get intelligent answers
         2. research() - Deep research on any topic
         3. rag - Document Q&A with vector search
@@ -130,10 +130,10 @@ def demo_rag():
         The library is designed for developers who want results, not boilerplate.
         """,
         """
-        PyAgent vs Other Frameworks:
-        - LangChain: 50+ lines for RAG vs PyAgent's 2 lines
-        - LlamaIndex: Complex indexing vs PyAgent's simple index()
-        - AutoGen: Multi-agent setup vs PyAgent's one-liner
+        pyai vs Other Frameworks:
+        - LangChain: 50+ lines for RAG vs pyai's 2 lines
+        - LlamaIndex: Complex indexing vs pyai's simple index()
+        - AutoGen: Multi-agent setup vs pyai's one-liner
         The goal is to be the "pandas of AI" - simple, powerful, intuitive.
         """
     ]
@@ -146,9 +146,9 @@ def demo_rag():
     
     # LINE 2: Ask questions!
     questions = [
-        "What is PyAgent's main philosophy?",
-        "How does PyAgent compare to LangChain?",
-        "What providers does PyAgent support?"
+        "What is pyai's main philosophy?",
+        "How does pyai compare to LangChain?",
+        "What providers does pyai support?"
     ]
     
     for q in questions:
@@ -164,9 +164,9 @@ def demo_rag():
 
 def demo_agents():
     """
-    Demonstrate PyAgent's agent() function with different personas.
+    Demonstrate pyai's agent() function with different personas.
     
-    PyAgent comes with prebuilt personas:
+    pyai comes with prebuilt personas:
     - coder: Expert programmer
     - researcher: Academic researcher
     - writer: Content writer
@@ -216,7 +216,7 @@ def demo_agents():
 
 def demo_code_review():
     """
-    Demonstrate PyAgent's code module for code operations.
+    Demonstrate pyai's code module for code operations.
     
     Features:
     - code.write() - Generate code from description
@@ -257,7 +257,7 @@ def calc(x, y):
 
 def demo_chat():
     """
-    Demonstrate PyAgent's chat() for interactive sessions.
+    Demonstrate pyai's chat() for interactive sessions.
     
     Key feature: The chat session REMEMBERS context!
     This is what makes it powerful for multi-turn conversations.
@@ -289,14 +289,14 @@ def demo_chat():
 
 def demo_sentiment():
     """
-    Demonstrate PyAgent's analyze module for text analysis.
+    Demonstrate pyai's analyze module for text analysis.
     """
     print("\n" + "=" * 60)
     print("[Chart] FEATURE 6: Sentiment Analysis")
     print("=" * 60)
     
     texts = [
-        "PyAgent is absolutely amazing! Best library I've ever used!",
+        "pyai is absolutely amazing! Best library I've ever used!",
         "The documentation could use some improvements.",
         "I love how simple it makes AI development."
     ]
@@ -324,7 +324,7 @@ def demo_sentiment():
 def main():
     """Run the complete Smart Research Assistant demo."""
     print("=" * 60)
-    print("   PYAGENT SMART RESEARCH ASSISTANT")
+    print("   pyai SMART RESEARCH ASSISTANT")
     print("=" * 60)
     
     # Run all feature demos
@@ -348,11 +348,11 @@ What you've seen:
   - chat()      - Conversations with memory
   - analyze.*   - Text analysis made simple
 
-This is the PyAgent difference:
+This is the pyai difference:
   Traditional frameworks: 100+ lines of boilerplate
-  PyAgent: 1-3 lines per feature
+  pyai: 1-3 lines per feature
 
-PyAgent - The Pandas of AI Development
+pyai - The Pandas of AI Development
     """)
 
 

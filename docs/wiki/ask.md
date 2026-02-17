@@ -5,7 +5,7 @@ The `ask` function is the simplest way to get answers from an AI model.
 ## Import
 
 ```python
-from pyagent import ask
+from pyai import ask
 ```
 
 ## Basic Usage
@@ -40,7 +40,7 @@ Returns a string containing the AI's response.
 ### Simple Questions
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Factual questions
 answer = ask("What is machine learning?")
@@ -68,7 +68,7 @@ answer = ask("What does PYAI support?", context=document)
 
 ```python
 import asyncio
-from pyagent import ask
+from pyai import ask
 
 async def main():
     answer = await ask.async_("What is PYAI?")

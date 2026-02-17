@@ -13,7 +13,7 @@ Tracing enables:
 ## Quick Start
 
 ```python
-from pyagent import trace, ask
+from pyai import trace, ask
 
 # Enable tracing
 trace.enable()
@@ -30,13 +30,13 @@ trace.show()
 ### Global Enable
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 # Enable globally
 trace.enable()
 
 # All operations are now traced
-from pyagent import ask, research
+from pyai import ask, research
 answer = ask("What is AI?")      # Traced
 result = research("ML trends")   # Traced
 
@@ -47,7 +47,7 @@ trace.disable()
 ### Context Manager
 
 ```python
-from pyagent import trace, ask
+from pyai import trace, ask
 
 with trace.enabled():
     answer = ask("What is Python?")
@@ -61,7 +61,7 @@ with trace.enabled():
 ### Creating Spans
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 with trace.span("my_operation") as span:
     # Log events
@@ -94,7 +94,7 @@ with trace.span("parent_task") as parent:
 Events capture individual operations:
 
 ```python
-from pyagent.easy.trace import TraceEvent
+from pyai.easy.trace import TraceEvent
 
 event = TraceEvent(
     type="llm_call",
@@ -121,7 +121,7 @@ event = TraceEvent(
 ## Span Object
 
 ```python
-from pyagent.easy.trace import Span
+from pyai.easy.trace import Span
 
 span = Span(
     name="research_task",
@@ -157,7 +157,7 @@ span.end()
 ### Console Output
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 trace.enable()
 # ... operations ...
@@ -192,7 +192,7 @@ llm_calls = trace.filter(type="llm_call")
 ### JSON Export
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 trace.enable()
 # ... operations ...
@@ -223,7 +223,7 @@ json_str = trace.to_json()
 ### Event Handler
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 @trace.handler
 def my_handler(event):
@@ -258,7 +258,7 @@ def metrics_collector(event):
 ### Timing Operations
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 with trace.span("slow_operation") as span:
     result = slow_function()
@@ -288,9 +288,9 @@ print(f"Total tokens used: {total_tokens[0]}")
 
 ```python
 import logging
-from pyagent import trace
+from pyai import trace
 
-logger = logging.getLogger("pyagent")
+logger = logging.getLogger("pyai")
 
 @trace.handler
 def logging_handler(event):
@@ -303,7 +303,7 @@ def logging_handler(event):
 ## Decorator
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 @trace.traced
 def my_function(x, y):
@@ -318,7 +318,7 @@ def another_function():
 ## Configuration
 
 ```python
-from pyagent import trace
+from pyai import trace
 
 trace.configure(
     enabled=True,

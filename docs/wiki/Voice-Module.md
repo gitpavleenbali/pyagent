@@ -5,8 +5,8 @@ The Voice module enables real-time voice interactions with AI agents, including 
 ## Overview
 
 ```python
-from pyagent.voice import VoiceSession, Transcriber, Synthesizer
-from pyagent.voice.stream import AudioStream, AudioChunk
+from pyai.voice import VoiceSession, Transcriber, Synthesizer
+from pyai.voice.stream import AudioStream, AudioChunk
 ```
 
 ## Key Components
@@ -23,7 +23,7 @@ from pyagent.voice.stream import AudioStream, AudioChunk
 ### Basic Voice Interaction
 
 ```python
-from pyagent.voice import VoiceSession
+from pyai.voice import VoiceSession
 
 # Create voice session
 session = VoiceSession(
@@ -44,7 +44,7 @@ async with session.connect() as voice:
 ### Transcription Only
 
 ```python
-from pyagent.voice import Transcriber
+from pyai.voice import Transcriber
 
 transcriber = Transcriber(model="whisper-1")
 
@@ -63,7 +63,7 @@ result = transcriber.transcribe(
 ### Text-to-Speech Only
 
 ```python
-from pyagent.voice import Synthesizer
+from pyai.voice import Synthesizer
 
 synth = Synthesizer(voice="nova")
 
@@ -85,7 +85,7 @@ Supported formats:
 - **OGG**: Ogg Vorbis
 
 ```python
-from pyagent.voice.stream import AudioFormat
+from pyai.voice.stream import AudioFormat
 
 chunk = AudioChunk(
     data=audio_bytes,
@@ -107,7 +107,7 @@ Available voices:
 ## Real-time Streaming
 
 ```python
-from pyagent.voice import VoiceSession
+from pyai.voice import VoiceSession
 
 async def voice_assistant():
     session = VoiceSession()
@@ -131,8 +131,8 @@ async def voice_assistant():
 ## Integration with Agents
 
 ```python
-from pyagent import Agent
-from pyagent.voice import VoiceSession
+from pyai import Agent
+from pyai.voice import VoiceSession
 
 agent = Agent(
     name="VoiceAssistant",

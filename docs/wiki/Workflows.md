@@ -7,8 +7,8 @@ Multi-step agent processes in the **blueprint/** module.
 ## Basic Workflow
 
 ```python
-from pyagent import Agent
-from pyagent.blueprint import Workflow, Step
+from pyai import Agent
+from pyai.blueprint import Workflow, Step
 
 # Create specialized agents
 researcher = Agent(name="Researcher", instructions="Find information on topics.")
@@ -45,7 +45,7 @@ print(result.final_output)
 ## Conditional Steps
 
 ```python
-from pyagent.blueprint import Workflow, Step, Condition
+from pyai.blueprint import Workflow, Step, Condition
 
 def needs_review(context):
     return context.get("complexity") == "high"
@@ -62,7 +62,7 @@ workflow = (Workflow("ReviewPipeline")
 ## Parallel Execution
 
 ```python
-from pyagent.blueprint import Workflow, ParallelStep
+from pyai.blueprint import Workflow, ParallelStep
 
 # Run multiple agents concurrently
 workflow = (Workflow("ParallelResearch")
@@ -82,7 +82,7 @@ workflow = (Workflow("ParallelResearch")
 Data flows through the workflow via context:
 
 ```python
-from pyagent.blueprint import WorkflowContext
+from pyai.blueprint import WorkflowContext
 
 # Initial context
 context = WorkflowContext(
@@ -116,8 +116,8 @@ workflow = (Workflow("SafePipeline")
 ## Real-World Example: Content Creation
 
 ```python
-from pyagent import Agent
-from pyagent.blueprint import Workflow, Step, ParallelStep
+from pyai import Agent
+from pyai.blueprint import Workflow, Step, ParallelStep
 
 # Specialized team
 topic_researcher = Agent(
@@ -179,7 +179,7 @@ result = await workflow.resume()
 Workflows can use orchestration patterns:
 
 ```python
-from pyagent.blueprint import ChainPattern, RouterPattern
+from pyai.blueprint import ChainPattern, RouterPattern
 
 # Chain pattern within workflow
 chain = ChainPattern()

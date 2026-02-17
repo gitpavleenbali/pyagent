@@ -5,12 +5,12 @@ Get up and running with PYAI in 5 minutes.
 ## Installation
 
 ```bash
-pip install pyagent
+pip install pyai
 ```
 
 For Azure OpenAI with Azure AD authentication:
 ```bash
-pip install pyagent[azure]
+pip install pyai[azure]
 ```
 
 ## Configuration
@@ -31,7 +31,7 @@ export AZURE_OPENAI_DEPLOYMENT=gpt-4o-mini
 ### One-Liner API
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 answer = ask("What is the capital of France?")
 print(answer)  # Paris
@@ -40,8 +40,8 @@ print(answer)  # Paris
 ### Agent with Tools
 
 ```python
-from pyagent import Agent, Runner
-from pyagent.skills import tool
+from pyai import Agent, Runner
+from pyai.skills import tool
 
 @tool(description="Get weather for a city")
 async def get_weather(city: str) -> str:
@@ -60,7 +60,7 @@ print(result.final_output)
 ### RAG in 2 Lines
 
 ```python
-from pyagent import rag
+from pyai import rag
 
 docs = rag.index("./documents")
 answer = docs.ask("What is the main conclusion?")

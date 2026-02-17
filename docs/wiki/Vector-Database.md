@@ -7,7 +7,7 @@ Semantic search and RAG with vector databases.
 ## Quick Start
 
 ```python
-from pyagent.vectordb import ChromaDB
+from pyai.vectordb import ChromaDB
 
 # Create store
 db = ChromaDB(collection="knowledge")

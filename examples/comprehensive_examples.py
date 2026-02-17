@@ -1,9 +1,9 @@
 # pyright: basic, reportGeneralTypeIssues=false, reportArgumentType=false, reportCallIssue=false
 """
-PyAgent PyAgent Comprehensive Examples
+pyai pyai Comprehensive Examples
 ====================================
 
-A complete showcase of PyAgent's capabilities - from simple one-liners
+A complete showcase of pyai's capabilities - from simple one-liners
 to advanced multi-agent workflows.
 
 Setup:
@@ -27,11 +27,11 @@ from typing import Tuple
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
 # Use shared configuration helper for dual auth support
-from config_helper import setup_pyagent
+from config_helper import setup_pyai
 
 
 # =============================================================================
@@ -57,7 +57,7 @@ def setup_provider(provider: str = "auto") -> Tuple[bool, str]:
             return False, "No API configuration found"
     
     # Use config_helper for actual setup
-    if not setup_pyagent(provider=provider, verbose=True):
+    if not setup_pyai(provider=provider, verbose=True):
         return False, f"Failed to configure {provider}"
     
     # Return success message
@@ -84,7 +84,7 @@ def example_ask():
     print("[Note] EXAMPLE 1: ask() - Simple Q&A")
     print("=" * 60)
     
-    from pyagent import ask
+    from pyai import ask
     
     # Basic question
     print("\n1a. Basic Question:")
@@ -126,7 +126,7 @@ def example_agent():
     print("[Bot] EXAMPLE 2: agent() - Custom Agents")
     print("=" * 60)
     
-    from pyagent import agent
+    from pyai import agent
     
     # Custom agent with system prompt
     print("\n2a. Custom Agent:")
@@ -171,7 +171,7 @@ def example_chat():
     print("[Chat] EXAMPLE 3: chat() - Conversations with Memory")
     print("=" * 60)
     
-    from pyagent import chat
+    from pyai import chat
     
     print("\n3a. Creating Chat Session:")
     print("    Code: session = chat('You are a helpful assistant')")
@@ -205,19 +205,19 @@ def example_rag():
     Example 4: rag - RAG Pipeline in 2 lines
     
     Index documents and query them with AI. What takes 50+ lines
-    in other frameworks takes just 2 lines with PyAgent.
+    in other frameworks takes just 2 lines with pyai.
     """
     print("\n" + "=" * 60)
     print("[Book] EXAMPLE 4: rag - RAG in 2 Lines")
     print("=" * 60)
     
-    from pyagent import rag
+    from pyai import rag
     
     # Sample documents
     documents = [
-        "PyAgent was created in 2026 as a revolutionary AI library.",
+        "pyai was created in 2026 as a revolutionary AI library.",
         "The library provides pandas-like simplicity for AI tasks.",
-        "PyAgent supports OpenAI, Anthropic, and Azure OpenAI.",
+        "pyai supports OpenAI, Anthropic, and Azure OpenAI.",
         "RAG operations that took 50 lines now take just 2 lines.",
         "The creator's vision is 'intelligence as infrastructure'."
     ]
@@ -228,8 +228,8 @@ def example_rag():
     print(f"    Indexed: {indexed}")
     
     print("\n4b. Query Documents:")
-    print("    Code: answer = indexed.ask('What year was PyAgent created?')")
-    answer = indexed.ask("What year was PyAgent created?")
+    print("    Code: answer = indexed.ask('What year was pyai created?')")
+    answer = indexed.ask("What year was pyai created?")
     success = "2026" in answer
     print(f"    Answer: {answer}")
     print(f"    {'[OK] PASS' if success else '[X] FAIL'}")
@@ -240,7 +240,7 @@ def example_rag():
     print("    |------------|---------------|")
     print("    | LangChain  | 50+ lines     |")
     print("    | LlamaIndex | 40+ lines     |")
-    print("    | PyAgent    | 2 lines       |")
+    print("    | pyai    | 2 lines       |")
     
     return success
 
@@ -259,7 +259,7 @@ def example_code():
     print("[Code] EXAMPLE 5: code - Code Operations")
     print("=" * 60)
     
-    from pyagent import code
+    from pyai import code
     
     print("\n5a. Write Code:")
     print("    Code: result = code.write('fibonacci function')")
@@ -293,7 +293,7 @@ def example_research():
     print("[Search] EXAMPLE 6: research() & summarize()")
     print("=" * 60)
     
-    from pyagent import research, summarize
+    from pyai import research, summarize
     
     print("\n6a. Quick Research:")
     print("    Code: result = research('quantum computing basics')")
@@ -331,7 +331,7 @@ def example_extract():
     print("[Chart] EXAMPLE 7: extract() - Data Extraction")
     print("=" * 60)
     
-    from pyagent import extract
+    from pyai import extract
     
     text = """
     Meeting Notes - January 15, 2026
@@ -363,7 +363,7 @@ def run_all_examples(provider: str = "auto"):
     """Run all examples with comprehensive output."""
     
     print("\n" + "" * 30)
-    print("      PYAGENT COMPREHENSIVE EXAMPLES")
+    print("      pyai COMPREHENSIVE EXAMPLES")
     print("" * 30)
     
     # Setup provider
@@ -416,11 +416,11 @@ def run_all_examples(provider: str = "auto"):
     
     # Quick Reference
     print("\n" + "=" * 60)
-    print("[RAG] QUICK REFERENCE - PyAgent One-Liners")
+    print("[RAG] QUICK REFERENCE - pyai One-Liners")
     print("=" * 60)
     print("""
-    from pyagent import ask, agent, chat, rag, code
-    from pyagent import research, summarize, extract, translate
+    from pyai import ask, agent, chat, rag, code
+    from pyai import research, summarize, extract, translate
 
     # Ask anything
     answer = ask("What is quantum computing?")
@@ -448,11 +448,11 @@ def run_all_examples(provider: str = "auto"):
     """)
     
     if passed == len(results):
-        print("\n[Done] All examples passed! PyAgent is working perfectly.")
+        print("\n[Done] All examples passed! pyai is working perfectly.")
     else:
         print(f"\n[WARN]  {len(results) - passed} example(s) had issues.")
     
-    print("\n PyAgent - Because AI development should be as simple as pandas!")
+    print("\n pyai - Because AI development should be as simple as pandas!")
 
 
 if __name__ == "__main__":

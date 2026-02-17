@@ -45,9 +45,9 @@ export OLLAMA_HOST=http://localhost:11434
 ## Programmatic Configuration
 
 ```python
-import pyagent
+import pyai
 
-pyagent.configure(
+pyai.configure(
     api_key="sk-...",
     model="gpt-4o",
     temperature=0.7
@@ -61,7 +61,7 @@ pyagent.configure(
 ### OpenAI
 
 ```python
-from pyagent.core import OpenAIProvider, LLMConfig
+from pyai.core import OpenAIProvider, LLMConfig
 
 provider = OpenAIProvider(LLMConfig(
     api_key="sk-...",
@@ -74,7 +74,7 @@ provider = OpenAIProvider(LLMConfig(
 ### Azure OpenAI
 
 ```python
-from pyagent.core import AzureOpenAIProvider, LLMConfig
+from pyai.core import AzureOpenAIProvider, LLMConfig
 
 # API Key auth
 provider = AzureOpenAIProvider(LLMConfig(
@@ -95,7 +95,7 @@ provider = AzureOpenAIProvider(LLMConfig(
 ### Anthropic
 
 ```python
-from pyagent.core import AnthropicProvider, LLMConfig
+from pyai.core import AnthropicProvider, LLMConfig
 
 provider = AnthropicProvider(LLMConfig(
     api_key="sk-ant-...",
@@ -118,8 +118,8 @@ PYAI automatically selects the appropriate model based on environment:
 Override with explicit provider:
 
 ```python
-from pyagent import Agent
-from pyagent.core import AzureOpenAIProvider, LLMConfig
+from pyai import Agent
+from pyai.core import AzureOpenAIProvider, LLMConfig
 
 agent = Agent(
     name="Bot",
@@ -153,7 +153,7 @@ memory:
 Load and use:
 
 ```python
-from pyagent.config import load_agent, AgentBuilder
+from pyai.config import load_agent, AgentBuilder
 
 config = load_agent("agents/research_assistant.yaml")
 agent = AgentBuilder.from_config(config).build()

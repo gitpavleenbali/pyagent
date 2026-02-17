@@ -12,7 +12,7 @@ Handoffs allow:
 ## Basic Usage
 
 ```python
-from pyagent import Agent, handoff
+from pyai import Agent, handoff
 
 # Create specialized agents
 sales_agent = Agent(
@@ -36,7 +36,7 @@ triage_agent = Agent(
 ## Handoff Decorator
 
 ```python
-from pyagent import Agent, handoff
+from pyai import Agent, handoff
 
 @handoff(target="support_agent")
 def transfer_to_support(reason: str):
@@ -52,7 +52,7 @@ agent = Agent(
 ## Conditional Handoffs
 
 ```python
-from pyagent import Agent
+from pyai import Agent
 
 def should_handoff(context):
     """Determine if handoff is needed"""
@@ -77,7 +77,7 @@ agent = Agent(
 ### Customer Service Bot
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 # Specialized agents
 billing = Agent(
@@ -115,7 +115,7 @@ result = Runner.run_sync(router, "I can't log into my account")
 ### Research Team
 
 ```python
-from pyagent import Agent
+from pyai import Agent
 
 researcher = Agent(
     name="Researcher",
@@ -148,7 +148,7 @@ lead = Agent(
 ## Handoff Context
 
 ```python
-from pyagent import handoff
+from pyai import handoff
 
 @handoff
 def transfer_with_context(agent, context):
@@ -166,7 +166,7 @@ def transfer_with_context(agent, context):
 ## Handoff Events
 
 ```python
-from pyagent import Runner
+from pyai import Runner
 
 async for event in Runner.run_stream(agent, message):
     if event.type == "handoff":

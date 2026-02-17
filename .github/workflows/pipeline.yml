@@ -91,7 +91,7 @@ jobs:
           pip install mypy
 
       - name: Run mypy
-        run: mypy src/pyagent --ignore-missing-imports
+        run: mypy src/pyai --ignore-missing-imports
         continue-on-error: true  # Don't block on type errors for now
 
   # ============================================================================
@@ -113,7 +113,7 @@ jobs:
         run: pip install bandit[toml]
 
       - name: Run security scan
-        run: bandit -r src/pyagent -ll -ii
+        run: bandit -r src/pyai -ll -ii
         continue-on-error: true  # Report but don't block
 
   # ============================================================================
@@ -247,7 +247,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     environment:
       name: pypi
-      url: https://pypi.org/project/pyagent/
+      url: https://pypi.org/project/pyai/
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4

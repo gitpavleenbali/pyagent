@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/pyagent/"><img src="https://img.shields.io/badge/pypi-v0.4.0-blue" alt="PyPI"/></a>
+  <a href="https://pypi.org/project/pyai/"><img src="https://img.shields.io/badge/pypi-v0.4.0-blue" alt="PyPI"/></a>
   <a href="https://python.org/"><img src="https://img.shields.io/badge/python-3.10+-green" alt="Python"/></a>
   <a href="#"><img src="https://img.shields.io/badge/tests-671%20passing-brightgreen" alt="Tests"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow" alt="License"/></a>
@@ -55,7 +55,7 @@ flowchart LR
     end
 ```
 
-Built on **PyAgent**, our core SDK, PYAI provides **25+ modules** with **150+ classes** covering every AI use case.
+Built on **pyai**, our core SDK, PYAI provides **25+ modules** with **150+ classes** covering every AI use case.
 
 ---
 
@@ -101,7 +101,7 @@ flowchart TB
 The foundation. Single-purpose AI operations that **just work**.
 
 ```python
-from pyagent import ask, summarize, extract
+from pyai import ask, summarize, extract
 
 # Instant intelligence
 answer = ask("Explain quantum entanglement")
@@ -113,8 +113,8 @@ entities = extract(text, fields=["names", "dates", "amounts"])
 Coordinated intelligence. Multiple agents working in harmony.
 
 ```python
-from pyagent import Agent, Runner
-from pyagent.blueprint import Workflow, Step
+from pyai import Agent, Runner
+from pyai.blueprint import Workflow, Step
 
 # Create specialized agents
 researcher = Agent(name="Researcher", instructions="Find information.")
@@ -133,7 +133,7 @@ workflow = (Workflow("ResearchPipeline")
 Self-generating systems. **The Software Factory.**
 
 ```python
-from pyagent import code
+from pyai import code
 
 # Generate code from description
 api_code = code.write("REST API for user management with JWT auth")
@@ -243,7 +243,7 @@ flowchart TB
         APP["🖥️ App Layer"]
     end
     
-    subgraph SDK["PYAI SDK - src/pyagent/"]
+    subgraph SDK["PYAI SDK - src/pyai/"]
         subgraph Easy["🚀 easy/"]
             E1["ask • research • summarize"]
             E2["rag • generate • translate"]
@@ -296,7 +296,7 @@ flowchart TB
 ### File Structure
 
 ```
-src/pyagent/
+src/pyai/
 ├── easy/           # One-liner APIs (15+ functions)
 ├── core/           # Agent, Memory, LLM providers
 ├── runner/         # Execution engine
@@ -367,7 +367,7 @@ flowchart TB
 The foundation of PYAI. Ask any question, get an intelligent answer.
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Simple questions
 answer = ask("What is Python?")
@@ -390,7 +390,7 @@ answer = await ask_async("What is AI?")
 Multi-step research with automatic source gathering and synthesis.
 
 ```python
-from pyagent import research
+from pyai import research
 
 # Basic research
 result = research("AI trends in enterprise software")
@@ -414,7 +414,7 @@ result = research(
 Summarize any content: text, files, URLs.
 
 ```python
-from pyagent import summarize
+from pyai import summarize
 
 # Text summarization
 summary = summarize(long_document)
@@ -436,7 +436,7 @@ summary = summarize(text, length="long")     # Detailed
 Production-ready RAG in 2 lines.
 
 ```python
-from pyagent import rag
+from pyai import rag
 
 # Index documents
 knowledge = rag.index("./documents")
@@ -458,7 +458,7 @@ rag.index(["./pdfs", "./markdown", "./code"])
 Generate any type of content.
 
 ```python
-from pyagent import generate
+from pyai import generate
 
 # Code generation
 code = generate("fibonacci function", type="code")
@@ -477,7 +477,7 @@ plan = generate("project plan for mobile app", type="plan")
 ### translate() — Language Translation
 
 ```python
-from pyagent import translate
+from pyai import translate
 
 # Simple translation
 spanish = translate("Hello, how are you?", to="spanish")
@@ -497,7 +497,7 @@ translated_doc = translate(markdown_text, to="german", preserve_format=True)
 Extract structured data from unstructured text.
 
 ```python
-from pyagent import extract
+from pyai import extract
 
 # Extract specific fields
 data = extract(email_text, fields=["sender", "date", "subject", "action_items"])
@@ -519,7 +519,7 @@ entities = extract(article, fields=["people", "organizations", "locations"])
 Access live data feeds.
 
 ```python
-from pyagent import fetch
+from pyai import fetch
 
 # Weather data
 weather = fetch.weather("New York")
@@ -542,7 +542,7 @@ content = fetch.url("https://example.com")
 ### analyze — Data Analysis
 
 ```python
-from pyagent import analyze
+from pyai import analyze
 
 # Sentiment analysis
 result = analyze.sentiment("I love this product!")
@@ -567,7 +567,7 @@ print(comparison.differences)
 AI-powered code assistant.
 
 ```python
-from pyagent import code
+from pyai import code
 
 # Write code
 implementation = code.write("binary search tree in Python")
@@ -600,7 +600,7 @@ explanation = code.explain(complex_function)
 Transfer tasks between agents.
 
 ```python
-from pyagent import handoff
+from pyai import handoff
 
 # Transfer to specialist
 result = handoff(
@@ -623,7 +623,7 @@ result = handoff(
 ### guardrails() — Safety Wrappers
 
 ```python
-from pyagent.easy import guardrails
+from pyai.easy import guardrails
 
 # Wrap any function with safety
 safe_ask = guardrails.wrap(ask, block_pii=True, block_harmful=True)
@@ -639,7 +639,7 @@ limited_ask = guardrails.wrap(ask, rate_limit="10/minute")
 ### trace() — Debugging & Observability
 
 ```python
-from pyagent.easy import trace
+from pyai.easy import trace
 
 # Enable tracing
 trace.enable()
@@ -733,8 +733,8 @@ sequenceDiagram
 ### Creating Agents
 
 ```python
-from pyagent import Agent, Runner
-from pyagent.skills import tool
+from pyai import Agent, Runner
+from pyai.skills import tool
 
 # Define custom tools
 @tool(description="Get current weather for a city")
@@ -769,8 +769,8 @@ print(result.final_output)
 ### Agent Configuration
 
 ```python
-from pyagent import Agent
-from pyagent.core import AgentConfig
+from pyai import Agent
+from pyai.core import AgentConfig
 
 # Detailed configuration
 config = AgentConfig(
@@ -792,8 +792,8 @@ agent = Agent(
 ### Memory Management
 
 ```python
-from pyagent import Agent
-from pyagent.core import ConversationMemory, SlidingWindowMemory
+from pyai import Agent
+from pyai.core import ConversationMemory, SlidingWindowMemory
 
 # Conversation memory (keeps all messages)
 agent = Agent(
@@ -818,7 +818,7 @@ context = agent.memory.get_context()
 ### Streaming Responses
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 agent = Agent(name="Assistant", instructions="Be helpful.")
 
@@ -887,8 +887,8 @@ flowchart TB
 ### Workflow Definition
 
 ```python
-from pyagent import Agent
-from pyagent.blueprint import Workflow, Step
+from pyai import Agent
+from pyai.blueprint import Workflow, Step
 
 # Create specialized agents
 researcher = Agent(
@@ -921,7 +921,7 @@ print(result.outputs["final"])
 ### Chain Pattern
 
 ```python
-from pyagent.blueprint import ChainPattern
+from pyai.blueprint import ChainPattern
 
 # Create a chain of agents
 chain = ChainPattern([
@@ -937,7 +937,7 @@ result = await chain.run("Create a product announcement")
 ### Router Pattern
 
 ```python
-from pyagent.blueprint import RouterPattern
+from pyai.blueprint import RouterPattern
 
 # Create router with specialized agents
 router = RouterPattern()
@@ -957,7 +957,7 @@ result = await router.run("Calculate 234 * 567")
 ### MapReduce Pattern
 
 ```python
-from pyagent.blueprint import MapReducePattern
+from pyai.blueprint import MapReducePattern
 
 # Analyze multiple documents in parallel
 analyzer = Agent(name="Analyzer", instructions="Analyze document content.")
@@ -976,7 +976,7 @@ result = await map_reduce.run(documents)
 ### Supervisor Pattern
 
 ```python
-from pyagent.blueprint import SupervisorPattern
+from pyai.blueprint import SupervisorPattern
 
 # Manager delegates to workers
 manager = Agent(
@@ -1020,7 +1020,7 @@ flowchart TB
 ```
 
 ```python
-from pyagent.kernel import Kernel, KernelBuilder
+from pyai.kernel import Kernel, KernelBuilder
 
 kernel = (KernelBuilder()
     .add_llm(openai_client, name="gpt4", is_default=True)
@@ -1079,7 +1079,7 @@ import os
 os.environ["AZURE_OPENAI_ENDPOINT"] = "https://your-resource.openai.azure.com/"
 os.environ["AZURE_OPENAI_DEPLOYMENT"] = "gpt-4o-mini"
 
-from pyagent import ask
+from pyai import ask
 
 # Uses your az login credentials or Managed Identity automatically
 answer = ask("Hello from Azure!")
@@ -1121,7 +1121,7 @@ flowchart LR
 ```
 
 ```python
-from pyagent.sessions import SessionManager, SQLiteSessionStore, RedisSessionStore
+from pyai.sessions import SessionManager, SQLiteSessionStore, RedisSessionStore
 
 # SQLite for development
 manager = SessionManager(store=SQLiteSessionStore("sessions.db"))
@@ -1143,7 +1143,7 @@ session = await manager.get(session_id="abc123")
 history = session.get_messages()
 
 # Session with agent
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 agent = Agent(name="Assistant", instructions="Be helpful.")
 result = await Runner.run(agent, "Hello", session=session)
@@ -1155,7 +1155,7 @@ result = await Runner.run(agent, "Hello", session=session)
 Test your agents systematically.
 
 ```python
-from pyagent.evaluation import Evaluator, EvalSet, TestCase, metrics
+from pyai.evaluation import Evaluator, EvalSet, TestCase, metrics
 
 # Define test cases
 eval_set = EvalSet([
@@ -1195,7 +1195,7 @@ for result in results.failed:
 Full visibility into agent operations.
 
 ```python
-from pyagent.easy import trace
+from pyai.easy import trace
 
 # Enable tracing
 trace.enable()
@@ -1224,7 +1224,7 @@ trace.export_to_opentelemetry()
 Built-in protection for production deployments.
 
 ```python
-from pyagent.easy import guardrails
+from pyai.easy import guardrails
 
 # PII protection
 safe_ask = guardrails.wrap(ask, block_pii=True)
@@ -1301,16 +1301,16 @@ flowchart TB
 ### Installation
 
 ```bash
-pip install pyagent                # Basic
-pip install pyagent[openai]        # OpenAI
-pip install pyagent[azure]         # Azure + Azure AD
-pip install pyagent[all]           # Everything
+pip install pyai                # Basic
+pip install pyai[openai]        # OpenAI
+pip install pyai[azure]         # Azure + Azure AD
+pip install pyai[all]           # Everything
 ```
 
 ### Hello World
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 answer = ask("What is the capital of France?")
 print(answer)  # Paris
@@ -1368,7 +1368,7 @@ flowchart LR
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': 'transparent', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#ffffff', 'lineColor': '#ffffff', 'secondaryColor': 'transparent', 'tertiaryColor': 'transparent', 'background': 'transparent', 'mainBkg': 'transparent', 'nodeBorder': '#ffffff', 'clusterBkg': 'transparent', 'clusterBorder': '#ffffff', 'titleColor': '#ffffff', 'edgeLabelBackground': 'transparent', 'nodeTextColor': '#ffffff'}}}%%
 flowchart LR
     subgraph Available["✅ Available Now"]
-        PA["🤖 PyAgent<br/>Core SDK"]
+        PA["🤖 pyai<br/>Core SDK"]
     end
     
     subgraph Soon["🔜 Coming Soon"]
@@ -1387,7 +1387,7 @@ flowchart LR
 
 | Product | Purpose | Dimension | Status |
 |---------|---------|-----------|--------|
-| **🤖 PyAgent** | Core Intelligence SDK | All | ✅ Available |
+| **🤖 pyai** | Core Intelligence SDK | All | ✅ Available |
 | **🔄 PyFlow** | Visual AI Workflows | Orchestration | 🔜 Coming Soon |
 | **👁️ PyVision** | Computer Vision | Cognition | 🔜 Coming Soon |
 | **🎤 PyVoice** | Speech & Audio | Cognition | 🔜 Coming Soon |

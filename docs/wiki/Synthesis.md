@@ -5,8 +5,8 @@ The synthesis module converts text to speech using AI voice models.
 ## Import
 
 ```python
-from pyagent.voice import Synthesizer
-from pyagent.voice.synthesis import SynthesisResult
+from pyai.voice import Synthesizer
+from pyai.voice.synthesis import SynthesisResult
 ```
 
 ## Synthesizer Class

@@ -5,13 +5,13 @@ The `code` module provides AI-powered code operations.
 ## Import
 
 ```python
-from pyagent.easy import code
+from pyai.easy import code
 ```
 
 ## Quick Start
 
 ```python
-from pyagent.easy import code
+from pyai.easy import code
 
 # Write code
 result = code.write("Python function to calculate factorial")
@@ -31,7 +31,7 @@ explanation = code.explain(complex_code)
 ### Write Code
 
 ```python
-from pyagent.easy import code
+from pyai.easy import code
 
 # Generate code from description
 result = code.write("function to validate email addresses")
@@ -154,7 +154,7 @@ print(tests)
 ### Full Workflow
 
 ```python
-from pyagent.easy import code
+from pyai.easy import code
 
 # 1. Write code
 func = code.write("function to parse CSV file")
@@ -174,7 +174,7 @@ documented = code.document(func)
 
 ```python
 import asyncio
-from pyagent.easy import code
+from pyai.easy import code
 
 async def main():
     result = await code.write_async("async HTTP client")

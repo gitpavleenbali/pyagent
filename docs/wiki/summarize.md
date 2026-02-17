@@ -5,7 +5,7 @@ The `summarize` function condenses text, files, or URLs into concise summaries.
 ## Import
 
 ```python
-from pyagent import summarize
+from pyai import summarize
 ```
 
 ## Basic Usage
@@ -39,7 +39,7 @@ Returns a string containing the summarized content.
 ### Summarize Text
 
 ```python
-from pyagent import summarize
+from pyai import summarize
 
 article = """
 PYAI is a comprehensive Python SDK for building AI agents...
@@ -86,7 +86,7 @@ summary = summarize(
 
 ```python
 import asyncio
-from pyagent import summarize
+from pyai import summarize
 
 async def main():
     summary = await summarize.async_("https://example.com/article")

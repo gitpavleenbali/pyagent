@@ -5,7 +5,7 @@ Pinecone is a managed cloud vector database optimized for production workloads.
 ## Installation
 
 ```bash
-pip install pyagent[vectordb]
+pip install pyai[vectordb]
 # or specifically
 pip install pinecone-client
 ```
@@ -13,7 +13,7 @@ pip install pinecone-client
 ## Connection
 
 ```python
-from pyagent.vectordb import connect
+from pyai.vectordb import connect
 
 db = connect(
     "pinecone",
@@ -26,7 +26,7 @@ db = connect(
 ## Configuration
 
 ```python
-from pyagent.vectordb.pinecone import PineconeStore
+from pyai.vectordb.pinecone import PineconeStore
 
 store = PineconeStore(
     api_key="your-api-key",

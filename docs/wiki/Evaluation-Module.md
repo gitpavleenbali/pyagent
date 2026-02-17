@@ -5,7 +5,7 @@ The Evaluation module provides comprehensive tools for testing, benchmarking, an
 ## Overview
 
 ```python
-from pyagent.evaluation import Evaluator, TestCase, EvalSet, EvalCriteria
+from pyai.evaluation import Evaluator, TestCase, EvalSet, EvalCriteria
 ```
 
 ## Key Components
@@ -21,7 +21,7 @@ from pyagent.evaluation import Evaluator, TestCase, EvalSet, EvalCriteria
 ## Quick Start
 
 ```python
-from pyagent.evaluation import Evaluator, TestCase, EvalSet
+from pyai.evaluation import Evaluator, TestCase, EvalSet
 
 # Create test cases
 test_cases = [
@@ -53,7 +53,7 @@ print(f"Average Score: {results.avg_score}")
 
 ### Accuracy Criteria
 ```python
-from pyagent.evaluation.criteria import AccuracyCriteria
+from pyai.evaluation.criteria import AccuracyCriteria
 
 criteria = AccuracyCriteria(
     threshold=0.8,  # 80% accuracy required
@@ -63,7 +63,7 @@ criteria = AccuracyCriteria(
 
 ### Custom Criteria
 ```python
-from pyagent.evaluation import EvalCriteria
+from pyai.evaluation import EvalCriteria
 
 class ToneCriteria(EvalCriteria):
     def evaluate(self, output: str, expected: str) -> float:
@@ -101,7 +101,7 @@ The evaluation module tracks:
 # .github/workflows/eval.yml
 - name: Run Agent Evaluation
   run: |
-    python -m pyagent.evaluation run \
+    python -m pyai.evaluation run \
       --eval-set tests/eval_cases.yaml \
       --threshold 0.85 \
       --output results.json

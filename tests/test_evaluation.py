@@ -1,5 +1,5 @@
 # pyright: reportMissingImports=false, reportUnusedVariable=false, reportGeneralTypeIssues=false
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -24,12 +24,12 @@ class TestTestCase:
     
     def test_testcase_import(self):
         """Test that TestCase can be imported."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         assert TestCase is not None
     
     def test_basic_testcase(self):
         """Test creating a basic test case."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         
         tc = TestCase(
             input="What is 2+2?",
@@ -42,7 +42,7 @@ class TestTestCase:
     
     def test_testcase_with_contains(self):
         """Test test case with expected_contains."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         
         tc = TestCase(
             input="Tell me about Python",
@@ -53,7 +53,7 @@ class TestTestCase:
     
     def test_testcase_with_not_contains(self):
         """Test test case with expected_not_contains."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         
         tc = TestCase(
             input="What is the capital of France?",
@@ -64,7 +64,7 @@ class TestTestCase:
     
     def test_testcase_with_tags(self):
         """Test test case with tags."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         
         tc = TestCase(
             input="Calculate 5*5",
@@ -77,7 +77,7 @@ class TestTestCase:
     
     def test_testcase_to_dict(self):
         """Test test case serialization."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         
         tc = TestCase(
             input="Hello",
@@ -93,7 +93,7 @@ class TestTestCase:
     
     def test_testcase_from_dict(self):
         """Test test case deserialization."""
-        from pyagent.evaluation import TestCase
+        from pyai.evaluation import TestCase
         
         data = {
             "input": "Test input",
@@ -112,12 +112,12 @@ class TestEvalSet:
     
     def test_evalset_import(self):
         """Test that EvalSet can be imported."""
-        from pyagent.evaluation import EvalSet
+        from pyai.evaluation import EvalSet
         assert EvalSet is not None
     
     def test_create_evalset(self):
         """Test creating an eval set."""
-        from pyagent.evaluation import EvalSet, TestCase
+        from pyai.evaluation import EvalSet, TestCase
         
         eval_set = EvalSet([
             TestCase(input="Q1", expected="A1"),
@@ -128,7 +128,7 @@ class TestEvalSet:
     
     def test_evalset_add(self):
         """Test adding test cases."""
-        from pyagent.evaluation import EvalSet, TestCase
+        from pyai.evaluation import EvalSet, TestCase
         
         eval_set = EvalSet()
         eval_set.add(TestCase(input="Q1", expected="A1"))
@@ -137,7 +137,7 @@ class TestEvalSet:
     
     def test_evalset_filter_by_tags(self):
         """Test filtering by tags."""
-        from pyagent.evaluation import EvalSet, TestCase
+        from pyai.evaluation import EvalSet, TestCase
         
         eval_set = EvalSet([
             TestCase(input="Math Q", expected="Math A", tags=["math"]),
@@ -151,7 +151,7 @@ class TestEvalSet:
     
     def test_evalset_to_json(self):
         """Test JSON serialization."""
-        from pyagent.evaluation import EvalSet, TestCase
+        from pyai.evaluation import EvalSet, TestCase
         
         eval_set = EvalSet([
             TestCase(input="Q1", expected="A1"),
@@ -165,7 +165,7 @@ class TestEvalSet:
     
     def test_evalset_from_json(self):
         """Test JSON deserialization."""
-        from pyagent.evaluation import EvalSet
+        from pyai.evaluation import EvalSet
         
         json_str = json.dumps({
             "name": "loaded-set",
@@ -181,7 +181,7 @@ class TestEvalSet:
     
     def test_evalset_save_and_load(self):
         """Test saving and loading from file."""
-        from pyagent.evaluation import EvalSet, TestCase
+        from pyai.evaluation import EvalSet, TestCase
         
         with tempfile.TemporaryDirectory() as tmpdir:
             filepath = os.path.join(tmpdir, "tests.evalset.json")
@@ -204,7 +204,7 @@ class TestEvalCriteria:
     
     def test_exact_match(self):
         """Test ExactMatch criteria."""
-        from pyagent.evaluation import ExactMatch
+        from pyai.evaluation import ExactMatch
         
         criteria = ExactMatch()
         
@@ -218,7 +218,7 @@ class TestEvalCriteria:
     
     def test_exact_match_ignore_case(self):
         """Test ExactMatch with ignore_case."""
-        from pyagent.evaluation import ExactMatch
+        from pyai.evaluation import ExactMatch
         
         criteria = ExactMatch(ignore_case=True)
         
@@ -227,7 +227,7 @@ class TestEvalCriteria:
     
     def test_contains_match(self):
         """Test ContainsMatch criteria."""
-        from pyagent.evaluation import ContainsMatch
+        from pyai.evaluation import ContainsMatch
         
         criteria = ContainsMatch(substrings=["hello", "world"])
         
@@ -239,7 +239,7 @@ class TestEvalCriteria:
     
     def test_contains_match_any(self):
         """Test ContainsMatch with match_all=False."""
-        from pyagent.evaluation import ContainsMatch
+        from pyai.evaluation import ContainsMatch
         
         criteria = ContainsMatch(substrings=["hello", "world"], match_all=False)
         
@@ -248,7 +248,7 @@ class TestEvalCriteria:
     
     def test_not_contains_match(self):
         """Test NotContainsMatch criteria."""
-        from pyagent.evaluation import NotContainsMatch
+        from pyai.evaluation import NotContainsMatch
         
         criteria = NotContainsMatch(forbidden=["password", "secret"])
         
@@ -260,7 +260,7 @@ class TestEvalCriteria:
     
     def test_regex_match(self):
         """Test RegexMatch criteria."""
-        from pyagent.evaluation import RegexMatch
+        from pyai.evaluation import RegexMatch
         
         criteria = RegexMatch(pattern=r"\d{4}-\d{2}-\d{2}")
         
@@ -272,7 +272,7 @@ class TestEvalCriteria:
     
     def test_json_schema_criteria(self):
         """Test JSONSchema criteria."""
-        from pyagent.evaluation import JSONSchema
+        from pyai.evaluation import JSONSchema
         
         criteria = JSONSchema(schema={
             "type": "object",
@@ -287,7 +287,7 @@ class TestEvalCriteria:
     
     def test_length_check(self):
         """Test LengthCheck criteria."""
-        from pyagent.evaluation import LengthCheck
+        from pyai.evaluation import LengthCheck
         
         criteria = LengthCheck(min_length=5, max_length=20)
         
@@ -302,7 +302,7 @@ class TestEvalCriteria:
     
     def test_custom_criteria(self):
         """Test CustomCriteria."""
-        from pyagent.evaluation import CustomCriteria
+        from pyai.evaluation import CustomCriteria
         
         def check_uppercase(actual, expected, context):
             is_upper = actual.isupper()
@@ -318,7 +318,7 @@ class TestEvalCriteria:
     
     def test_composite_criteria(self):
         """Test CompositeCriteria."""
-        from pyagent.evaluation import CompositeCriteria, LengthCheck, ContainsMatch
+        from pyai.evaluation import CompositeCriteria, LengthCheck, ContainsMatch
         
         criteria = CompositeCriteria([
             LengthCheck(min_length=5),
@@ -337,12 +337,12 @@ class TestEvaluator:
     
     def test_evaluator_import(self):
         """Test that Evaluator can be imported."""
-        from pyagent.evaluation import Evaluator
+        from pyai.evaluation import Evaluator
         assert Evaluator is not None
     
     def test_evaluator_with_callable(self):
         """Test evaluator with a simple callable."""
-        from pyagent.evaluation import Evaluator, EvalSet, TestCase
+        from pyai.evaluation import Evaluator, EvalSet, TestCase
         
         # Simple agent that echoes
         def echo_agent(input_text):
@@ -362,7 +362,7 @@ class TestEvaluator:
     
     def test_evaluator_with_failures(self):
         """Test evaluator with failing tests."""
-        from pyagent.evaluation import Evaluator, EvalSet, TestCase
+        from pyai.evaluation import Evaluator, EvalSet, TestCase
         
         def wrong_agent(input_text):
             return "always wrong"
@@ -381,7 +381,7 @@ class TestEvaluator:
     
     def test_evaluator_metrics(self):
         """Test metrics calculation."""
-        from pyagent.evaluation import Evaluator, EvalSet, TestCase
+        from pyai.evaluation import Evaluator, EvalSet, TestCase
         
         def partial_agent(input_text):
             if "pass" in input_text:
@@ -404,7 +404,7 @@ class TestEvaluator:
     
     def test_evaluator_summary(self):
         """Test metrics summary generation."""
-        from pyagent.evaluation import Evaluator, EvalSet, TestCase
+        from pyai.evaluation import Evaluator, EvalSet, TestCase
         
         def echo_agent(x):
             return x
@@ -428,7 +428,7 @@ class TestEvaluateAgent:
     
     def test_evaluate_agent_function(self):
         """Test evaluate_agent function."""
-        from pyagent.evaluation import evaluate_agent, TestCase
+        from pyai.evaluation import evaluate_agent, TestCase
         
         def simple_agent(x):
             return x.upper()
@@ -442,7 +442,7 @@ class TestEvaluateAgent:
     
     def test_evaluate_agent_with_dicts(self):
         """Test evaluate_agent with dict test cases."""
-        from pyagent.evaluation import evaluate_agent
+        from pyai.evaluation import evaluate_agent
         
         def simple_agent(x):
             return x.upper()
@@ -461,7 +461,7 @@ class TestCompareAgents:
     
     def test_compare_agents_function(self):
         """Test compare_agents function."""
-        from pyagent.evaluation import compare_agents, TestCase
+        from pyai.evaluation import compare_agents, TestCase
         
         def agent1(x):
             return "CORRECT ANSWER"
@@ -490,7 +490,7 @@ class TestEvalStatus:
     
     def test_eval_status_values(self):
         """Test EvalStatus enum values."""
-        from pyagent.evaluation import EvalStatus
+        from pyai.evaluation import EvalStatus
         
         assert EvalStatus.PASSED.value == "passed"
         assert EvalStatus.FAILED.value == "failed"
@@ -503,7 +503,7 @@ class TestEvalIntegration:
     
     def test_module_exports(self):
         """Test that all expected exports are available."""
-        from pyagent import evaluation
+        from pyai import evaluation
         
         assert hasattr(evaluation, "TestCase")
         assert hasattr(evaluation, "EvalSet")
@@ -514,17 +514,17 @@ class TestEvalIntegration:
         assert hasattr(evaluation, "ContainsMatch")
     
     def test_main_init_exports(self):
-        """Test that evaluation is exported from main pyagent."""
-        import pyagent
+        """Test that evaluation is exported from main pyai."""
+        import pyai
         
-        assert hasattr(pyagent, "evaluation")
-        assert hasattr(pyagent, "evaluate_agent")
-        assert hasattr(pyagent, "EvalSet")
-        assert hasattr(pyagent, "TestCase")
+        assert hasattr(pyai, "evaluation")
+        assert hasattr(pyai, "evaluate_agent")
+        assert hasattr(pyai, "EvalSet")
+        assert hasattr(pyai, "TestCase")
     
     def test_full_evaluation_workflow(self):
         """Test complete evaluation workflow."""
-        from pyagent.evaluation import (
+        from pyai.evaluation import (
             EvalSet, TestCase, Evaluator, EvalConfig,
             ExactMatch, ContainsMatch
         )

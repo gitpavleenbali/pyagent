@@ -1,4 +1,4 @@
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -24,12 +24,12 @@ class TestModelRegistry:
     
     def test_registry_import(self):
         """Test that ModelRegistry can be imported."""
-        from pyagent.models import ModelRegistry
+        from pyai.models import ModelRegistry
         assert ModelRegistry is not None
     
     def test_registry_singleton(self):
         """Test that registry uses singleton pattern."""
-        from pyagent.models.registry import ModelRegistry
+        from pyai.models.registry import ModelRegistry
         
         r1 = ModelRegistry()
         r2 = ModelRegistry()
@@ -38,7 +38,7 @@ class TestModelRegistry:
     
     def test_registry_list_providers(self):
         """Test listing available providers."""
-        from pyagent.models import ModelRegistry
+        from pyai.models import ModelRegistry
         
         providers = ModelRegistry.list_providers()
         
@@ -52,8 +52,8 @@ class TestModelRegistry:
     
     def test_get_model_with_provider(self):
         """Test get_model with explicit provider."""
-        from pyagent.models import get_model
-        from pyagent.models.openai import OpenAIModel
+        from pyai.models import get_model
+        from pyai.models.openai import OpenAIModel
         
         # Mock the API key
         with patch.dict(os.environ, {"OPENAI_API_KEY": "sk-test123"}):
@@ -62,15 +62,15 @@ class TestModelRegistry:
     
     def test_get_model_from_string(self):
         """Test registry from_string method."""
-        from pyagent.models.registry import ModelRegistry
-        from pyagent.models.ollama import OllamaModel
+        from pyai.models.registry import ModelRegistry
+        from pyai.models.ollama import OllamaModel
         
         model = ModelRegistry.from_string("ollama/llama3.2")
         assert isinstance(model, OllamaModel)
     
     def test_get_model_mock(self):
         """Test mock model for testing."""
-        from pyagent.models import get_model
+        from pyai.models import get_model
         
         model = get_model(provider="mock")
         assert model is not None
@@ -85,7 +85,7 @@ class TestBaseModel:
     
     def test_message_class(self):
         """Test Message dataclass."""
-        from pyagent.models.base import Message
+        from pyai.models.base import Message
         
         msg = Message(role="user", content="Hello")
         assert msg.role == "user"
@@ -93,7 +93,7 @@ class TestBaseModel:
     
     def test_message_to_dict(self):
         """Test Message to_dict conversion."""
-        from pyagent.models.base import Message
+        from pyai.models.base import Message
         
         msg = Message(role="assistant", content="Hi there")
         d = msg.to_dict()
@@ -103,7 +103,7 @@ class TestBaseModel:
     
     def test_model_config(self):
         """Test ModelConfig dataclass."""
-        from pyagent.models.base import ModelConfig
+        from pyai.models.base import ModelConfig
         
         config = ModelConfig(
             model_id="gpt-4o",
@@ -117,7 +117,7 @@ class TestBaseModel:
     
     def test_model_response(self):
         """Test ModelResponse dataclass."""
-        from pyagent.models.base import ModelResponse, Usage
+        from pyai.models.base import ModelResponse, Usage
         
         usage = Usage(prompt_tokens=10, completion_tokens=20, total_tokens=30)
         response = ModelResponse(
@@ -132,7 +132,7 @@ class TestBaseModel:
     
     def test_tool_call(self):
         """Test ToolCall dataclass."""
-        from pyagent.models.base import ToolCall
+        from pyai.models.base import ToolCall
         
         tc = ToolCall(
             id="call-123",
@@ -146,7 +146,7 @@ class TestBaseModel:
     
     def test_model_capability_enum(self):
         """Test ModelCapability enum."""
-        from pyagent.models.base import ModelCapability
+        from pyai.models.base import ModelCapability
         
         assert ModelCapability.CHAT is not None
         assert ModelCapability.VISION is not None
@@ -159,12 +159,12 @@ class TestAzureOpenAIModel:
     
     def test_import(self):
         """Test that AzureOpenAIModel can be imported."""
-        from pyagent.models.azure_openai import AzureOpenAIModel
+        from pyai.models.azure_openai import AzureOpenAIModel
         assert AzureOpenAIModel is not None
     
     def test_init_with_api_key(self):
         """Test initialization with API key."""
-        from pyagent.models.azure_openai import AzureOpenAIModel
+        from pyai.models.azure_openai import AzureOpenAIModel
         
         model = AzureOpenAIModel(
             deployment="gpt-4o",
@@ -177,8 +177,8 @@ class TestAzureOpenAIModel:
     
     def test_capabilities(self):
         """Test model capabilities."""
-        from pyagent.models.azure_openai import AzureOpenAIModel
-        from pyagent.models.base import ModelCapability
+        from pyai.models.azure_openai import AzureOpenAIModel
+        from pyai.models.base import ModelCapability
         
         model = AzureOpenAIModel(
             deployment="gpt-4o",
@@ -196,13 +196,13 @@ class TestOpenAIModel:
     
     def test_import(self):
         """Test that OpenAIModel can be imported."""
-        from pyagent.models.openai import OpenAIModel
+        from pyai.models.openai import OpenAIModel
         assert OpenAIModel is not None
     
     def test_init(self):
         """Test initialization."""
-        from pyagent.models.openai import OpenAIModel
-        from pyagent.models.base import ModelConfig
+        from pyai.models.openai import OpenAIModel
+        from pyai.models.base import ModelConfig
         
         config = ModelConfig(model_id="gpt-4o-mini")
         model = OpenAIModel(config=config, api_key="test-key")
@@ -214,12 +214,12 @@ class TestOllamaModel:
     
     def test_import(self):
         """Test that OllamaModel can be imported."""
-        from pyagent.models.ollama import OllamaModel
+        from pyai.models.ollama import OllamaModel
         assert OllamaModel is not None
     
     def test_init_defaults(self):
         """Test initialization with defaults."""
-        from pyagent.models.ollama import OllamaModel
+        from pyai.models.ollama import OllamaModel
         
         model = OllamaModel(model_id="llama3.2")
         
@@ -228,7 +228,7 @@ class TestOllamaModel:
     
     def test_init_custom_url(self):
         """Test initialization with custom host URL."""
-        from pyagent.models.ollama import OllamaModel
+        from pyai.models.ollama import OllamaModel
         
         model = OllamaModel(
             model_id="codellama",
@@ -239,7 +239,7 @@ class TestOllamaModel:
     
     def test_supported_models(self):
         """Test known Ollama models."""
-        from pyagent.models.ollama import OllamaModel
+        from pyai.models.ollama import OllamaModel
         
         # Should not raise
         for model_name in ["llama3.2", "codellama", "mistral", "phi3"]:
@@ -252,12 +252,12 @@ class TestAnthropicModel:
     
     def test_import(self):
         """Test that AnthropicModel can be imported."""
-        from pyagent.models.anthropic import AnthropicModel
+        from pyai.models.anthropic import AnthropicModel
         assert AnthropicModel is not None
     
     def test_init(self):
         """Test initialization."""
-        from pyagent.models.anthropic import AnthropicModel
+        from pyai.models.anthropic import AnthropicModel
         
         model = AnthropicModel(
             model_id="claude-3-5-sonnet-20241022",
@@ -272,12 +272,12 @@ class TestGeminiModel:
     
     def test_import(self):
         """Test that GeminiModel can be imported."""
-        from pyagent.models.gemini import GeminiModel
+        from pyai.models.gemini import GeminiModel
         assert GeminiModel is not None
     
     def test_init(self):
         """Test initialization."""
-        from pyagent.models.gemini import GeminiModel
+        from pyai.models.gemini import GeminiModel
         
         model = GeminiModel(
             model_id="gemini-2.5-flash",
@@ -292,19 +292,19 @@ class TestLiteLLMModel:
     
     def test_import(self):
         """Test that LiteLLMModel can be imported."""
-        from pyagent.models.litellm import LiteLLMModel
+        from pyai.models.litellm import LiteLLMModel
         assert LiteLLMModel is not None
     
     def test_init(self):
         """Test initialization."""
-        from pyagent.models.litellm import LiteLLMModel
+        from pyai.models.litellm import LiteLLMModel
         
         model = LiteLLMModel(model_id="gpt-4o")
         assert model.model_id == "gpt-4o"
     
     def test_provider_prefix(self):
         """Test provider prefix handling."""
-        from pyagent.models.litellm import LiteLLMModel
+        from pyai.models.litellm import LiteLLMModel
         
         # Various provider formats
         model1 = LiteLLMModel(model_id="openai/gpt-4o")
@@ -321,7 +321,7 @@ class TestMockModel:
     
     def test_mock_generate(self):
         """Test mock model generation."""
-        from pyagent.models import get_model
+        from pyai.models import get_model
         
         model = get_model(provider="mock")
         response = model.generate([{"role": "user", "content": "Hello"}])
@@ -332,8 +332,8 @@ class TestMockModel:
     
     def test_mock_with_messages(self):
         """Test mock model with message list."""
-        from pyagent.models import get_model
-        from pyagent.models.base import Message
+        from pyai.models import get_model
+        from pyai.models.base import Message
         
         model = get_model(provider="mock")
         messages = [
@@ -349,7 +349,7 @@ class TestModelIntegration:
     
     def test_get_model_function(self):
         """Test the get_model convenience function."""
-        from pyagent.models import get_model
+        from pyai.models import get_model
         
         # Should work with mock
         model = get_model(provider="mock")
@@ -357,7 +357,7 @@ class TestModelIntegration:
     
     def test_module_exports(self):
         """Test that all expected exports are available."""
-        from pyagent import models
+        from pyai import models
         
         # Check main exports
         assert hasattr(models, "get_model")
@@ -371,9 +371,9 @@ class TestModelIntegration:
         assert hasattr(models, "LiteLLMModel")
     
     def test_main_init_exports(self):
-        """Test that models is exported from main pyagent."""
-        import pyagent
+        """Test that models is exported from main pyai."""
+        import pyai
         
         # Should be able to access models module
-        assert hasattr(pyagent, "models")
-        assert hasattr(pyagent, "get_model")
+        assert hasattr(pyai, "models")
+        assert hasattr(pyai, "get_model")

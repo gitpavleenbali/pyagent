@@ -1,7 +1,7 @@
 # pyright: reportMissingImports=false, reportUnusedVariable=false, reportUnusedImport=false, reportPrivateUsage=false, reportAttributeAccessIssue=false, reportGeneralTypeIssues=false, reportOptionalMemberAccess=false
 # pylint: disable=all
 # type: ignore
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -25,7 +25,7 @@ class TestVoiceSmoke:
     
     def test_audio_chunk_creation(self):
         """Test AudioChunk can be created with data."""
-        from pyagent.voice.stream import AudioChunk, AudioFormat
+        from pyai.voice.stream import AudioChunk, AudioFormat
         
         # Create chunk
         chunk = AudioChunk(
@@ -40,7 +40,7 @@ class TestVoiceSmoke:
     
     def test_audio_stream_buffering(self):
         """Test AudioStream buffers chunks correctly."""
-        from pyagent.voice.stream import AudioStream, AudioChunk
+        from pyai.voice.stream import AudioStream, AudioChunk
         
         stream = AudioStream()
         
@@ -57,7 +57,7 @@ class TestVoiceSmoke:
     @pytest.mark.skip(reason="DuplexAudioStream implementation incomplete")
     def test_duplex_stream(self):
         """Test DuplexAudioStream bidirectional flow."""
-        from pyagent.voice.stream import DuplexAudioStream, AudioChunk
+        from pyai.voice.stream import DuplexAudioStream, AudioChunk
         
         duplex = DuplexAudioStream()
         
@@ -71,7 +71,7 @@ class TestVoiceSmoke:
     
     def test_voice_session_lifecycle(self):
         """Test VoiceSession state management."""
-        from pyagent.voice.session import VoiceSession, SessionState
+        from pyai.voice.session import VoiceSession, SessionState
         
         session = VoiceSession()
         
@@ -84,7 +84,7 @@ class TestVoiceSmoke:
     
     def test_transcription_result_structure(self):
         """Test TranscriptionResult dataclass."""
-        from pyagent.voice.transcription import TranscriptionResult
+        from pyai.voice.transcription import TranscriptionResult
         
         result = TranscriptionResult(
             text="Hello, how are you?",
@@ -98,7 +98,7 @@ class TestVoiceSmoke:
     
     def test_synthesis_result_structure(self):
         """Test SynthesisResult dataclass."""
-        from pyagent.voice.synthesis import SynthesisResult
+        from pyai.voice.synthesis import SynthesisResult
         
         result = SynthesisResult(
             audio=b"\x00\x01\x02\x03",
@@ -118,7 +118,7 @@ class TestA2ASmoke:
     
     def test_agent_card_serialization(self):
         """Test AgentCard can be serialized and deserialized."""
-        from pyagent.a2a.protocol import AgentCard
+        from pyai.a2a.protocol import AgentCard
         
         card = AgentCard(
             name="research-agent",
@@ -142,7 +142,7 @@ class TestA2ASmoke:
     
     def test_a2a_task_creation(self):
         """Test A2ATask can be created from text."""
-        from pyagent.a2a.protocol import A2ATask
+        from pyai.a2a.protocol import A2ATask
         
         task = A2ATask.from_text("Research the latest AI trends")
         
@@ -152,7 +152,7 @@ class TestA2ASmoke:
     
     def test_a2a_response_success(self):
         """Test A2AResponse can represent success."""
-        from pyagent.a2a.protocol import A2AResponse, TaskStatus
+        from pyai.a2a.protocol import A2AResponse, TaskStatus
         
         response = A2AResponse.success("task-123", "Here is the research result")
         
@@ -163,7 +163,7 @@ class TestA2ASmoke:
     
     def test_a2a_response_failure(self):
         """Test A2AResponse can represent failure."""
-        from pyagent.a2a.protocol import A2AResponse, TaskStatus
+        from pyai.a2a.protocol import A2AResponse, TaskStatus
         
         response = A2AResponse.failure("task-456", "Task failed due to timeout")
         
@@ -173,7 +173,7 @@ class TestA2ASmoke:
     
     def test_a2a_endpoint_registration(self):
         """Test A2AEndpoint can be defined."""
-        from pyagent.a2a.server import A2AEndpoint
+        from pyai.a2a.server import A2AEndpoint
         
         def handler(task):
             return {"status": "completed"}
@@ -189,8 +189,8 @@ class TestA2ASmoke:
     @pytest.mark.skip(reason="A2AServer implementation incomplete")
     def test_a2a_server_instantiation(self):
         """Test A2AServer can be instantiated."""
-        from pyagent.a2a.server import A2AServer
-        from pyagent.a2a.protocol import AgentCard
+        from pyai.a2a.server import A2AServer
+        from pyai.a2a.protocol import AgentCard
         
         card = AgentCard(name="test-agent")
         server = A2AServer(port=8080)
@@ -199,7 +199,7 @@ class TestA2ASmoke:
     
     def test_agent_registry_singleton(self):
         """Test AgentRegistry provides singleton access."""
-        from pyagent.a2a.registry import AgentRegistry
+        from pyai.a2a.registry import AgentRegistry
         
         registry1 = AgentRegistry.get_default()
         registry2 = AgentRegistry.get_default()
@@ -209,7 +209,7 @@ class TestA2ASmoke:
     @pytest.mark.skip(reason="RemoteAgent implementation incomplete")
     def test_remote_agent_wrapper(self):
         """Test RemoteAgent can wrap a URL."""
-        from pyagent.a2a.client import RemoteAgent
+        from pyai.a2a.client import RemoteAgent
         
         remote = RemoteAgent(url="https://agent.example.com")
         
@@ -225,7 +225,7 @@ class TestDevUISmoke:
     
     def test_devui_instantiation(self):
         """Test DevUI can be instantiated."""
-        from pyagent.devui.ui import DevUI
+        from pyai.devui.ui import DevUI
         
         ui = DevUI(title="Test Agent")
         
@@ -233,7 +233,7 @@ class TestDevUISmoke:
     
     def test_devui_custom_handler(self):
         """Test DevUI can use custom handler."""
-        from pyagent.devui.ui import DevUI
+        from pyai.devui.ui import DevUI
         
         calls = []
         
@@ -250,7 +250,7 @@ class TestDevUISmoke:
     @pytest.mark.skip(reason="AgentMetrics implementation incomplete")
     def test_dashboard_metrics_tracking(self):
         """Test AgentDashboard tracks metrics."""
-        from pyagent.devui.dashboard import AgentDashboard
+        from pyai.devui.dashboard import AgentDashboard
         from datetime import datetime, timedelta
         
         dashboard = AgentDashboard()
@@ -274,7 +274,7 @@ class TestDevUISmoke:
     
     def test_dashboard_agent_tracking(self):
         """Test AgentDashboard can be used with agents."""
-        from pyagent.devui.dashboard import AgentDashboard
+        from pyai.devui.dashboard import AgentDashboard
         
         dashboard = AgentDashboard()
         
@@ -285,7 +285,7 @@ class TestDevUISmoke:
     @pytest.mark.skip(reason="AgentDebugger.get_history not implemented")
     def test_debugger_event_logging(self):
         """Test AgentDebugger logs events."""
-        from pyagent.devui.debugger import AgentDebugger, DebugEvent
+        from pyai.devui.debugger import AgentDebugger, DebugEvent
         
         debugger = AgentDebugger()
         
@@ -302,7 +302,7 @@ class TestDevUISmoke:
     
     def test_debugger_breakpoints(self):
         """Test AgentDebugger manages breakpoints."""
-        from pyagent.devui.debugger import AgentDebugger
+        from pyai.devui.debugger import AgentDebugger
         
         debugger = AgentDebugger()
         
@@ -318,7 +318,7 @@ class TestDevUISmoke:
     
     def test_debugger_step_mode(self):
         """Test AgentDebugger has stepping capability."""
-        from pyagent.devui.debugger import AgentDebugger
+        from pyai.devui.debugger import AgentDebugger
         
         debugger = AgentDebugger()
         
@@ -336,7 +336,7 @@ class TestToolDiscoverySmoke:
     
     def test_tool_decorator_chain(self):
         """Test @tool decorator creates proper Tool objects."""
-        from pyagent.tools import tool, Tool
+        from pyai.tools import tool, Tool
         
         @tool(name="calculator", description="Calculate math")
         def calculate(expression: str) -> float:
@@ -355,7 +355,7 @@ class TestToolDiscoverySmoke:
     
     def test_tool_from_function_inference(self):
         """Test Tool.from_function infers metadata."""
-        from pyagent.tools import Tool
+        from pyai.tools import Tool
         
         def get_weather(city: str, unit: str = "celsius") -> dict:
             """Get weather for a city.
@@ -383,7 +383,7 @@ class TestContextCacheSmoke:
     def test_cache_ttl_expiry(self):
         """Test cache entries expire after TTL."""
         import time
-        from pyagent.core.cache import ContextCache
+        from pyai.core.cache import ContextCache
         
         cache = ContextCache(ttl=0.1)  # 100ms TTL
         cache.set("key", "value")
@@ -399,7 +399,7 @@ class TestContextCacheSmoke:
     
     def test_cache_max_entries(self):
         """Test cache has size limit capability."""
-        from pyagent.core.cache import ContextCache
+        from pyai.core.cache import ContextCache
         
         cache = ContextCache(max_entries=3)
         
@@ -420,7 +420,7 @@ class TestVectorDBSmoke:
     
     def test_memory_store_full_workflow(self):
         """Test complete workflow with MemoryVectorStore."""
-        from pyagent.vectordb import MemoryVectorStore
+        from pyai.vectordb import MemoryVectorStore
         
         store = MemoryVectorStore()
         
@@ -439,7 +439,7 @@ class TestVectorDBSmoke:
     
     def test_document_metadata(self):
         """Test Document preserves metadata."""
-        from pyagent.vectordb import Document
+        from pyai.vectordb import Document
         
         doc = Document.create(
             "Content here",
@@ -463,7 +463,7 @@ class TestMultimodalSmoke:
     
     def test_image_format_conversion(self):
         """Test Image converts between provider formats."""
-        from pyagent.multimodal import Image
+        from pyai.multimodal import Image
         
         img = Image.from_base64("SGVsbG8gV29ybGQ=", media_type="image/png")
         
@@ -480,7 +480,7 @@ class TestMultimodalSmoke:
     
     def test_multimodal_content_builder(self):
         """Test MultimodalContent fluent builder."""
-        from pyagent.multimodal import MultimodalContent, Image
+        from pyai.multimodal import MultimodalContent, Image
         
         content = (
             MultimodalContent()
@@ -507,7 +507,7 @@ class TestSessionCheckpointSmoke:
     
     def test_checkpoint_serialization(self):
         """Test checkpoints can be serialized with session."""
-        from pyagent.sessions import Session
+        from pyai.sessions import Session
         
         session = Session()
         session.add_user_message("Hello")
@@ -527,7 +527,7 @@ class TestSessionCheckpointSmoke:
     
     def test_checkpoint_rewind_preserves_earlier(self):
         """Test rewind preserves earlier checkpoints."""
-        from pyagent.sessions import Session
+        from pyai.sessions import Session
         
         session = Session()
         session.add_user_message("1")

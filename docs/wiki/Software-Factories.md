@@ -33,7 +33,7 @@ Software Factories represent the future of development — where AI doesn't just
 Natural language descriptions become working software:
 
 ```python
-from pyagent import code
+from pyai import code
 
 # Describe what you want
 result = code.write("""
@@ -95,7 +95,7 @@ Software Factories are built on the PYAI Intelligence Stack:
 │                    YOUR APPLICATION                       │
 ├──────────────────────────────────────────────────────────┤
 │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐     │
-│  │ PyAgent │  │ PyFlow  │  │PyVision │  │ PyVoice │     │
+│  │ pyai │  │ PyFlow  │  │PyVision │  │ PyVoice │     │
 │  │ Agents  │  │Workflow │  │ Vision  │  │  Audio  │     │
 │  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘     │
 │       │            │            │            │           │
@@ -119,7 +119,7 @@ The `code` module in PYAI provides the building blocks for Software Factories:
 Generate new code from descriptions.
 
 ```python
-from pyagent import code
+from pyai import code
 
 result = code.write("fibonacci function with memoization")
 print(result)  # Complete, working implementation
@@ -171,8 +171,8 @@ improved = code.refactor(old_code, goal="testability")
 Building a complete microservice in seconds:
 
 ```python
-from pyagent import code, Agent
-from pyagent.blueprint import Workflow, Step
+from pyai import code, Agent
+from pyai.blueprint import Workflow, Step
 
 # Agent specialized in different aspects
 architect = Agent(name="Architect", instructions="Design system architecture")
@@ -209,7 +209,7 @@ The PYAI roadmap leads to fully autonomous software development:
 
 | Milestone | Description |
 |-----------|-------------|
-| **PyAgent** | Core intelligence SDK *(Available now)* |
+| **pyai** | Core intelligence SDK *(Available now)* |
 | **PyFlow** | Visual workflow orchestration *(Coming soon)* |
 | **PyFactory** | Full software generation engine *(In development)* |
 | **PyMind** | Autonomous reasoning systems *(Future)* |

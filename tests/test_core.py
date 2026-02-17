@@ -1,5 +1,5 @@
 # pyright: reportUnusedImport=false
-"""PyAgent Core Module Unit Tests
+"""pyai Core Module Unit Tests
 ==============================
 
 Unit tests for core modules: Agent, Memory, LLM providers.
@@ -16,18 +16,18 @@ class TestAgentFactory:
     
     def test_import_agent_function(self):
         """Test importing agent function."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         assert agent is not None
         assert callable(agent)
     
     def test_import_simple_agent_class(self):
         """Test importing SimpleAgent class."""
-        from pyagent.easy.agent_factory import SimpleAgent
+        from pyai.easy.agent_factory import SimpleAgent
         assert SimpleAgent is not None
     
     def test_create_agent_with_string(self):
         """Test creating agent with string instructions."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         
         my_agent = agent("You are a helpful assistant")
         assert my_agent is not None
@@ -35,14 +35,14 @@ class TestAgentFactory:
     
     def test_create_agent_with_name(self):
         """Test creating agent with custom name."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         
         my_agent = agent("Test instructions", name="TestBot")
         assert my_agent.name == "TestBot"
     
     def test_create_agent_with_persona(self):
         """Test creating agent with persona."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         
         my_agent = agent(persona="researcher")
         assert my_agent is not None
@@ -51,7 +51,7 @@ class TestAgentFactory:
     
     def test_agent_has_messages(self):
         """Test that agent has messages list."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         
         my_agent = agent("Test")
         assert hasattr(my_agent, 'messages')
@@ -61,7 +61,7 @@ class TestAgentFactory:
     
     def test_agent_has_history(self):
         """Test that agent has history property."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         
         my_agent = agent("Test")
         assert hasattr(my_agent, 'history')
@@ -70,7 +70,7 @@ class TestAgentFactory:
     
     def test_agent_clear_memory(self):
         """Test agent clear method."""
-        from pyagent.easy.agent_factory import agent
+        from pyai.easy.agent_factory import agent
         
         my_agent = agent("Test", memory=True)
         # Agent starts with system message
@@ -87,28 +87,28 @@ class TestSimpleAgentClass:
     
     def test_simple_agent_init(self):
         """Test SimpleAgent initialization."""
-        from pyagent.easy.agent_factory import SimpleAgent
+        from pyai.easy.agent_factory import SimpleAgent
         
         agent = SimpleAgent(instructions="Test instructions")
         assert agent.instructions == "Test instructions"
     
     def test_simple_agent_default_name(self):
         """Test SimpleAgent default name."""
-        from pyagent.easy.agent_factory import SimpleAgent
+        from pyai.easy.agent_factory import SimpleAgent
         
         agent = SimpleAgent(instructions="Test")
         assert agent.name == "Agent"
     
     def test_simple_agent_custom_name(self):
         """Test SimpleAgent custom name."""
-        from pyagent.easy.agent_factory import SimpleAgent
+        from pyai.easy.agent_factory import SimpleAgent
         
         agent = SimpleAgent(instructions="Test", name="CustomBot")
         assert agent.name == "CustomBot"
     
     def test_simple_agent_repr(self):
         """Test SimpleAgent string representation."""
-        from pyagent.easy.agent_factory import SimpleAgent
+        from pyai.easy.agent_factory import SimpleAgent
         
         agent = SimpleAgent(instructions="Test", name="TestBot")
         repr_str = repr(agent)
@@ -121,22 +121,22 @@ class TestMemory:
     
     def test_import_memory(self):
         """Test importing memory module."""
-        from pyagent.core import memory
+        from pyai.core import memory
         assert memory is not None
     
     def test_memory_class_exists(self):
         """Test Memory base class exists."""
-        from pyagent.core.memory import Memory
+        from pyai.core.memory import Memory
         assert Memory is not None
     
     def test_conversation_memory_exists(self):
         """Test ConversationMemory class exists."""
-        from pyagent.core.memory import ConversationMemory
+        from pyai.core.memory import ConversationMemory
         assert ConversationMemory is not None
     
     def test_vector_memory_exists(self):
         """Test VectorMemory class exists."""
-        from pyagent.core.memory import VectorMemory
+        from pyai.core.memory import VectorMemory
         assert VectorMemory is not None
 
 
@@ -145,12 +145,12 @@ class TestLLMInterface:
     
     def test_import_llm_interface(self):
         """Test importing LLM interface."""
-        from pyagent.easy.llm_interface import LLMInterface
+        from pyai.easy.llm_interface import LLMInterface
         assert LLMInterface is not None
     
     def test_llm_interface_has_chat(self):
         """Test LLMInterface has chat method."""
-        from pyagent.easy.llm_interface import LLMInterface
+        from pyai.easy.llm_interface import LLMInterface
         
         llm = LLMInterface()
         assert hasattr(llm, 'chat')
@@ -158,7 +158,7 @@ class TestLLMInterface:
     
     def test_llm_interface_has_complete(self):
         """Test LLMInterface has complete method."""
-        from pyagent.easy.llm_interface import LLMInterface
+        from pyai.easy.llm_interface import LLMInterface
         
         llm = LLMInterface()
         assert hasattr(llm, 'complete')
@@ -170,21 +170,21 @@ class TestConfig:
     
     def test_import_configure(self):
         """Test importing configure function."""
-        from pyagent.easy.config import configure
+        from pyai.easy.config import configure
         assert configure is not None
         assert callable(configure)
     
     def test_import_get_config(self):
         """Test importing get_config function."""
-        from pyagent.easy.config import get_config
+        from pyai.easy.config import get_config
         assert get_config is not None
         assert callable(get_config)
     
     def test_config_properties(self):
-        """Test PyAgentConfig has expected properties."""
-        from pyagent.easy.config import PyAgentConfig
+        """Test pyaiConfig has expected properties."""
+        from pyai.easy.config import pyaiConfig
         
-        cfg = PyAgentConfig()
+        cfg = pyaiConfig()
         assert hasattr(cfg, 'api_key')
         assert hasattr(cfg, 'model')
         assert hasattr(cfg, 'provider')
@@ -192,7 +192,7 @@ class TestConfig:
     
     def test_configure_sets_values(self):
         """Test configure function sets values."""
-        from pyagent.easy.config import configure, get_config, reset_config
+        from pyai.easy.config import configure, get_config, reset_config
         
         # Save original state
         reset_config()
@@ -209,12 +209,12 @@ class TestConfig:
     
     def test_config_object_exists(self):
         """Test config object can be imported."""
-        from pyagent.easy.config import config
+        from pyai.easy.config import config
         assert config is not None
     
     def test_config_set_model(self):
         """Test config.set_model method."""
-        from pyagent.easy.config import config, get_config, reset_config
+        from pyai.easy.config import config, get_config, reset_config
         
         reset_config()
         config.set_model("gpt-4o")
@@ -223,7 +223,7 @@ class TestConfig:
     
     def test_config_set_api_key(self):
         """Test config.set_api_key method."""
-        from pyagent.easy.config import config, get_config, reset_config
+        from pyai.easy.config import config, get_config, reset_config
         
         reset_config()
         config.set_api_key("test-key-123")
@@ -232,7 +232,7 @@ class TestConfig:
     
     def test_config_enable_mock(self):
         """Test config.enable_mock method."""
-        from pyagent.easy.config import config, is_mock_enabled, reset_config
+        from pyai.easy.config import config, is_mock_enabled, reset_config
         
         reset_config()
         config.enable_mock(True)
@@ -247,27 +247,27 @@ class TestSkills:
     
     def test_import_skill_base(self):
         """Test importing Skill base class."""
-        from pyagent.skills import Skill
+        from pyai.skills import Skill
         assert Skill is not None
     
     def test_import_tool_skill(self):
         """Test importing ToolSkill."""
-        from pyagent.skills import ToolSkill
+        from pyai.skills import ToolSkill
         assert ToolSkill is not None
     
     def test_import_action_skill(self):
         """Test importing ActionSkill."""
-        from pyagent.skills import ActionSkill
+        from pyai.skills import ActionSkill
         assert ActionSkill is not None
     
     def test_import_skill_registry(self):
         """Test importing SkillRegistry."""
-        from pyagent.skills import SkillRegistry
+        from pyai.skills import SkillRegistry
         assert SkillRegistry is not None
     
     def test_skill_registry_methods(self):
         """Test SkillRegistry has required methods."""
-        from pyagent.skills import SkillRegistry
+        from pyai.skills import SkillRegistry
         
         registry = SkillRegistry()
         assert hasattr(registry, 'register')
@@ -281,27 +281,27 @@ class TestInstructions:
     
     def test_import_instruction(self):
         """Test importing Instruction."""
-        from pyagent.instructions import Instruction
+        from pyai.instructions import Instruction
         assert Instruction is not None
     
     def test_import_system_prompt(self):
         """Test importing SystemPrompt."""
-        from pyagent.instructions import SystemPrompt
+        from pyai.instructions import SystemPrompt
         assert SystemPrompt is not None
     
     def test_import_context(self):
         """Test importing Context."""
-        from pyagent.instructions import Context
+        from pyai.instructions import Context
         assert Context is not None
     
     def test_import_persona(self):
         """Test importing Persona."""
-        from pyagent.instructions import Persona
+        from pyai.instructions import Persona
         assert Persona is not None
     
     def test_import_guidelines(self):
         """Test importing Guidelines."""
-        from pyagent.instructions import Guidelines
+        from pyai.instructions import Guidelines
         assert Guidelines is not None
 
 
@@ -310,17 +310,17 @@ class TestBlueprint:
     
     def test_import_blueprint(self):
         """Test importing Blueprint."""
-        from pyagent.blueprint import Blueprint
+        from pyai.blueprint import Blueprint
         assert Blueprint is not None
     
     def test_import_workflow(self):
         """Test importing Workflow."""
-        from pyagent.blueprint import Workflow
+        from pyai.blueprint import Workflow
         assert Workflow is not None
     
     def test_import_pipeline(self):
         """Test importing Pipeline."""
-        from pyagent.blueprint import Pipeline
+        from pyai.blueprint import Pipeline
         assert Pipeline is not None
 
 

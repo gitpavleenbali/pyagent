@@ -1,4 +1,4 @@
-# 📚 PyAgent API Reference
+# 📚 pyai API Reference
 
 ## Table of Contents
 - [Configuration](#configuration)
@@ -12,12 +12,12 @@
 
 ### `configure()`
 
-Configure PyAgent globally. Call once at application startup.
+Configure pyai globally. Call once at application startup.
 
 ```python
-import pyagent
+import pyai
 
-pyagent.configure(
+pyai.configure(
     api_key="sk-...",           # API key (or use OPENAI_API_KEY env var)
     provider="openai",          # "openai" | "anthropic" | "azure"
     model="gpt-4o-mini",        # Default model
@@ -47,7 +47,7 @@ pyagent.configure(
 Ask any question, get an intelligent answer.
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Basic
 answer = ask("What is the capital of France?")
@@ -83,7 +83,7 @@ answer = ask("Explain quantum computing",
 Deep research on any topic.
 
 ```python
-from pyagent import research
+from pyai import research
 
 # Full research
 result = research("quantum computing applications")
@@ -121,7 +121,7 @@ result = research("climate change", focus="economic impact")
 Summarize text, files, or URLs.
 
 ```python
-from pyagent import summarize
+from pyai import summarize
 
 # Text
 summary = summarize("Long article text here...")
@@ -158,7 +158,7 @@ summary = summarize(content,
 Extract structured data from text.
 
 ```python
-from pyagent import extract
+from pyai import extract
 from pydantic import BaseModel
 
 # With Pydantic schema
@@ -194,7 +194,7 @@ data = extract(text, {"name": str, "skills": list})
 Generate content of various types.
 
 ```python
-from pyagent import generate
+from pyai import generate
 
 # Text content
 blog = generate("blog post about AI trends", type="blog")
@@ -227,7 +227,7 @@ docs = generate("API documentation for user service", type="docs")
 Translate text between languages.
 
 ```python
-from pyagent import translate
+from pyai import translate
 
 # Basic
 spanish = translate("Hello, how are you?", to="es")
@@ -259,7 +259,7 @@ formal = translate(text,
 Create an interactive chat session with memory.
 
 ```python
-from pyagent import chat
+from pyai import chat
 
 # Basic session
 session = chat("You are a helpful assistant")
@@ -299,7 +299,7 @@ session("Explain machine learning")  # Shorthand for .say()
 Create a custom AI agent.
 
 ```python
-from pyagent import agent
+from pyai import agent
 
 # Custom agent
 coder = agent("You are an expert Python developer")
@@ -343,7 +343,7 @@ assistant("What's my name?")  # Returns "John"
 RAG (Retrieval-Augmented Generation) operations.
 
 ```python
-from pyagent import rag
+from pyai import rag
 
 # One-shot RAG
 answer = rag.ask("./docs/paper.pdf", "What is the conclusion?")
@@ -381,7 +381,7 @@ docs = rag.index(sources,
 Real-time data fetching.
 
 ```python
-from pyagent import fetch
+from pyai import fetch
 
 # Weather
 weather = fetch.weather("Tokyo")
@@ -423,7 +423,7 @@ for fact in facts:
 Data and text analysis.
 
 ```python
-from pyagent import analyze
+from pyai import analyze
 import pandas as pd
 
 # Data analysis
@@ -457,7 +457,7 @@ comparison = analyze.compare(
 Code generation and analysis.
 
 ```python
-from pyagent import code
+from pyai import code
 
 # Write code
 python_code = code.write("function to calculate fibonacci")
@@ -492,11 +492,11 @@ js_code = code.convert(python_code, from_lang="python", to_lang="javascript")
 For advanced use cases, access the underlying components:
 
 ```python
-from pyagent.core import Agent, Memory, ConversationMemory, VectorMemory
-from pyagent.core import LLMProvider, OpenAIProvider, AnthropicProvider
-from pyagent.instructions import Instruction, SystemPrompt, Persona
-from pyagent.skills import Skill, ToolSkill, ActionSkill, SkillRegistry
-from pyagent.blueprint import Blueprint, Workflow, Pipeline
+from pyai.core import Agent, Memory, ConversationMemory, VectorMemory
+from pyai.core import LLMProvider, OpenAIProvider, AnthropicProvider
+from pyai.instructions import Instruction, SystemPrompt, Persona
+from pyai.skills import Skill, ToolSkill, ActionSkill, SkillRegistry
+from pyai.blueprint import Blueprint, Workflow, Pipeline
 ```
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for advanced usage patterns.
@@ -506,9 +506,9 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for advanced usage patterns.
 ## Error Handling
 
 ```python
-from pyagent import ask
-from pyagent.exceptions import (
-    PyAgentError,      # Base exception
+from pyai import ask
+from pyai.exceptions import (
+    pyaiError,      # Base exception
     ConfigError,       # Configuration issues
     LLMError,          # LLM provider errors
     RateLimitError,    # Rate limiting
@@ -521,7 +521,7 @@ except ConfigError as e:
     print(f"Configuration issue: {e}")
 except LLMError as e:
     print(f"LLM error: {e}")
-except PyAgentError as e:
+except pyaiError as e:
     print(f"General error: {e}")
 ```
 
@@ -529,11 +529,11 @@ except PyAgentError as e:
 
 ## Type Safety
 
-PyAgent is fully typed. Install type stubs are included:
+pyai is fully typed. Install type stubs are included:
 
 ```python
 # Full IDE support for:
-from pyagent import ask, agent, rag, fetch, code, chat
+from pyai import ask, agent, rag, fetch, code, chat
 
 # Hover documentation works
 # Autocomplete works

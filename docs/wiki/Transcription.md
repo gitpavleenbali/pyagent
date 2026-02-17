@@ -5,8 +5,8 @@ The transcription module converts speech audio to text using AI models.
 ## Import
 
 ```python
-from pyagent.voice import Transcriber
-from pyagent.voice.transcription import TranscriptionResult
+from pyai.voice import Transcriber
+from pyai.voice.transcription import TranscriptionResult
 ```
 
 ## Transcriber Class

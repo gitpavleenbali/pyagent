@@ -1,8 +1,8 @@
 # pyright: reportMissingImports=false, reportUndefinedVariable=false, reportUnusedImport=false, reportArgumentType=false, reportCallIssue=false, reportAttributeAccessIssue=false, reportGeneralTypeIssues=false
 """
-PyAgent Quick Start Examples - Revolutionary AI in 3 Lines or Less
+pyai Quick Start Examples - Revolutionary AI in 3 Lines or Less
 
-This file demonstrates the power of PyAgent's pandas-like simplicity.
+This file demonstrates the power of pyai's pandas-like simplicity.
 Each example shows a complete, working solution to common AI tasks.
 
 NOTE: This is a REFERENCE file showing API examples.
@@ -24,12 +24,12 @@ import sys
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Configure PyAgent with available credentials (supports OpenAI, Azure API Key, or Azure AD)
-from config_helper import setup_pyagent
-if not setup_pyagent():
+# Configure pyai with available credentials (supports OpenAI, Azure API Key, or Azure AD)
+from config_helper import setup_pyai
+if not setup_pyai():
     print("Please configure credentials - see instructions above")
     sys.exit(1)
 
@@ -37,7 +37,7 @@ if not setup_pyagent():
 # 1. ASK - The Simplest AI Function
 # =============================================================================
 
-from pyagent import ask
+from pyai import ask
 
 # Basic question
 answer = ask("What is the capital of France?")
@@ -63,7 +63,7 @@ data = ask("Generate a sample user profile", as_json=True)
 # 2. RAG - Document Q&A in 2 Lines
 # =============================================================================
 
-from pyagent import rag
+from pyai import rag
 
 # One-shot RAG
 answer = rag.ask("./docs/research_paper.pdf", "What is the main finding?")
@@ -86,7 +86,7 @@ answer = rag.from_text(long_text, "What is the main argument?")
 # 3. RESEARCH - Deep Research in 1 Line
 # =============================================================================
 
-from pyagent import research
+from pyai import research
 
 # Full research
 result = research("quantum computing applications")
@@ -108,7 +108,7 @@ result = research("climate change", focus="economic impact")
 # 4. FETCH - Real-time Data in 1 Line
 # =============================================================================
 
-from pyagent import fetch
+from pyai import fetch
 
 # Weather
 weather = fetch.weather("Tokyo")
@@ -138,7 +138,7 @@ for fact in facts:
 # 5. SUMMARIZE - Summarize Anything
 # =============================================================================
 
-from pyagent import summarize
+from pyai import summarize
 
 # Text
 summary = summarize("Your long text here...")
@@ -161,7 +161,7 @@ executive = summarize(text, style="executive")
 # 6. EXTRACT - Get Structured Data from Text
 # =============================================================================
 
-from pyagent import extract
+from pyai import extract
 
 text = "John Smith is 35 years old, works as a software engineer at Google, and lives in San Francisco."
 
@@ -183,7 +183,7 @@ entities = extract(article_text, ["people", "organizations", "locations"])
 # 7. GENERATE - Create Any Content
 # =============================================================================
 
-from pyagent import generate
+from pyai import generate
 
 # Code
 code = generate("function to calculate fibonacci", type="code")
@@ -202,7 +202,7 @@ tweet = generate("announcement for new product launch", type="social")
 # 8. TRANSLATE - Instant Translation
 # =============================================================================
 
-from pyagent import translate
+from pyai import translate
 
 # Basic
 spanish = translate("Hello, how are you?", to="spanish")
@@ -219,7 +219,7 @@ french = translate("Good morning", to="fr")
 # 9. ANALYZE - Data & Text Analysis
 # =============================================================================
 
-from pyagent import analyze
+from pyai import analyze
 
 # Analyze data
 sales_data = [100, 150, 120, 200, 180, 500, 190]
@@ -241,7 +241,7 @@ text_insights = analyze.text(customer_review, analyze_for="sentiment")
 # 10. CODE - AI-Powered Coding
 # =============================================================================
 
-from pyagent import code
+from pyai import code
 
 # Write code
 python_function = code.write("REST API for user management")
@@ -273,7 +273,7 @@ javascript = code.convert(python_code, from_lang="python", to_lang="javascript")
 # 11. AGENT - Create Custom Agents
 # =============================================================================
 
-from pyagent import agent
+from pyai import agent
 
 # Simple agent
 helper = agent("You are a helpful assistant")
@@ -303,7 +303,7 @@ expert = agent(
 # 12. CHAT - Interactive Sessions
 # =============================================================================
 
-from pyagent import chat
+from pyai import chat
 
 # Create session
 session = chat(persona="teacher")
@@ -357,4 +357,4 @@ info = extract("Jane Doe, CEO of TechCorp, announced...", ["name", "title", "com
 # Ask anything
 answer = ask("What's the meaning of life?", creative=True)
 
-print("\n[OK] All examples completed! PyAgent makes AI simple.")
+print("\n[OK] All examples completed! pyai makes AI simple.")

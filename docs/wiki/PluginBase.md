@@ -5,7 +5,7 @@ The `Plugin` base class provides the foundation for creating custom agent plugin
 ## Import
 
 ```python
-from pyagent.plugins import Plugin, plugin_function
+from pyai.plugins import Plugin, plugin_function
 ```
 
 ## Creating a Plugin
@@ -13,7 +13,7 @@ from pyagent.plugins import Plugin, plugin_function
 ### Basic Structure
 
 ```python
-from pyagent.plugins import Plugin, plugin_function
+from pyai.plugins import Plugin, plugin_function
 
 class MyPlugin(Plugin):
     name = "my_plugin"
@@ -41,7 +41,7 @@ class MyPlugin(Plugin):
 ### The @plugin_function Decorator
 
 ```python
-from pyagent.plugins import plugin_function
+from pyai.plugins import plugin_function
 
 @plugin_function
 def search(query: str, limit: int = 10) -> list[str]:
@@ -158,7 +158,7 @@ class AsyncPlugin(Plugin):
 ## Using with Agents
 
 ```python
-from pyagent import Agent
+from pyai import Agent
 
 # Create plugin instance
 plugin = MyPlugin()

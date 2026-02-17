@@ -1,6 +1,6 @@
-# PyAgent Azure Setup Guide
+# pyai Azure Setup Guide
 
-This guide helps you configure PyAgent with Azure OpenAI.
+This guide helps you configure pyai with Azure OpenAI.
 
 ## Quick Setup
 
@@ -18,12 +18,12 @@ export AZURE_OPENAI_ENDPOINT="https://your-resource.openai.azure.com/"
 export AZURE_OPENAI_DEPLOYMENT="gpt-4o-mini"
 ```
 
-### 2. Configure PyAgent
+### 2. Configure pyai
 
 ```python
-import pyagent
+import pyai
 
-pyagent.configure(
+pyai.configure(
     provider="azure",
     api_key="your-api-key",  # Or use env var
     azure_endpoint="https://your-resource.openai.azure.com/",
@@ -31,10 +31,10 @@ pyagent.configure(
 )
 ```
 
-### 3. Use PyAgent
+### 3. Use pyai
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Now it uses Azure OpenAI!
 answer = ask("What is machine learning?")
@@ -66,18 +66,18 @@ Based on your subscription, you have these Azure OpenAI resources:
 ## Full Example
 
 ```python
-import pyagent
-from pyagent import ask, agent, rag
+import pyai
+from pyai import ask, agent, rag
 
 # Configure Azure
-pyagent.configure(
+pyai.configure(
     provider="azure",
     azure_endpoint="https://openai-varcvenlme53e.openai.azure.com/",
     model="gpt-4o-mini",  # Your deployment name
     # api_key set via AZURE_OPENAI_API_KEY env var
 )
 
-# Now use PyAgent normally!
+# Now use pyai normally!
 answer = ask("What is Python?")
 print(answer)
 

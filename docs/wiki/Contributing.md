@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for contributing to PyAgent! We're building the **pandas of AI**.
+Thank you for contributing to pyai! We're building the **pandas of AI**.
 
 ## Code of Conduct
 
@@ -18,7 +18,7 @@ Be respectful, inclusive, and constructive.
    - Steps to reproduce
    - Expected vs actual behavior
    - Python version and OS
-   - PyAgent version
+   - pyai version
 
 ### Suggesting Features
 
@@ -70,7 +70,7 @@ pip install -e ".[dev]"
 pytest tests/
 
 # With coverage
-pytest tests/ --cov=pyagent --cov-report=html
+pytest tests/ --cov=pyai --cov-report=html
 
 # Specific test file
 pytest tests/test_core.py -v
@@ -91,7 +91,7 @@ black src/
 ruff check src/
 
 # Type check
-mypy src/pyagent --ignore-missing-imports
+mypy src/pyai --ignore-missing-imports
 ```
 
 ---
@@ -99,8 +99,8 @@ mypy src/pyagent --ignore-missing-imports
 ## Project Structure
 
 ```
-pyagent/
-├── src/pyagent/      # Main package
+pyai/
+├── src/pyai/      # Main package
 │   ├── easy/         # One-liner functions
 │   ├── core/         # Core components
 │   ├── blueprint/    # Workflows
@@ -115,22 +115,22 @@ pyagent/
 
 ### New One-Liner Function
 
-1. Create `src/pyagent/easy/yourfunction.py`
-2. Add to `src/pyagent/easy/__init__.py`
-3. Add lazy import in `src/pyagent/__init__.py`
+1. Create `src/pyai/easy/yourfunction.py`
+2. Add to `src/pyai/easy/__init__.py`
+3. Add lazy import in `src/pyai/__init__.py`
 4. Write tests in `tests/test_easy_features.py`
 5. Document in wiki
 
 ### New Skill
 
-1. Create skill in `src/pyagent/skills/`
+1. Create skill in `src/pyai/skills/`
 2. Register in skill registry
 3. Write tests
 4. Document usage
 
 ### New Integration
 
-1. Add to `src/pyagent/integrations/`
+1. Add to `src/pyai/integrations/`
 2. Create adapter class
 3. Write tests
 4. Document in wiki

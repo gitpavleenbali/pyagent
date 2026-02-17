@@ -7,7 +7,7 @@ Multiple installation options to fit your needs.
 ## Basic Installation
 
 ```bash
-pip install pyagent
+pip install pyai
 ```
 
 ---
@@ -16,17 +16,17 @@ pip install pyagent
 
 ### OpenAI
 ```bash
-pip install pyagent[openai]
+pip install pyai[openai]
 ```
 
 ### Anthropic Claude
 ```bash
-pip install pyagent[anthropic]
+pip install pyai[anthropic]
 ```
 
 ### Azure OpenAI (Recommended for Enterprise)
 ```bash
-pip install pyagent[azure]
+pip install pyai[azure]
 ```
 
 Includes:
@@ -40,25 +40,25 @@ Includes:
 
 ### LangChain
 ```bash
-pip install pyagent[langchain]
+pip install pyai[langchain]
 ```
 
 ### Microsoft Semantic Kernel
 ```bash
-pip install pyagent[semantic-kernel]
+pip install pyai[semantic-kernel]
 ```
 
 ### Vector Databases
 ```bash
-pip install pyagent[vector]
+pip install pyai[vector]
 ```
 
 Includes: ChromaDB, FAISS, Pinecone, Qdrant
 
 ### Web & Documents
 ```bash
-pip install pyagent[web]      # aiohttp, requests, beautifulsoup
-pip install pyagent[docs]     # PDF, DOCX processing
+pip install pyai[web]      # aiohttp, requests, beautifulsoup
+pip install pyai[docs]     # PDF, DOCX processing
 ```
 
 ---
@@ -66,7 +66,7 @@ pip install pyagent[docs]     # PDF, DOCX processing
 ## Full Installation
 
 ```bash
-pip install pyagent[all]
+pip install pyai[all]
 ```
 
 Installs everything: all providers, integrations, and utilities.
@@ -76,7 +76,7 @@ Installs everything: all providers, integrations, and utilities.
 ## Development Installation
 
 ```bash
-pip install pyagent[dev]
+pip install pyai[dev]
 ```
 
 Includes: pytest, black, ruff, mypy, pre-commit
@@ -113,8 +113,8 @@ pip install -e ".[dev]"
 ## Verify Installation
 
 ```python
-import pyagent
-print(pyagent.__version__)  # 0.4.0
+import pyai
+print(pyai.__version__)  # 0.4.0
 ```
 
 ---

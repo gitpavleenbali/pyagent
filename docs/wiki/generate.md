@@ -5,7 +5,7 @@ The `generate` function creates various types of content using AI.
 ## Import
 
 ```python
-from pyagent import generate
+from pyai import generate
 ```
 
 ## Basic Usage
@@ -47,7 +47,7 @@ content = await generate.async_("product description")
 ### Generate Email
 
 ```python
-from pyagent import generate
+from pyai import generate
 
 email = generate(
     "thank customer for purchase",
@@ -90,7 +90,7 @@ code = generate(
 
 ```python
 import asyncio
-from pyagent import generate
+from pyai import generate
 
 async def main():
     content = await generate.async_(

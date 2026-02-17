@@ -5,7 +5,7 @@ The `translate` function provides AI-powered language translation.
 ## Import
 
 ```python
-from pyagent import translate
+from pyai import translate
 ```
 
 ## Basic Usage
@@ -49,7 +49,7 @@ result = translate("Bonjour", from_lang="fr", to="en")
 ### Basic Translation
 
 ```python
-from pyagent import translate
+from pyai import translate
 
 # English to Spanish
 spanish = translate("The quick brown fox", to="es")
@@ -90,7 +90,7 @@ translated = translate(markdown, to="fr", preserve_format=True)
 
 ```python
 import asyncio
-from pyagent import translate
+from pyai import translate
 
 async def main():
     result = await translate.async_("Hello world", to="ja")

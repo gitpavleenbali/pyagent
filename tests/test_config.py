@@ -1,4 +1,4 @@
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -21,12 +21,12 @@ class TestAgentSchema:
     
     def test_schema_import(self):
         """Test that AgentSchema can be imported."""
-        from pyagent.config import AgentSchema
+        from pyai.config import AgentSchema
         assert AgentSchema is not None
     
     def test_schema_from_dict_minimal(self):
         """Test parsing minimal config."""
-        from pyagent.config.schema import AgentSchema
+        from pyai.config.schema import AgentSchema
         
         config = {"name": "test_agent"}
         schema = AgentSchema.from_dict(config)
@@ -37,7 +37,7 @@ class TestAgentSchema:
     
     def test_schema_from_dict_full(self):
         """Test parsing full config."""
-        from pyagent.config.schema import AgentSchema
+        from pyai.config.schema import AgentSchema
         
         config = {
             "name": "research_assistant",
@@ -69,7 +69,7 @@ class TestAgentSchema:
     
     def test_schema_to_dict(self):
         """Test converting schema to dict."""
-        from pyagent.config.schema import AgentSchema, ModelSchema
+        from pyai.config.schema import AgentSchema, ModelSchema
         
         schema = AgentSchema(
             name="test",
@@ -90,12 +90,12 @@ class TestToolSchema:
     
     def test_tool_schema_import(self):
         """Test that ToolSchema can be imported."""
-        from pyagent.config import ToolSchema
+        from pyai.config import ToolSchema
         assert ToolSchema is not None
     
     def test_tool_from_dict(self):
         """Test creating tool from dict."""
-        from pyagent.config.schema import ToolSchema
+        from pyai.config.schema import ToolSchema
         
         data = {
             "name": "get_weather",
@@ -116,7 +116,7 @@ class TestValidateConfig:
     
     def test_validate_valid_config(self):
         """Test validating a valid config."""
-        from pyagent.config.schema import validate_config
+        from pyai.config.schema import validate_config
         
         config = {
             "name": "test",
@@ -129,7 +129,7 @@ class TestValidateConfig:
     
     def test_validate_missing_name(self):
         """Test validation catches missing name."""
-        from pyagent.config.schema import validate_config
+        from pyai.config.schema import validate_config
         
         config = {"instructions": "Be helpful"}
         
@@ -139,7 +139,7 @@ class TestValidateConfig:
     
     def test_validate_invalid_temperature(self):
         """Test validation catches invalid temperature."""
-        from pyagent.config.schema import validate_config
+        from pyai.config.schema import validate_config
         
         config = {
             "name": "test",
@@ -155,13 +155,13 @@ class TestAgentConfig:
     
     def test_agentconfig_import(self):
         """Test that AgentConfig can be imported."""
-        from pyagent.config import AgentConfig
+        from pyai.config import AgentConfig
         assert AgentConfig is not None
     
     def test_agentconfig_properties(self):
         """Test AgentConfig properties."""
-        from pyagent.config.loader import AgentConfig
-        from pyagent.config.schema import AgentSchema
+        from pyai.config.loader import AgentConfig
+        from pyai.config.schema import AgentSchema
         
         schema = AgentSchema(
             name="test",
@@ -178,12 +178,12 @@ class TestLoadAgent:
     
     def test_load_agent_import(self):
         """Test that load_agent can be imported."""
-        from pyagent.config import load_agent
+        from pyai.config import load_agent
         assert load_agent is not None
     
     def test_load_agent_yaml(self):
         """Test loading agent from YAML file."""
-        from pyagent.config import load_agent
+        from pyai.config import load_agent
         
         yaml_content = """
 name: test_agent
@@ -220,7 +220,7 @@ tools:
     
     def test_load_agent_json(self):
         """Test loading agent from JSON file."""
-        from pyagent.config import load_agent
+        from pyai.config import load_agent
         import json
         
         json_content = {
@@ -244,7 +244,7 @@ tools:
     
     def test_load_agent_not_found(self):
         """Test loading non-existent file raises error."""
-        from pyagent.config import load_agent
+        from pyai.config import load_agent
         
         with pytest.raises(FileNotFoundError):
             load_agent("/nonexistent/path/agent.yaml")
@@ -255,7 +255,7 @@ class TestLoadAgentsFromDir:
     
     def test_load_from_dir(self):
         """Test loading multiple agents from directory."""
-        from pyagent.config.loader import load_agents_from_dir
+        from pyai.config.loader import load_agents_from_dir
         
         with tempfile.TemporaryDirectory() as tmpdir:
             # Create two agent files
@@ -278,19 +278,19 @@ class TestAgentBuilder:
     
     def test_builder_import(self):
         """Test that AgentBuilder can be imported."""
-        from pyagent.config import AgentBuilder
+        from pyai.config import AgentBuilder
         assert AgentBuilder is not None
     
     def test_builder_creation(self):
         """Test creating a builder."""
-        from pyagent.config import AgentBuilder
+        from pyai.config import AgentBuilder
         
         builder = AgentBuilder()
         assert builder is not None
     
     def test_builder_register_tool(self):
         """Test registering tools."""
-        from pyagent.config import AgentBuilder
+        from pyai.config import AgentBuilder
         
         def my_tool(x):
             return f"Result: {x}"
@@ -302,9 +302,9 @@ class TestAgentBuilder:
     
     def test_builder_build_agent(self):
         """Test building agent from config."""
-        from pyagent.config import AgentBuilder
-        from pyagent.config.loader import AgentConfig
-        from pyagent.config.schema import AgentSchema
+        from pyai.config import AgentBuilder
+        from pyai.config.loader import AgentConfig
+        from pyai.config.schema import AgentSchema
         
         schema = AgentSchema(
             name="built_agent",
@@ -321,7 +321,7 @@ class TestAgentBuilder:
     
     def test_builder_from_file(self):
         """Test building agent from file."""
-        from pyagent.config import AgentBuilder
+        from pyai.config import AgentBuilder
         
         yaml_content = """
 name: file_agent
@@ -348,7 +348,7 @@ class TestConfigIntegration:
     
     def test_module_exports(self):
         """Test that all expected exports are available."""
-        from pyagent import config
+        from pyai import config
         
         assert hasattr(config, "AgentConfig")
         assert hasattr(config, "AgentSchema")
@@ -358,17 +358,17 @@ class TestConfigIntegration:
         assert hasattr(config, "validate_config")
     
     def test_main_init_exports(self):
-        """Test that config is exported from main pyagent."""
-        import pyagent
+        """Test that config is exported from main pyai."""
+        import pyai
         
-        assert hasattr(pyagent, "config")
-        assert hasattr(pyagent, "load_agent")
-        assert hasattr(pyagent, "AgentConfig")
-        assert hasattr(pyagent, "AgentBuilder")
+        assert hasattr(pyai, "config")
+        assert hasattr(pyai, "load_agent")
+        assert hasattr(pyai, "AgentConfig")
+        assert hasattr(pyai, "AgentBuilder")
     
     def test_full_workflow(self):
         """Test complete config workflow."""
-        from pyagent.config import load_agent, AgentBuilder
+        from pyai.config import load_agent, AgentBuilder
         
         yaml_content = """
 name: workflow_test

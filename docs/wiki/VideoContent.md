@@ -5,7 +5,7 @@ The `Video` class handles video data for multimodal AI interactions.
 ## Import
 
 ```python
-from pyagent.multimodal import Video
+from pyai.multimodal import Video
 ```
 
 ## Creating Video
@@ -101,8 +101,8 @@ video.save("output.webm", format="webm")
 ### Video Analysis
 
 ```python
-from pyagent import ask
-from pyagent.multimodal import Video
+from pyai import ask
+from pyai.multimodal import Video
 
 video = Video.from_file("presentation.mp4")
 
@@ -118,7 +118,7 @@ response = ask(
 ### With MultimodalContent
 
 ```python
-from pyagent.multimodal import MultimodalContent, Video
+from pyai.multimodal import MultimodalContent, Video
 
 content = MultimodalContent()
 content.add_text("Summarize this video lecture:")

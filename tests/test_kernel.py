@@ -1,5 +1,5 @@
 # pyright: reportMissingImports=false, reportUnusedVariable=false, reportUnusedImport=false, reportGeneralTypeIssues=false, reportRedeclaration=false
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -18,14 +18,14 @@ class TestServiceRegistry:
     
     def test_registry_creation(self):
         """Test creating a service registry."""
-        from pyagent.kernel import ServiceRegistry
+        from pyai.kernel import ServiceRegistry
         
         registry = ServiceRegistry()
         assert registry.list_services() == []
     
     def test_add_service(self):
         """Test adding a service."""
-        from pyagent.kernel import ServiceRegistry, Service, ServiceType
+        from pyai.kernel import ServiceRegistry, Service, ServiceType
         
         registry = ServiceRegistry()
         
@@ -44,7 +44,7 @@ class TestServiceRegistry:
     
     def test_add_instance_directly(self):
         """Test adding an instance directly."""
-        from pyagent.kernel import ServiceRegistry, ServiceType
+        from pyai.kernel import ServiceRegistry, ServiceType
         
         registry = ServiceRegistry()
         mock_memory = Mock()
@@ -60,7 +60,7 @@ class TestServiceRegistry:
     
     def test_get_default_service(self):
         """Test getting default service by type."""
-        from pyagent.kernel import ServiceRegistry, ServiceType, LLMService
+        from pyai.kernel import ServiceRegistry, ServiceType, LLMService
         
         registry = ServiceRegistry()
         
@@ -75,7 +75,7 @@ class TestServiceRegistry:
     
     def test_remove_service(self):
         """Test removing a service."""
-        from pyagent.kernel import ServiceRegistry, ServiceType
+        from pyai.kernel import ServiceRegistry, ServiceType
         
         registry = ServiceRegistry()
         registry.add_instance("svc", Mock(), ServiceType.CUSTOM)
@@ -86,7 +86,7 @@ class TestServiceRegistry:
     
     def test_list_services_by_type(self):
         """Test listing services filtered by type."""
-        from pyagent.kernel import ServiceRegistry, ServiceType
+        from pyai.kernel import ServiceRegistry, ServiceType
         
         registry = ServiceRegistry()
         registry.add_instance("llm1", Mock(), ServiceType.LLM)
@@ -104,14 +104,14 @@ class TestFilterRegistry:
     
     def test_registry_creation(self):
         """Test creating a filter registry."""
-        from pyagent.kernel import FilterRegistry
+        from pyai.kernel import FilterRegistry
         
         registry = FilterRegistry()
         assert registry.get_filters() == []
     
     def test_add_filter(self):
         """Test adding a filter."""
-        from pyagent.kernel import FilterRegistry, Filter
+        from pyai.kernel import FilterRegistry, Filter
         
         registry = FilterRegistry()
         filter = Filter()
@@ -122,7 +122,7 @@ class TestFilterRegistry:
     
     def test_filter_priority(self):
         """Test filters are ordered by priority."""
-        from pyagent.kernel import FilterRegistry, Filter
+        from pyai.kernel import FilterRegistry, Filter
         
         registry = FilterRegistry()
         
@@ -141,7 +141,7 @@ class TestFilterRegistry:
     
     def test_apply_function_invoking(self):
         """Test applying function invoking filters."""
-        from pyagent.kernel import FilterRegistry, FunctionFilter, FilterContext
+        from pyai.kernel import FilterRegistry, FunctionFilter, FilterContext
         
         class ModifyingFilter(FunctionFilter):
             def on_function_invoking(self, ctx, args):
@@ -161,7 +161,7 @@ class TestFilterRegistry:
     
     def test_apply_function_invoked(self):
         """Test applying function invoked filters."""
-        from pyagent.kernel import FilterRegistry, FunctionFilter, FilterContext
+        from pyai.kernel import FilterRegistry, FunctionFilter, FilterContext
         
         class TransformingFilter(FunctionFilter):
             def on_function_invoked(self, ctx, result):
@@ -181,7 +181,7 @@ class TestKernelContext:
     
     def test_context_creation(self):
         """Test creating a context."""
-        from pyagent.kernel import KernelContext
+        from pyai.kernel import KernelContext
         
         ctx = KernelContext()
         
@@ -191,7 +191,7 @@ class TestKernelContext:
     
     def test_variable_management(self):
         """Test setting and getting variables."""
-        from pyagent.kernel import KernelContext
+        from pyai.kernel import KernelContext
         
         ctx = KernelContext()
         
@@ -204,7 +204,7 @@ class TestKernelContext:
     
     def test_invocation_tracking(self):
         """Test tracking invocations."""
-        from pyagent.kernel import KernelContext
+        from pyai.kernel import KernelContext
         
         ctx = KernelContext()
         
@@ -219,7 +219,7 @@ class TestKernelContext:
     
     def test_failed_invocation(self):
         """Test failed invocation tracking."""
-        from pyagent.kernel import KernelContext
+        from pyai.kernel import KernelContext
         
         ctx = KernelContext()
         
@@ -232,7 +232,7 @@ class TestKernelContext:
     
     def test_child_context(self):
         """Test child context inherits variables."""
-        from pyagent.kernel import KernelContext
+        from pyai.kernel import KernelContext
         
         parent = KernelContext()
         parent.set_variable("inherited", "value")
@@ -249,7 +249,7 @@ class TestKernelContext:
     
     def test_to_dict(self):
         """Test serialization to dict."""
-        from pyagent.kernel import KernelContext
+        from pyai.kernel import KernelContext
         
         ctx = KernelContext()
         ctx.set_variable("key", "value")
@@ -265,7 +265,7 @@ class TestKernel:
     
     def test_kernel_creation(self):
         """Test creating a kernel."""
-        from pyagent.kernel import Kernel
+        from pyai.kernel import Kernel
         
         kernel = Kernel()
         
@@ -276,7 +276,7 @@ class TestKernel:
     
     def test_add_service(self):
         """Test adding services to kernel."""
-        from pyagent.kernel import Kernel, LLMService, ServiceType
+        from pyai.kernel import Kernel, LLMService, ServiceType
         
         kernel = Kernel()
         mock_llm = Mock()
@@ -292,7 +292,7 @@ class TestKernel:
     
     def test_add_raw_service(self):
         """Test adding raw instance as service."""
-        from pyagent.kernel import Kernel, ServiceType
+        from pyai.kernel import Kernel, ServiceType
         
         kernel = Kernel()
         mock_memory = Mock()
@@ -308,8 +308,8 @@ class TestKernel:
     
     def test_add_plugin(self):
         """Test adding plugins to kernel."""
-        from pyagent.kernel import Kernel
-        from pyagent.plugins import Plugin
+        from pyai.kernel import Kernel
+        from pyai.plugins import Plugin
         
         kernel = Kernel()
         
@@ -323,7 +323,7 @@ class TestKernel:
     
     def test_add_filter(self):
         """Test adding filters to kernel."""
-        from pyagent.kernel import Kernel, Filter
+        from pyai.kernel import Kernel, Filter
         
         kernel = Kernel()
         filter = Filter()
@@ -334,7 +334,7 @@ class TestKernel:
     
     def test_context_variables(self):
         """Test context variable management through kernel."""
-        from pyagent.kernel import Kernel
+        from pyai.kernel import Kernel
         
         kernel = Kernel()
         
@@ -343,7 +343,7 @@ class TestKernel:
     
     def test_to_dict(self):
         """Test kernel state serialization."""
-        from pyagent.kernel import Kernel
+        from pyai.kernel import Kernel
         
         kernel = Kernel()
         data = kernel.to_dict()
@@ -355,7 +355,7 @@ class TestKernel:
     
     def test_repr(self):
         """Test kernel string representation."""
-        from pyagent.kernel import Kernel
+        from pyai.kernel import Kernel
         
         kernel = Kernel()
         repr_str = repr(kernel)
@@ -369,14 +369,14 @@ class TestKernelBuilder:
     
     def test_builder_creation(self):
         """Test creating a builder."""
-        from pyagent.kernel import KernelBuilder
+        from pyai.kernel import KernelBuilder
         
         builder = KernelBuilder()
         assert builder is not None
     
     def test_build_kernel(self):
         """Test building a kernel."""
-        from pyagent.kernel import KernelBuilder, LLMService, Filter
+        from pyai.kernel import KernelBuilder, LLMService, Filter
         
         kernel = (
             KernelBuilder()
@@ -391,7 +391,7 @@ class TestKernelBuilder:
     
     def test_fluent_api(self):
         """Test builder fluent API returns self."""
-        from pyagent.kernel import KernelBuilder, LLMService, Filter
+        from pyai.kernel import KernelBuilder, LLMService, Filter
         
         builder = KernelBuilder()
         
@@ -405,9 +405,9 @@ class TestKernelBuilder:
 class TestKernelImports:
     """Test that kernel is properly exported."""
     
-    def test_import_from_pyagent(self):
-        """Test importing kernel from pyagent."""
-        from pyagent import Kernel, KernelBuilder, ServiceRegistry
+    def test_import_from_pyai(self):
+        """Test importing kernel from pyai."""
+        from pyai import Kernel, KernelBuilder, ServiceRegistry
         
         assert Kernel is not None
         assert KernelBuilder is not None
@@ -415,7 +415,7 @@ class TestKernelImports:
     
     def test_import_kernel_module(self):
         """Test importing kernel module."""
-        from pyagent import kernel
+        from pyai import kernel
         
         assert hasattr(kernel, "Kernel")
         assert hasattr(kernel, "KernelBuilder")
@@ -429,7 +429,7 @@ class TestServiceTypes:
     
     def test_llm_service(self):
         """Test LLMService creation."""
-        from pyagent.kernel import LLMService, ServiceType
+        from pyai.kernel import LLMService, ServiceType
         
         service = LLMService(
             name="gpt4",
@@ -445,7 +445,7 @@ class TestServiceTypes:
     
     def test_memory_service(self):
         """Test MemoryService creation."""
-        from pyagent.kernel import MemoryService, ServiceType
+        from pyai.kernel import MemoryService, ServiceType
         
         service = MemoryService(
             name="memory",
@@ -458,7 +458,7 @@ class TestServiceTypes:
     
     def test_vector_service(self):
         """Test VectorService creation."""
-        from pyagent.kernel import VectorService, ServiceType
+        from pyai.kernel import VectorService, ServiceType
         
         service = VectorService(
             name="vectors",
@@ -475,7 +475,7 @@ class TestInvocationContext:
     
     def test_invocation_lifecycle(self):
         """Test invocation start/complete lifecycle."""
-        from pyagent.kernel import InvocationContext
+        from pyai.kernel import InvocationContext
         
         inv = InvocationContext(
             function_name="test",
@@ -493,7 +493,7 @@ class TestInvocationContext:
     
     def test_invocation_failure(self):
         """Test invocation failure."""
-        from pyagent.kernel import InvocationContext
+        from pyai.kernel import InvocationContext
         
         inv = InvocationContext()
         inv.start()

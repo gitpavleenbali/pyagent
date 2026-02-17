@@ -16,7 +16,7 @@ PYAI includes pre-built skills for common operations.
 ## SearchSkill
 
 ```python
-from pyagent.skills import SearchSkill
+from pyai.skills import SearchSkill
 
 search = SearchSkill()
 
@@ -38,7 +38,7 @@ agent = Agent(
 ### Example
 
 ```python
-from pyagent.skills import SearchSkill
+from pyai.skills import SearchSkill
 
 search = SearchSkill(api_key="...")
 
@@ -51,7 +51,7 @@ for result in results:
 ## CodeSkill
 
 ```python
-from pyagent.skills import CodeSkill
+from pyai.skills import CodeSkill
 
 code = CodeSkill()
 
@@ -72,7 +72,7 @@ agent = Agent(
 ### Example
 
 ```python
-from pyagent.skills import CodeSkill
+from pyai.skills import CodeSkill
 
 code = CodeSkill(sandbox=True)
 
@@ -87,7 +87,7 @@ print(result.output)  # "12.0"
 ## FileSkill
 
 ```python
-from pyagent.skills import FileSkill
+from pyai.skills import FileSkill
 
 file = FileSkill(base_path="./workspace")
 
@@ -109,7 +109,7 @@ agent = Agent(
 ### Example
 
 ```python
-from pyagent.skills import FileSkill
+from pyai.skills import FileSkill
 
 file = FileSkill()
 
@@ -126,7 +126,7 @@ files = file.list_files("./data/")
 ## WebSkill
 
 ```python
-from pyagent.skills import WebSkill
+from pyai.skills import WebSkill
 
 web = WebSkill()
 
@@ -147,7 +147,7 @@ agent = Agent(
 ### Example
 
 ```python
-from pyagent.skills import WebSkill
+from pyai.skills import WebSkill
 
 web = WebSkill()
 
@@ -164,7 +164,7 @@ response = web.post_data(
 ## MathSkill
 
 ```python
-from pyagent.skills import MathSkill
+from pyai.skills import MathSkill
 
 math = MathSkill()
 
@@ -186,7 +186,7 @@ agent = Agent(
 ### Example
 
 ```python
-from pyagent.skills import MathSkill
+from pyai.skills import MathSkill
 
 math = MathSkill()
 
@@ -198,7 +198,7 @@ converted = math.convert_units(100, "celsius", "fahrenheit")
 ## DateTimeSkill
 
 ```python
-from pyagent.skills import DateTimeSkill
+from pyai.skills import DateTimeSkill
 
 datetime = DateTimeSkill()
 
@@ -220,8 +220,8 @@ agent = Agent(
 ## Combining Skills
 
 ```python
-from pyagent import Agent
-from pyagent.skills import SearchSkill, CodeSkill, FileSkill
+from pyai import Agent
+from pyai.skills import SearchSkill, CodeSkill, FileSkill
 
 agent = Agent(
     name="Power User",

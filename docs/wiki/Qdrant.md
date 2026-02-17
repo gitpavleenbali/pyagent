@@ -5,7 +5,7 @@ Qdrant is a high-performance, Rust-based vector database with rich filtering cap
 ## Installation
 
 ```bash
-pip install pyagent[vectordb]
+pip install pyai[vectordb]
 # or specifically
 pip install qdrant-client
 ```
@@ -25,7 +25,7 @@ Sign up at [cloud.qdrant.io](https://cloud.qdrant.io)
 ## Connection
 
 ```python
-from pyagent.vectordb import connect
+from pyai.vectordb import connect
 
 # Local instance
 db = connect("qdrant", url="http://localhost:6333")
@@ -48,7 +48,7 @@ db = connect(
 ## Configuration
 
 ```python
-from pyagent.vectordb.qdrant import QdrantStore
+from pyai.vectordb.qdrant import QdrantStore
 
 store = QdrantStore(
     url="http://localhost:6333",

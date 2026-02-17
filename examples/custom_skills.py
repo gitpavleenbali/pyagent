@@ -20,21 +20,21 @@ import sys
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Optional: Configure PyAgent for LLM-powered features
+# Optional: Configure pyai for LLM-powered features
 # This example demonstrates skill definitions without requiring LLM calls
 try:
-    from config_helper import setup_pyagent
-    setup_pyagent(verbose=False)  # Silent - this example doesn't require LLM
+    from config_helper import setup_pyai
+    setup_pyai(verbose=False)  # Silent - this example doesn't require LLM
 except Exception:
     pass  # Skills work without LLM configuration
 
 from typing import Any, Dict, List
-from pyagent.skills import Skill, SkillResult, SkillParameter
-from pyagent.skills.tool_skill import tool
-from pyagent.skills.action_skill import ActionSkill, action, ActionType
+from pyai.skills import Skill, SkillResult, SkillParameter
+from pyai.skills.tool_skill import tool
+from pyai.skills.action_skill import ActionSkill, action, ActionType
 
 
 # =============================================================================

@@ -5,7 +5,7 @@ The `Audio` class handles audio data for multimodal AI interactions.
 ## Import
 
 ```python
-from pyagent.multimodal import Audio
+from pyai.multimodal import Audio
 ```
 
 ## Creating Audio
@@ -116,7 +116,7 @@ result = audio.transcribe(
 ### With Multimodal Content
 
 ```python
-from pyagent.multimodal import MultimodalContent, Audio
+from pyai.multimodal import MultimodalContent, Audio
 
 content = MultimodalContent()
 content.add_text("Please transcribe and summarize this audio:")
@@ -128,8 +128,8 @@ response = agent.run(content)
 ### Audio Analysis
 
 ```python
-from pyagent import ask
-from pyagent.multimodal import Audio
+from pyai import ask
+from pyai.multimodal import Audio
 
 audio = Audio.from_file("speech.wav")
 response = ask(

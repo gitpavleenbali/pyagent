@@ -1,6 +1,6 @@
 """
-PyAgent Test Suite
+pyai Test Suite
 ===================
 
-Tests for all PyAgent modules and features.
+Tests for all pyai modules and features.
 """

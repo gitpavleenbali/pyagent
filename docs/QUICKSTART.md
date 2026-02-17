@@ -1,11 +1,11 @@
-# 🚀 PyAgent Quick Start Guide
+# 🚀 pyai Quick Start Guide
 
-Get up and running with PyAgent in under 5 minutes.
+Get up and running with pyai in under 5 minutes.
 
 ## Installation
 
 ```bash
-pip install pyagent
+pip install pyai
 ```
 
 ## Setup
@@ -26,17 +26,17 @@ set OPENAI_API_KEY=sk-your-key-here
 ### Option 2: Programmatic Configuration
 
 ```python
-import pyagent
+import pyai
 
-pyagent.configure(api_key="sk-your-key-here")
+pyai.configure(api_key="sk-your-key-here")
 ```
 
 ### Option 3: Azure OpenAI
 
 ```python
-import pyagent
+import pyai
 
-pyagent.configure(
+pyai.configure(
     provider="azure",
     azure_endpoint="https://YOUR-RESOURCE.openai.azure.com/",
     azure_deployment="gpt-4o-mini",
@@ -49,7 +49,7 @@ pyagent.configure(
 ## Your First 5 Lines
 
 ```python
-from pyagent import ask, agent, rag
+from pyai import ask, agent, rag
 
 # 1. Ask anything
 answer = ask("What is machine learning?")
@@ -73,7 +73,7 @@ print(answer)  # "Seattle"
 ### 1. Simple Q&A
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 # Basic question
 answer = ask("What is the capital of Japan?")
@@ -96,7 +96,7 @@ profile = ask("Generate a sample user profile", as_json=True)
 ### 2. Custom Agents
 
 ```python
-from pyagent import agent
+from pyai import agent
 
 # Create a Python expert
 python_expert = agent(persona="python_expert")
@@ -115,7 +115,7 @@ assistant("What's my favorite color?")  # "Blue!"
 ### 3. RAG (Retrieval-Augmented Generation)
 
 ```python
-from pyagent import rag
+from pyai import rag
 
 # From files
 answer = rag.ask("./documents/report.pdf", "What is the main conclusion?")
@@ -140,7 +140,7 @@ answer = rag.from_text(long_text, "What are the key points?")
 ### 4. Real-Time Data
 
 ```python
-from pyagent import fetch
+from pyai import fetch
 
 # Weather
 weather = fetch.weather("New York")
@@ -163,7 +163,7 @@ print(f"Bitcoin: ${btc.price}")
 ### 5. Code Operations
 
 ```python
-from pyagent import code
+from pyai import code
 
 # Generate code
 func = code.write("function to calculate fibonacci numbers")
@@ -192,7 +192,7 @@ js_code = code.convert(python_code, from_lang="python", to_lang="javascript")
 ### Research Assistant
 
 ```python
-from pyagent import research
+from pyai import research
 
 result = research("quantum computing applications")
 print("Summary:", result.summary)
@@ -203,7 +203,7 @@ print("Insights:", result.insights)
 ### Document Summarizer
 
 ```python
-from pyagent import summarize
+from pyai import summarize
 
 # Summarize anything
 summary = summarize("./research_paper.pdf")
@@ -214,7 +214,7 @@ summary = summarize("Long text here...", length="short")
 ### Data Extractor
 
 ```python
-from pyagent import extract
+from pyai import extract
 from pydantic import BaseModel
 
 class Invoice(BaseModel):
@@ -230,7 +230,7 @@ print(f"Vendor: {invoice.vendor}, Amount: ${invoice.amount}")
 ### Chat Session
 
 ```python
-from pyagent import chat
+from pyai import chat
 
 session = chat(persona="teacher")
 session.say("What is machine learning?")
@@ -241,7 +241,7 @@ session.say("How can I learn more?")  # Still has full context
 ### Multi-Language Support
 
 ```python
-from pyagent import translate
+from pyai import translate
 
 # English to Spanish
 spanish = translate("Hello, how are you?", to="es")
@@ -264,7 +264,7 @@ formal_german = translate("Please help me", to="de", formal=True)
 
 ## Comparison
 
-Task | Other Frameworks | PyAgent
+Task | Other Frameworks | pyai
 -----|-----------------|--------
 Simple Q&A | 10+ lines | 1 line
 RAG | 20+ lines | 2 lines
@@ -272,4 +272,4 @@ Custom Agent | 25+ lines | 1 line
 Weather Fetch | 15+ lines | 1 line
 Code Review | Custom implementation | 1 line
 
-**PyAgent: The Pandas of AI** 🐼🤖
+**pyai: The Pandas of AI** 🐼🤖

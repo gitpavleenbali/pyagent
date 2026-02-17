@@ -29,7 +29,7 @@ validated = validate(parsed)
 # ... more manual wiring
 
 # This (AI as infrastructure)
-from pyagent import extract
+from pyai import extract
 data = extract(text, ["name", "email", "phone"])
 # Intelligence is the infrastructure
 ```
@@ -142,9 +142,9 @@ PYAI is designed for production from day one.
 ### Example: Production Agent
 
 ```python
-from pyagent import Agent, Runner
-from pyagent.runner import RunConfig
-from pyagent.sessions import SessionManager, SQLiteSessionStore
+from pyai import Agent, Runner
+from pyai.runner import RunConfig
+from pyai.sessions import SessionManager, SQLiteSessionStore
 
 # Production-grade configuration
 agent = Agent(

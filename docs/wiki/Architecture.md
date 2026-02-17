@@ -1,18 +1,18 @@
 # Architecture
 
-PyAgent's architecture is designed around the concept of being the "Pandas of AI" - making complex AI operations simple.
+pyai's architecture is designed around the concept of being the "Pandas of AI" - making complex AI operations simple.
 
 ## Vision
 
-Just as pandas revolutionized data analysis with one-liners, PyAgent revolutionizes AI development.
+Just as pandas revolutionized data analysis with one-liners, pyai revolutionizes AI development.
 
 ## The 3-Dimensional Library
 
-Traditional libraries are 2-dimensional (Input → Output). PyAgent is 3-dimensional:
+Traditional libraries are 2-dimensional (Input → Output). pyai is 3-dimensional:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PYAGENT 3D ARCHITECTURE                       │
+│                    pyai 3D ARCHITECTURE                       │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │    USER LAYER (Dimension 1 - Surface)                           │
@@ -53,8 +53,8 @@ from langchain.chains import LLMChain
 # ... setup code ...
 result = chain.run("What is AI?")
 
-# PyAgent: 1 line
-from pyagent import ask
+# pyai: 1 line
+from pyai import ask
 answer = ask("What is AI?")
 ```
 
@@ -84,7 +84,7 @@ workflow = Workflow().chain(analyze).then(summarize)
 ## Module Structure
 
 ```
-pyagent/
+pyai/
 ├── easy/           # One-liner functions
 │   ├── ask.py
 │   ├── research.py
@@ -218,7 +218,7 @@ Response
 ### Custom Skills
 
 ```python
-from pyagent.skills import skill
+from pyai.skills import skill
 
 @skill
 def my_tool(query: str) -> str:
@@ -229,7 +229,7 @@ def my_tool(query: str) -> str:
 ### Custom Providers
 
 ```python
-from pyagent.core import LLMProvider
+from pyai.core import LLMProvider
 
 class MyProvider(LLMProvider):
     def complete(self, messages):

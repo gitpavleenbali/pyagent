@@ -1,17 +1,17 @@
 # PluginRegistry
 
-The `PluginRegistry` manages plugin discovery, loading, and lifecycle in PyAgent.
+The `PluginRegistry` manages plugin discovery, loading, and lifecycle in pyai.
 
 ## Import
 
 ```python
-from pyagent.plugins import PluginRegistry
+from pyai.plugins import PluginRegistry
 ```
 
 ## Basic Usage
 
 ```python
-from pyagent.plugins import PluginRegistry, Plugin
+from pyai.plugins import PluginRegistry, Plugin
 
 # Create registry
 registry = PluginRegistry()
@@ -108,13 +108,13 @@ print(f"Found {count} plugins")
 Load plugins from package entry points.
 
 ```python
-registry.discover_entry_points(group: str = "pyagent.plugins") -> int
+registry.discover_entry_points(group: str = "pyai.plugins") -> int
 ```
 
 **Example:**
 ```python
 # In plugin package's pyproject.toml:
-# [project.entry-points."pyagent.plugins"]
+# [project.entry-points."pyai.plugins"]
 # my_plugin = "my_package:MyPlugin"
 
 registry.discover_entry_points()
@@ -242,7 +242,7 @@ registry.on_plugin_error = lambda plugin, error: print(f"Error: {error}")
 For convenience, a global registry is available:
 
 ```python
-from pyagent.plugins import global_registry
+from pyai.plugins import global_registry
 
 # Register globally
 global_registry.register(MyPlugin())
@@ -265,8 +265,8 @@ my_project/
 
 ```python
 # main.py
-from pyagent.plugins import PluginRegistry
-from pyagent import Agent
+from pyai.plugins import PluginRegistry
+from pyai import Agent
 
 registry = PluginRegistry()
 registry.discover(paths=["./plugins"])

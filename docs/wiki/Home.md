@@ -74,7 +74,7 @@
 ## 🔗 Quick Links
 
 - [GitHub Repository](https://github.com/gitpavleenbali/PYAI)
-- [PyPI Package](https://pypi.org/project/pyagent/)
+- [PyPI Package](https://pypi.org/project/pyai/)
 - [Issue Tracker](https://github.com/gitpavleenbali/PYAI/issues)
 
 ---

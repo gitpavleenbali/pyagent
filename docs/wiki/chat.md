@@ -5,7 +5,7 @@ The `chat` function provides interactive conversation sessions.
 ## Import
 
 ```python
-from pyagent import chat
+from pyai import chat
 ```
 
 ## Basic Usage
@@ -22,7 +22,7 @@ response = session.send("What's your name?")
 ## Quick Start
 
 ```python
-from pyagent import chat
+from pyai import chat
 
 # Create session
 session = chat()
@@ -49,7 +49,7 @@ print(session.send("Can you show an example?"))
 ### Basic Chat
 
 ```python
-from pyagent import chat
+from pyai import chat
 
 session = chat()
 
@@ -85,7 +85,7 @@ response = session.send("Help me design an API")
 ### Context Manager
 
 ```python
-from pyagent import chat
+from pyai import chat
 
 with chat() as session:
     print(session.send("Hello"))
@@ -137,7 +137,7 @@ print()
 
 ```python
 import asyncio
-from pyagent import chat
+from pyai import chat
 
 async def main():
     session = chat()

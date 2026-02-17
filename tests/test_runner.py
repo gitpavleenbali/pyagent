@@ -1,4 +1,4 @@
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -21,12 +21,12 @@ class TestRunConfig:
     
     def test_runconfig_import(self):
         """Test that RunConfig can be imported."""
-        from pyagent.runner import RunConfig
+        from pyai.runner import RunConfig
         assert RunConfig is not None
     
     def test_runconfig_defaults(self):
         """Test default values."""
-        from pyagent.runner import RunConfig
+        from pyai.runner import RunConfig
         
         config = RunConfig()
         assert config.max_turns == 10
@@ -36,7 +36,7 @@ class TestRunConfig:
     
     def test_runconfig_custom_values(self):
         """Test custom configuration."""
-        from pyagent.runner import RunConfig
+        from pyai.runner import RunConfig
         
         config = RunConfig(
             max_turns=5,
@@ -55,12 +55,12 @@ class TestRunContext:
     
     def test_context_import(self):
         """Test that RunContext can be imported."""
-        from pyagent.runner.executor import RunContext
+        from pyai.runner.executor import RunContext
         assert RunContext is not None
     
     def test_context_creation(self):
         """Test creating a context."""
-        from pyagent.runner.executor import RunContext
+        from pyai.runner.executor import RunContext
         
         ctx = RunContext(run_id="test-123")
         assert ctx.run_id == "test-123"
@@ -68,7 +68,7 @@ class TestRunContext:
     
     def test_context_variables(self):
         """Test context variable storage."""
-        from pyagent.runner.executor import RunContext
+        from pyai.runner.executor import RunContext
         
         ctx = RunContext(run_id="test-123")
         ctx.set_variable("key", "value")
@@ -78,7 +78,7 @@ class TestRunContext:
     
     def test_context_elapsed_time(self):
         """Test elapsed time calculation."""
-        from pyagent.runner.executor import RunContext
+        from pyai.runner.executor import RunContext
         import time
         
         ctx = RunContext(run_id="test-123")
@@ -92,13 +92,13 @@ class TestRunResult:
     
     def test_runresult_import(self):
         """Test that RunResult can be imported."""
-        from pyagent.runner import RunResult
+        from pyai.runner import RunResult
         assert RunResult is not None
     
     def test_runresult_creation(self):
         """Test creating a result."""
-        from pyagent.runner import RunResult
-        from pyagent.runner.executor import RunStatus
+        from pyai.runner import RunResult
+        from pyai.runner.executor import RunStatus
         
         result = RunResult(
             run_id="test-123",
@@ -114,8 +114,8 @@ class TestRunResult:
     
     def test_runresult_failed(self):
         """Test failed result."""
-        from pyagent.runner import RunResult
-        from pyagent.runner.executor import RunStatus
+        from pyai.runner import RunResult
+        from pyai.runner.executor import RunStatus
         
         result = RunResult(
             run_id="test-123",
@@ -128,8 +128,8 @@ class TestRunResult:
     
     def test_runresult_to_dict(self):
         """Test to_dict conversion."""
-        from pyagent.runner import RunResult
-        from pyagent.runner.executor import RunStatus
+        from pyai.runner import RunResult
+        from pyai.runner.executor import RunStatus
         
         result = RunResult(
             run_id="test-123",
@@ -148,12 +148,12 @@ class TestRunner:
     
     def test_runner_import(self):
         """Test that Runner can be imported."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         assert Runner is not None
     
     def test_runner_creation(self):
         """Test creating a runner."""
-        from pyagent.runner import Runner, RunConfig
+        from pyai.runner import Runner, RunConfig
         
         config = RunConfig(max_turns=5)
         runner = Runner(config=config)
@@ -162,7 +162,7 @@ class TestRunner:
     
     def test_runner_execute_callable(self):
         """Test executing a callable agent."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         
         def simple_agent(input_text):
             return f"Echo: {input_text}"
@@ -174,7 +174,7 @@ class TestRunner:
     
     def test_runner_execute_with_run_method(self):
         """Test executing agent with run method."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         
         class MockAgent:
             def run(self, input_text):
@@ -188,7 +188,7 @@ class TestRunner:
     
     def test_runner_max_turns(self):
         """Test max turns limit."""
-        from pyagent.runner import Runner, RunConfig
+        from pyai.runner import Runner, RunConfig
         
         turn_count = 0
         
@@ -205,7 +205,7 @@ class TestRunner:
     
     def test_runner_error_handling(self):
         """Test error handling."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         
         def error_agent(input_text):
             raise ValueError("Intentional error")
@@ -217,7 +217,7 @@ class TestRunner:
     
     def test_runner_run_id_generation(self):
         """Test that run_id is generated."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         
         def simple_agent(input_text):
             return "OK"
@@ -234,7 +234,7 @@ class TestRunnerAsync:
     @pytest.mark.asyncio
     async def test_runner_async_execution(self):
         """Test async execution."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         
         async def async_agent(input_text):
             await asyncio.sleep(0.01)
@@ -248,7 +248,7 @@ class TestRunnerAsync:
     @pytest.mark.asyncio
     async def test_runner_async_with_sync_agent(self):
         """Test async runner with sync agent."""
-        from pyagent.runner import Runner
+        from pyai.runner import Runner
         
         def sync_agent(input_text):
             return f"Sync: {input_text}"
@@ -264,12 +264,12 @@ class TestStreamEvent:
     
     def test_stream_event_import(self):
         """Test that StreamEvent can be imported."""
-        from pyagent.runner import StreamEvent
+        from pyai.runner import StreamEvent
         assert StreamEvent is not None
     
     def test_stream_event_creation(self):
         """Test creating a stream event."""
-        from pyagent.runner.streaming import StreamEvent, EventType
+        from pyai.runner.streaming import StreamEvent, EventType
         
         event = StreamEvent(
             type=EventType.TOKEN,
@@ -282,7 +282,7 @@ class TestStreamEvent:
     
     def test_stream_event_to_dict(self):
         """Test to_dict conversion."""
-        from pyagent.runner.streaming import StreamEvent, EventType
+        from pyai.runner.streaming import StreamEvent, EventType
         
         event = StreamEvent(
             type=EventType.RUN_START,
@@ -300,14 +300,14 @@ class TestStreamingRunner:
     
     def test_streaming_runner_import(self):
         """Test that StreamingRunner can be imported."""
-        from pyagent.runner import StreamingRunner
+        from pyai.runner import StreamingRunner
         assert StreamingRunner is not None
     
     @pytest.mark.asyncio
     async def test_streaming_execution(self):
         """Test streaming execution produces events."""
-        from pyagent.runner import StreamingRunner
-        from pyagent.runner.streaming import EventType
+        from pyai.runner import StreamingRunner
+        from pyai.runner.streaming import EventType
         
         def simple_agent(input_text):
             return f"Response to: {input_text}"
@@ -324,8 +324,8 @@ class TestStreamingRunner:
     @pytest.mark.asyncio
     async def test_streaming_token_events(self):
         """Test that token events are emitted."""
-        from pyagent.runner import StreamingRunner
-        from pyagent.runner.streaming import EventType
+        from pyai.runner import StreamingRunner
+        from pyai.runner.streaming import EventType
         
         def simple_agent(input_text):
             return "Token output"
@@ -344,7 +344,7 @@ class TestRunnerIntegration:
     
     def test_module_exports(self):
         """Test that all expected exports are available."""
-        from pyagent import runner
+        from pyai import runner
         
         assert hasattr(runner, "Runner")
         assert hasattr(runner, "RunConfig")
@@ -354,17 +354,17 @@ class TestRunnerIntegration:
         assert hasattr(runner, "StreamEvent")
     
     def test_main_init_exports(self):
-        """Test that runner is exported from main pyagent."""
-        import pyagent
+        """Test that runner is exported from main pyai."""
+        import pyai
         
-        assert hasattr(pyagent, "runner")
-        assert hasattr(pyagent, "Runner")
-        assert hasattr(pyagent, "RunConfig")
-        assert hasattr(pyagent, "RunResult")
+        assert hasattr(pyai, "runner")
+        assert hasattr(pyai, "Runner")
+        assert hasattr(pyai, "RunConfig")
+        assert hasattr(pyai, "RunResult")
     
     def test_full_runner_workflow(self):
         """Test complete runner workflow."""
-        from pyagent import Runner, RunConfig
+        from pyai import Runner, RunConfig
         
         # Create a mock agent
         class TestAgent:

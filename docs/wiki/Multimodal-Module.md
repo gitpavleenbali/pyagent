@@ -5,7 +5,7 @@ The Multimodal module enables AI agents to process and generate content across m
 ## Overview
 
 ```python
-from pyagent.multimodal import Image, Audio, Video, MultimodalContent
+from pyai.multimodal import Image, Audio, Video, MultimodalContent
 ```
 
 ## Key Components
@@ -22,8 +22,8 @@ from pyagent.multimodal import Image, Audio, Video, MultimodalContent
 ### Image Analysis
 
 ```python
-from pyagent import ask
-from pyagent.multimodal import Image
+from pyai import ask
+from pyai.multimodal import Image
 
 # Analyze an image
 image = Image.from_file("photo.jpg")
@@ -68,7 +68,7 @@ image = Image.from_base64(data, media_type="image/png")
 Combine multiple types of content:
 
 ```python
-from pyagent.multimodal import MultimodalContent, Image, Audio
+from pyai.multimodal import MultimodalContent, Image, Audio
 
 content = MultimodalContent()
 content.add_text("Please analyze this meeting recording and slides:")
@@ -81,8 +81,8 @@ response = agent.run(content)
 ## With Agents
 
 ```python
-from pyagent import Agent
-from pyagent.multimodal import Image
+from pyai import Agent
+from pyai.multimodal import Image
 
 agent = Agent(
     name="ImageAnalyzer",
@@ -112,7 +112,7 @@ result = agent.run("Explain this diagram", images=[image])
 ## Image Processing
 
 ```python
-from pyagent.multimodal import Image
+from pyai.multimodal import Image
 
 image = Image.from_file("large_photo.jpg")
 

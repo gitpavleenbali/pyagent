@@ -1,6 +1,6 @@
 # pyright: reportMissingImports=false, reportUnusedVariable=false, reportRedeclaration=false, reportUnusedImport=false, reportGeneralTypeIssues=false
 """
-PyAgent Azure Integration Tests
+pyai Azure Integration Tests
 ================================
 
 Integration tests that require Azure OpenAI connection.
@@ -33,9 +33,9 @@ pytestmark = pytest.mark.skipif(
 @pytest.fixture(scope="module")
 def azure_config():
     """Configure Azure OpenAI for tests."""
-    import pyagent
+    import pyai
     
-    pyagent.configure(
+    pyai.configure(
         provider="azure",
         azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
         model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
@@ -52,7 +52,7 @@ class TestAzureConnection:
     
     def test_azure_ask(self, azure_config):
         """Test basic ask function with Azure."""
-        from pyagent import ask
+        from pyai import ask
         
         response = ask("What is 2 + 2?")
         assert response is not None
@@ -61,7 +61,7 @@ class TestAzureConnection:
     
     def test_azure_agent(self, azure_config):
         """Test agent with Azure."""
-        from pyagent import agent
+        from pyai import agent
         
         math_agent = agent("You are a math tutor. Answer concisely.")
         response = math_agent("What is the square root of 16?")
@@ -75,7 +75,7 @@ class TestAzureEasyFunctions:
     
     def test_summarize(self, azure_config):
         """Test summarize function."""
-        from pyagent import summarize
+        from pyai import summarize
         
         text = """
         Artificial intelligence (AI) is intelligence demonstrated by machines, 
@@ -92,7 +92,7 @@ class TestAzureEasyFunctions:
     
     def test_extract(self, azure_config):
         """Test extract function."""
-        from pyagent import extract
+        from pyai import extract
         
         text = "John Smith works at Microsoft in Seattle. His email is john@microsoft.com."
         
@@ -108,7 +108,7 @@ class TestAzureEasyFunctions:
     
     def test_translate(self, azure_config):
         """Test translate function."""
-        from pyagent import translate
+        from pyai import translate
         
         result = translate("Hello, world!", to="Spanish")
         
@@ -117,7 +117,7 @@ class TestAzureEasyFunctions:
     
     def test_generate(self, azure_config):
         """Test generate function."""
-        from pyagent import generate
+        from pyai import generate
         
         result = generate("haiku about Python programming")
         
@@ -126,7 +126,7 @@ class TestAzureEasyFunctions:
     
     def test_chat(self, azure_config):
         """Test chat function."""
-        from pyagent import chat
+        from pyai import chat
         
         # Create a chat session
         session = chat()
@@ -144,7 +144,7 @@ class TestAzureAgentFeatures:
     
     def test_agent_with_persona(self, azure_config):
         """Test agent with persona."""
-        from pyagent import agent
+        from pyai import agent
         
         coder = agent(persona="coder")
         response = coder("Write a one-line Python hello world")
@@ -154,7 +154,7 @@ class TestAzureAgentFeatures:
     
     def test_agent_with_memory(self, azure_config):
         """Test agent with memory."""
-        from pyagent import agent
+        from pyai import agent
         
         bot = agent("You remember everything", memory=True, name="MemBot")
         
@@ -165,7 +165,7 @@ class TestAzureAgentFeatures:
     
     def test_multiple_agents(self, azure_config):
         """Test multiple agents working."""
-        from pyagent import agent
+        from pyai import agent
         
         researcher = agent(persona="researcher", name="Researcher")
         writer = agent(persona="writer", name="Writer")
@@ -184,7 +184,7 @@ class TestAzureHandoff:
     
     def test_simple_handoff(self, azure_config):
         """Test simple agent handoff."""
-        from pyagent import handoff, agent
+        from pyai import handoff, agent
         
         a1 = agent("You are agent 1. Say 'ALPHA' and pass to agent 2.", name="Agent1")
         a2 = agent("You are agent 2. Say 'BETA' when you receive handoff.", name="Agent2")
@@ -196,7 +196,7 @@ class TestAzureHandoff:
     
     def test_team_routing(self, azure_config):
         """Test team routing."""
-        from pyagent import handoff, agent
+        from pyai import handoff, agent
         
         coder = agent(persona="coder", name="Coder")
         writer = agent(persona="writer", name="Writer")
@@ -213,7 +213,7 @@ class TestAzureCode:
     
     def test_code_generate(self, azure_config):
         """Test code generation."""
-        from pyagent import code
+        from pyai import code
         
         result = code.write("function to calculate factorial in Python")
         
@@ -222,7 +222,7 @@ class TestAzureCode:
     
     def test_code_explain(self, azure_config):
         """Test code explanation."""
-        from pyagent import code
+        from pyai import code
         
         sample_code = """
 def fibonacci(n):
@@ -242,15 +242,15 @@ class TestAzureRAG:
     
     def test_rag_simple(self, azure_config):
         """Test simple RAG."""
-        from pyagent import rag
+        from pyai import rag
         
         documents = [
-            "PyAgent is a Python library for building AI agents.",
-            "PyAgent supports Azure OpenAI, OpenAI, and Anthropic.",
-            "PyAgent provides simple one-liner functions for AI tasks."
+            "pyai is a Python library for building AI agents.",
+            "pyai supports Azure OpenAI, OpenAI, and Anthropic.",
+            "pyai provides simple one-liner functions for AI tasks."
         ]
         
-        result = rag.ask("What providers does PyAgent support?", documents=documents)
+        result = rag.ask("What providers does pyai support?", documents=documents)
         
         assert result is not None
         assert "azure" in result.lower() or "openai" in result.lower()
@@ -261,7 +261,7 @@ class TestAzureGuardrails:
     
     def test_guardrails_wrap_function(self, azure_config):
         """Test wrapping function with guardrails."""
-        from pyagent import guardrails, ask
+        from pyai import guardrails, ask
         
         safe_ask = guardrails.wrap(ask, block_pii=True)
         
@@ -272,7 +272,7 @@ class TestAzureGuardrails:
     
     def test_guardrails_blocks_pii(self, azure_config):
         """Test that guardrails blocks PII."""
-        from pyagent import guardrails, ask
+        from pyai import guardrails, ask
         
         safe_ask = guardrails.wrap(ask, block_pii=True)
         
@@ -291,7 +291,7 @@ class TestAzureTracing:
     
     def test_traced_call(self, azure_config):
         """Test traced LLM call."""
-        from pyagent import trace, ask
+        from pyai import trace, ask
         
         trace.enable()
         trace.clear()

@@ -13,7 +13,7 @@ PYAI's evaluation framework enables:
 ## Quick Start
 
 ```python
-from pyagent.evaluation import Evaluator, TestCase
+from pyai.evaluation import Evaluator, TestCase
 
 # Create test cases
 tests = [
@@ -40,7 +40,7 @@ print(f"Score: {results.score}%")
 ### Basic Test Case
 
 ```python
-from pyagent.evaluation import TestCase
+from pyai.evaluation import TestCase
 
 test = TestCase(
     input="What is Python?",
@@ -80,7 +80,7 @@ test = TestCase(
 ## Evaluator
 
 ```python
-from pyagent.evaluation import Evaluator
+from pyai.evaluation import Evaluator
 
 evaluator = Evaluator(
     agent,
@@ -103,7 +103,7 @@ results = evaluator.run(test_cases)
 ## EvalSet
 
 ```python
-from pyagent.evaluation import EvalSet
+from pyai.evaluation import EvalSet
 
 # Create evaluation set
 eval_set = EvalSet(
@@ -124,8 +124,8 @@ eval_set = EvalSet.load("math_tests.json")
 ## Full Example
 
 ```python
-from pyagent import Agent
-from pyagent.evaluation import Evaluator, EvalSet, TestCase
+from pyai import Agent
+from pyai.evaluation import Evaluator, EvalSet, TestCase
 
 # Create agent
 agent = Agent(
@@ -172,7 +172,7 @@ print(f"V2 is {comparison.improvement}% better")
 ```python
 # In pytest
 import pytest
-from pyagent.evaluation import Evaluator, EvalSet
+from pyai.evaluation import Evaluator, EvalSet
 
 @pytest.fixture
 def agent():

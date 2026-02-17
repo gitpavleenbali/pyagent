@@ -7,7 +7,7 @@ Process images, audio, and video with AI agents.
 ## Quick Start
 
 ```python
-from pyagent.multimodal import ImageContent, AudioContent
+from pyai.multimodal import ImageContent, AudioContent
 
 # Image analysis
 image = ImageContent.from_file("photo.jpg")

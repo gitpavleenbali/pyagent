@@ -5,8 +5,8 @@ The VectorDB module provides connectors and abstractions for vector databases, e
 ## Overview
 
 ```python
-from pyagent.vectordb import connect
-from pyagent.integrations.vector_db import VectorStore, Document
+from pyai.vectordb import connect
+from pyai.integrations.vector_db import VectorStore, Document
 ```
 
 ## Supported Databases
@@ -23,7 +23,7 @@ from pyagent.integrations.vector_db import VectorStore, Document
 ### Connect to Database
 
 ```python
-from pyagent.vectordb import connect
+from pyai.vectordb import connect
 
 # ChromaDB (local)
 db = connect("chroma", path="./my_db")
@@ -79,7 +79,7 @@ results = db.search(
 ## Document Class
 
 ```python
-from pyagent.integrations.vector_db import Document
+from pyai.integrations.vector_db import Document
 
 doc = Document(
     content="Document text content",
@@ -106,7 +106,7 @@ db = connect("chroma", embedding_function=my_embeddings)
 ## RAG Integration
 
 ```python
-from pyagent.easy import rag
+from pyai.easy import rag
 
 # Index documents
 index = rag.index("./documents")

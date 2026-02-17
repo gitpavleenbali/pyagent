@@ -16,7 +16,7 @@ PYAI provides several patterns for orchestrating multiple agents.
 Agents execute sequentially, passing output to the next.
 
 ```python
-from pyagent.blueprint import Chain
+from pyai.blueprint import Chain
 
 # Create agents
 researcher = Agent(name="Researcher", instructions="Research topics")
@@ -47,7 +47,7 @@ pipeline = Chain([
 Dynamically routes to appropriate agent based on input.
 
 ```python
-from pyagent.blueprint import Router
+from pyai.blueprint import Router
 
 # Specialized agents
 math_agent = Agent(name="Math", instructions="Solve math problems")
@@ -90,7 +90,7 @@ router = Router(
 Process in parallel, then combine results.
 
 ```python
-from pyagent.blueprint import MapReduce
+from pyai.blueprint import MapReduce
 
 # Worker agent
 researcher = Agent(
@@ -132,7 +132,7 @@ pipeline = MapReduce(
 Manager agent coordinates worker agents.
 
 ```python
-from pyagent.blueprint import Supervisor
+from pyai.blueprint import Supervisor
 
 # Worker agents
 coder = Agent(name="Coder", instructions="Write code")
@@ -175,7 +175,7 @@ manager = Supervisor(
 ### Debate Pattern
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 advocate = Agent(name="Advocate", instructions="Argue FOR the topic")
 critic = Agent(name="Critic", instructions="Argue AGAINST the topic")

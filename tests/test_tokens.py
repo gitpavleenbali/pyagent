@@ -2,7 +2,7 @@
 # pylint: disable=all
 # type: ignore
 """
-Tests for PyAgent Token Counting Module.
+Tests for pyai Token Counting Module.
 
 Tests token counting and cost calculation utilities.
 """
@@ -20,14 +20,14 @@ class TestTokenCounter:
     
     def test_counter_initialization(self):
         """Test counter initialization."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         counter = TokenCounter("gpt-4")
         assert counter.model == "gpt-4"
     
     def test_counter_with_different_models(self):
         """Test counter with different models."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         # OpenAI
         counter = TokenCounter("gpt-4")
@@ -39,7 +39,7 @@ class TestTokenCounter:
     
     def test_count_string(self):
         """Test counting tokens in string."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         counter = TokenCounter("gpt-4")
         result = counter.count("Hello, how are you?")
@@ -50,7 +50,7 @@ class TestTokenCounter:
     
     def test_count_output(self):
         """Test counting output tokens."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         counter = TokenCounter("gpt-4")
         result = counter.count("This is the response.", is_output=True)
@@ -61,7 +61,7 @@ class TestTokenCounter:
     
     def test_count_messages(self):
         """Test counting tokens in message list."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         messages = [
             {"role": "system", "content": "You are a helpful assistant."},
@@ -75,7 +75,7 @@ class TestTokenCounter:
     
     def test_count_messages_with_completion(self):
         """Test counting with completion."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         messages = [
             {"role": "user", "content": "Hello!"},
@@ -91,7 +91,7 @@ class TestTokenCounter:
     
     def test_token_count_dataclass(self):
         """Test TokenCount dataclass."""
-        from pyagent.tokens.counter import TokenCount
+        from pyai.tokens.counter import TokenCount
         
         count = TokenCount(
             input_tokens=100,
@@ -107,7 +107,7 @@ class TestTokenCounter:
     
     def test_estimate_tokens(self):
         """Test token estimation."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         # Use a model that forces estimation
         counter = TokenCounter("unknown-model")
@@ -122,21 +122,21 @@ class TestCountTokensFunction:
     
     def test_count_tokens_string(self):
         """Test counting tokens in string."""
-        from pyagent.tokens import count_tokens
+        from pyai.tokens import count_tokens
         
         tokens = count_tokens("Hello, world!")
         assert tokens > 0
     
     def test_count_tokens_with_model(self):
         """Test counting with specific model."""
-        from pyagent.tokens import count_tokens
+        from pyai.tokens import count_tokens
         
         tokens = count_tokens("Test message", model="gpt-4")
         assert tokens > 0
     
     def test_count_tokens_empty(self):
         """Test counting empty string."""
-        from pyagent.tokens import count_tokens
+        from pyai.tokens import count_tokens
         
         tokens = count_tokens("")
         # Should be at least 1 (minimum)
@@ -148,7 +148,7 @@ class TestEstimateTokensFunction:
     
     def test_estimate_tokens(self):
         """Test basic estimation."""
-        from pyagent.tokens.counter import estimate_tokens
+        from pyai.tokens.counter import estimate_tokens
         
         # 40 chars / 4 chars per token = 10 tokens
         tokens = estimate_tokens("1234567890" * 4)
@@ -156,7 +156,7 @@ class TestEstimateTokensFunction:
     
     def test_estimate_tokens_custom_ratio(self):
         """Test estimation with custom ratio."""
-        from pyagent.tokens.counter import estimate_tokens
+        from pyai.tokens.counter import estimate_tokens
         
         # 40 chars / 8 chars per token = 5 tokens
         tokens = estimate_tokens("1234567890" * 4, chars_per_token=8)
@@ -172,7 +172,7 @@ class TestTokenCost:
     
     def test_token_cost_dataclass(self):
         """Test TokenCost initialization."""
-        from pyagent.tokens.cost import TokenCost
+        from pyai.tokens.cost import TokenCost
         
         cost = TokenCost(
             input_cost=0.03,
@@ -188,7 +188,7 @@ class TestTokenCost:
     
     def test_token_cost_to_dict(self):
         """Test TokenCost serialization."""
-        from pyagent.tokens.cost import TokenCost
+        from pyai.tokens.cost import TokenCost
         
         cost = TokenCost(
             input_cost=0.01,
@@ -203,7 +203,7 @@ class TestTokenCost:
     
     def test_token_cost_str(self):
         """Test TokenCost string representation."""
-        from pyagent.tokens.cost import TokenCost
+        from pyai.tokens.cost import TokenCost
         
         cost = TokenCost(
             input_tokens=100,
@@ -222,7 +222,7 @@ class TestCalculateCost:
     
     def test_calculate_cost_basic(self):
         """Test basic cost calculation."""
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.cost import calculate_cost
         
         cost = calculate_cost(1000, 500, model="gpt-4")
         
@@ -232,7 +232,7 @@ class TestCalculateCost:
     
     def test_calculate_cost_gpt4(self):
         """Test GPT-4 pricing."""
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.cost import calculate_cost
         
         # GPT-4: $0.03/1K input, $0.06/1K output
         cost = calculate_cost(1000, 1000, model="gpt-4")
@@ -246,7 +246,7 @@ class TestCalculateCost:
     
     def test_calculate_cost_gpt4o_mini(self):
         """Test GPT-4o-mini pricing (cheaper model)."""
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.cost import calculate_cost
         
         cost = calculate_cost(1000, 1000, model="gpt-4o-mini")
         
@@ -255,7 +255,7 @@ class TestCalculateCost:
     
     def test_calculate_cost_claude(self):
         """Test Claude pricing."""
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.cost import calculate_cost
         
         cost = calculate_cost(1000, 1000, model="claude-3-opus")
         
@@ -264,8 +264,8 @@ class TestCalculateCost:
     
     def test_calculate_cost_with_token_count(self):
         """Test cost calculation with TokenCount input."""
-        from pyagent.tokens.counter import TokenCount
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.counter import TokenCount
+        from pyai.tokens.cost import calculate_cost
         
         token_count = TokenCount(
             input_tokens=1000,
@@ -284,14 +284,14 @@ class TestModelPricing:
     
     def test_model_pricing_exists(self):
         """Test MODEL_PRICING dictionary exists."""
-        from pyagent.tokens.cost import MODEL_PRICING
+        from pyai.tokens.cost import MODEL_PRICING
         
         assert "gpt-4" in MODEL_PRICING
         assert "claude-3-opus" in MODEL_PRICING
     
     def test_get_model_pricing(self):
         """Test get_model_pricing function."""
-        from pyagent.tokens.cost import get_model_pricing
+        from pyai.tokens.cost import get_model_pricing
         
         input_rate, output_rate = get_model_pricing("gpt-4")
         
@@ -300,7 +300,7 @@ class TestModelPricing:
     
     def test_get_model_pricing_prefix_match(self):
         """Test prefix matching for model variants."""
-        from pyagent.tokens.cost import get_model_pricing
+        from pyai.tokens.cost import get_model_pricing
         
         # Should match gpt-4-turbo prefix
         input_rate, output_rate = get_model_pricing("gpt-4-turbo-2024")
@@ -313,7 +313,7 @@ class TestCostTracker:
     
     def test_tracker_initialization(self):
         """Test tracker initialization."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         
@@ -323,7 +323,7 @@ class TestCostTracker:
     
     def test_tracker_add(self):
         """Test adding tokens to tracker."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         
@@ -335,7 +335,7 @@ class TestCostTracker:
     
     def test_tracker_multiple_adds(self):
         """Test multiple adds."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         
@@ -349,7 +349,7 @@ class TestCostTracker:
     
     def test_tracker_total_cost(self):
         """Test total cost calculation."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         
@@ -361,7 +361,7 @@ class TestCostTracker:
     
     def test_tracker_average_cost(self):
         """Test average cost per request."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         
@@ -374,7 +374,7 @@ class TestCostTracker:
     
     def test_tracker_summary(self):
         """Test tracker summary."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         tracker.add(1000, 500)
@@ -388,7 +388,7 @@ class TestCostTracker:
     
     def test_tracker_reset(self):
         """Test tracker reset."""
-        from pyagent.tokens.cost import CostTracker
+        from pyai.tokens.cost import CostTracker
         
         tracker = CostTracker(model="gpt-4")
         tracker.add(1000, 500)
@@ -406,7 +406,7 @@ class TestEstimateMonthly:
     
     def test_estimate_monthly_cost(self):
         """Test monthly cost estimation."""
-        from pyagent.tokens.cost import estimate_monthly_cost
+        from pyai.tokens.cost import estimate_monthly_cost
         
         estimate = estimate_monthly_cost(
             requests_per_day=100,
@@ -430,8 +430,8 @@ class TestTokensIntegration:
     
     def test_count_and_calculate(self):
         """Test combined counting and cost calculation."""
-        from pyagent.tokens.counter import TokenCounter
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.counter import TokenCounter
+        from pyai.tokens.cost import calculate_cost
         
         # Count tokens
         counter = TokenCounter("gpt-4")
@@ -448,8 +448,8 @@ class TestTokensIntegration:
         assert cost.total_cost > 0
     
     def test_import_from_main_package(self):
-        """Test imports from main pyagent package."""
-        from pyagent import TokenCounter, count_tokens, calculate_cost, CostTracker
+        """Test imports from main pyai package."""
+        from pyai import TokenCounter, count_tokens, calculate_cost, CostTracker
         
         assert TokenCounter is not None
         assert count_tokens is not None
@@ -458,7 +458,7 @@ class TestTokensIntegration:
     
     def test_import_tokens_module(self):
         """Test importing tokens module."""
-        from pyagent.tokens import (
+        from pyai.tokens import (
             TokenCounter,
             count_tokens,
             estimate_tokens,
@@ -481,7 +481,7 @@ class TestEdgeCases:
     
     def test_empty_string(self):
         """Test counting empty string."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         counter = TokenCounter("gpt-4")
         result = counter.count("")
@@ -491,7 +491,7 @@ class TestEdgeCases:
     
     def test_very_long_text(self):
         """Test counting very long text."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         long_text = "word " * 10000  # 50000 characters
         
@@ -502,7 +502,7 @@ class TestEdgeCases:
     
     def test_unknown_model_pricing(self):
         """Test pricing for unknown model."""
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.cost import calculate_cost
         
         cost = calculate_cost(1000, 500, model="unknown-model-xyz")
         
@@ -511,7 +511,7 @@ class TestEdgeCases:
     
     def test_zero_tokens(self):
         """Test cost with zero tokens."""
-        from pyagent.tokens.cost import calculate_cost
+        from pyai.tokens.cost import calculate_cost
         
         cost = calculate_cost(0, 0, model="gpt-4")
         
@@ -519,7 +519,7 @@ class TestEdgeCases:
     
     def test_messages_with_list_content(self):
         """Test messages with list-based content (vision)."""
-        from pyagent.tokens.counter import TokenCounter
+        from pyai.tokens.counter import TokenCounter
         
         messages = [
             {

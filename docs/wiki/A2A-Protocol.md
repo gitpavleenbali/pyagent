@@ -9,7 +9,7 @@ Agent-to-Agent communication protocol for distributed agents.
 ### Server
 
 ```python
-from pyagent.a2a import A2AServer
+from pyai.a2a import A2AServer
 
 server = A2AServer(
     name="Weather Agent",
@@ -23,7 +23,7 @@ server.run(port=8080)
 ### Client
 
 ```python
-from pyagent.a2a import A2AClient
+from pyai.a2a import A2AClient
 
 client = A2AClient("http://localhost:8080")
 

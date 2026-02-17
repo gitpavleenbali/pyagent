@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API reference for PyAgent.
+Complete API reference for pyai.
 
 ## Quick Links
 
@@ -17,12 +17,12 @@ Complete API reference for PyAgent.
 
 ### configure()
 
-Configure PyAgent globally:
+Configure pyai globally:
 
 ```python
-import pyagent
+import pyai
 
-pyagent.configure(
+pyai.configure(
     api_key="sk-...",           # API key
     provider="openai",          # "openai", "anthropic", "azure"
     model="gpt-4o-mini",        # Default model
@@ -51,7 +51,7 @@ pyagent.configure(
 Ask any question:
 
 ```python
-from pyagent import ask
+from pyai import ask
 
 answer = ask("What is the capital of France?")
 
@@ -79,7 +79,7 @@ answer = ask(
 Deep research on any topic:
 
 ```python
-from pyagent import research
+from pyai import research
 
 result = research("quantum computing")
 print(result.summary)
@@ -101,7 +101,7 @@ print(result.insights)
 Summarize text or documents:
 
 ```python
-from pyagent import summarize
+from pyai import summarize
 
 summary = summarize("./document.pdf")
 summary = summarize(long_text, max_words=100)
@@ -112,7 +112,7 @@ summary = summarize(long_text, max_words=100)
 Extract structured data:
 
 ```python
-from pyagent import extract
+from pyai import extract
 
 data = extract(text, fields=["name", "date", "amount"])
 ```
@@ -122,7 +122,7 @@ data = extract(text, fields=["name", "date", "amount"])
 Translate text:
 
 ```python
-from pyagent import translate
+from pyai import translate
 
 result = translate("Hello world", to="spanish")
 ```
@@ -132,7 +132,7 @@ result = translate("Hello world", to="spanish")
 Generate content:
 
 ```python
-from pyagent import generate
+from pyai import generate
 
 content = generate("blog post about AI", style="professional")
 ```
@@ -142,7 +142,7 @@ content = generate("blog post about AI", style="professional")
 Interactive chat:
 
 ```python
-from pyagent import chat
+from pyai import chat
 
 session = chat(system="You are a helpful assistant.")
 response = session.send("Hello!")
@@ -155,7 +155,7 @@ response = session.send("Hello!")
 Create intelligent agents:
 
 ```python
-from pyagent import Agent
+from pyai import Agent
 
 agent = Agent(
     name="my-agent",
@@ -241,8 +241,8 @@ class ExtractResult:
 ## Error Handling
 
 ```python
-from pyagent.errors import (
-    PyAgentError,
+from pyai.errors import (
+    pyaiError,
     ConfigurationError,
     APIError,
     RateLimitError,

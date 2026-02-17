@@ -56,7 +56,7 @@ The foundation. Single-purpose AI operations that **just work**.
 ### Example
 
 ```python
-from pyagent import ask, summarize, extract
+from pyai import ask, summarize, extract
 
 # Instant intelligence
 answer = ask("Explain quantum entanglement")
@@ -84,8 +84,8 @@ Coordinated intelligence. Multiple agents working in harmony.
 ### Example
 
 ```python
-from pyagent import Agent
-from pyagent.blueprint import Workflow, Step
+from pyai import Agent
+from pyai.blueprint import Workflow, Step
 
 researcher = Agent(name="Researcher", instructions="Find information.")
 analyst = Agent(name="Analyst", instructions="Analyze data.")
@@ -124,7 +124,7 @@ Software Factories don't just *use* AI — they *are* AI. They generate code, te
 ### Example
 
 ```python
-from pyagent import code
+from pyai import code
 
 # Generate code
 api_code = code.write("REST API for user management with JWT auth")
@@ -149,7 +149,7 @@ improved = code.refactor(old_code, goal="async architecture")
 │                    YOUR APPLICATION                       │
 ├──────────────────────────────────────────────────────────┤
 │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐     │
-│  │ PyAgent │  │ PyFlow  │  │PyVision │  │ PyVoice │     │
+│  │ pyai │  │ PyFlow  │  │PyVision │  │ PyVoice │     │
 │  │ Agents  │  │Workflow │  │ Vision  │  │  Audio  │     │
 │  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘     │
 │       │            │            │            │           │

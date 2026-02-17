@@ -5,7 +5,7 @@ The `OpenAPIParser` class parses OpenAPI/Swagger specifications and extracts ope
 ## Import
 
 ```python
-from pyagent.openapi import OpenAPIParser
+from pyai.openapi import OpenAPIParser
 ```
 
 ## Constructor
@@ -154,7 +154,7 @@ if op.request_body:
 ## Validation
 
 ```python
-from pyagent.openapi import OpenAPIParser, SpecValidationError
+from pyai.openapi import OpenAPIParser, SpecValidationError
 
 try:
     parser = OpenAPIParser("invalid_spec.yaml", validate=True)

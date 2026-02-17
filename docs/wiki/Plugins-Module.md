@@ -5,7 +5,7 @@ The Plugins module provides a flexible system for extending agent capabilities t
 ## Overview
 
 ```python
-from pyagent.plugins import Plugin, PluginRegistry, plugin_function
+from pyai.plugins import Plugin, PluginRegistry, plugin_function
 ```
 
 ## Key Components
@@ -21,7 +21,7 @@ from pyagent.plugins import Plugin, PluginRegistry, plugin_function
 ### Using Built-in Plugins
 
 ```python
-from pyagent.plugins import PluginRegistry
+from pyai.plugins import PluginRegistry
 
 # Get available plugins
 registry = PluginRegistry()
@@ -35,7 +35,7 @@ agent.add_plugin(calculator)
 ### Creating a Simple Plugin
 
 ```python
-from pyagent.plugins import Plugin, plugin_function
+from pyai.plugins import Plugin, plugin_function
 
 class CalculatorPlugin(Plugin):
     name = "calculator"
@@ -58,7 +58,7 @@ agent.add_plugin(CalculatorPlugin())
 ### Using Decorators
 
 ```python
-from pyagent.plugins import plugin_function
+from pyai.plugins import plugin_function
 
 @plugin_function(name="get_weather", description="Get current weather")
 def get_weather(location: str) -> str:

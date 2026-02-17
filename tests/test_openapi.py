@@ -1,4 +1,4 @@
-"""# pyright: reportRedeclaration=false, reportUnusedVariable=falseTests for PyAgent OpenAPI Tools Module.
+"""# pyright: reportRedeclaration=false, reportUnusedVariable=falseTests for pyai OpenAPI Tools Module.
 
 Tests the OpenAPI spec parsing, client, and tool generation.
 """
@@ -165,7 +165,7 @@ class TestOpenAPIParser:
     
     def test_parse_openapi_3_spec(self, sample_openapi_spec):
         """Test parsing OpenAPI 3.0 specification."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -176,7 +176,7 @@ class TestOpenAPIParser:
     
     def test_parse_swagger_2_spec(self, sample_swagger_spec):
         """Test parsing Swagger 2.0 specification."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_swagger_spec)
         
@@ -186,7 +186,7 @@ class TestOpenAPIParser:
     
     def test_parse_operations(self, sample_openapi_spec):
         """Test that operations are correctly parsed."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -202,7 +202,7 @@ class TestOpenAPIParser:
     
     def test_parse_operation_details(self, sample_openapi_spec):
         """Test operation details are correctly parsed."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -216,7 +216,7 @@ class TestOpenAPIParser:
     
     def test_parse_parameters(self, sample_openapi_spec):
         """Test operation parameters are correctly parsed."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -234,7 +234,7 @@ class TestOpenAPIParser:
     
     def test_parse_path_parameters(self, sample_openapi_spec):
         """Test path parameters are correctly parsed."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -248,7 +248,7 @@ class TestOpenAPIParser:
     
     def test_parse_request_body(self, sample_openapi_spec):
         """Test request body is correctly parsed."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -260,7 +260,7 @@ class TestOpenAPIParser:
     
     def test_parse_minimal_spec(self, minimal_spec):
         """Test parsing minimal spec."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(minimal_spec)
         
@@ -270,7 +270,7 @@ class TestOpenAPIParser:
     
     def test_parse_from_dict(self, sample_openapi_spec):
         """Test parsing from dict directly."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         # Parse directly from dict
         spec = parse_openapi(sample_openapi_spec)
@@ -279,7 +279,7 @@ class TestOpenAPIParser:
     
     def test_get_operation_by_id(self, sample_openapi_spec):
         """Test getting operation by ID."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -292,7 +292,7 @@ class TestOpenAPIParser:
     
     def test_spec_attributes(self, sample_openapi_spec):
         """Test spec attributes."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         
@@ -312,7 +312,7 @@ class TestOpenAPIClient:
     
     def test_client_initialization(self):
         """Test client initialization."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         client = OpenAPIClient(
             base_url="https://api.example.com",
@@ -326,7 +326,7 @@ class TestOpenAPIClient:
     
     def test_client_auth_tuple(self):
         """Test client with auth tuple."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         client = OpenAPIClient(
             base_url="https://api.example.com",
@@ -338,7 +338,7 @@ class TestOpenAPIClient:
     
     def test_client_with_custom_headers(self):
         """Test client with custom headers."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         client = OpenAPIClient(
             base_url="https://api.example.com",
@@ -349,7 +349,7 @@ class TestOpenAPIClient:
     
     def test_build_url(self):
         """Test URL building."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         client = OpenAPIClient(base_url="https://api.example.com/v1")
         
@@ -358,7 +358,7 @@ class TestOpenAPIClient:
     
     def test_build_url_with_path_params(self):
         """Test URL building with path parameters."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         client = OpenAPIClient(base_url="https://api.example.com")
         
@@ -373,7 +373,7 @@ class TestOpenAPIClient:
     @patch('requests.request')
     def test_call_get(self, mock_request):
         """Test GET request."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         mock_response = Mock()
         mock_response.json.return_value = {"data": "test"}
@@ -394,7 +394,7 @@ class TestOpenAPIClient:
     @patch('requests.request')
     def test_call_post_with_body(self, mock_request):
         """Test POST request with body."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         mock_response = Mock()
         mock_response.json.return_value = {"id": "123"}
@@ -414,7 +414,7 @@ class TestOpenAPIClient:
     @patch('requests.request')
     def test_call_with_path_params(self, mock_request):
         """Test request with path parameters."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         mock_response = Mock()
         mock_response.json.return_value = {"id": "123"}
@@ -433,7 +433,7 @@ class TestOpenAPIClient:
     @patch('requests.request')
     def test_call_error_handling(self, mock_request):
         """Test error handling in call."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         mock_response = Mock()
         mock_response.status_code = 404
@@ -448,7 +448,7 @@ class TestOpenAPIClient:
     
     def test_client_default_headers(self):
         """Test client default headers."""
-        from pyagent.openapi.client import OpenAPIClient
+        from pyai.openapi.client import OpenAPIClient
         
         client = OpenAPIClient(base_url="https://api.example.com")
         
@@ -465,8 +465,8 @@ class TestOpenAPITools:
     
     def test_create_tools_from_spec(self, sample_openapi_spec):
         """Test creating tools from OpenAPI spec."""
-        from pyagent.openapi.tools import create_tools_from_openapi
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         tools = create_tools_from_openapi(spec)
@@ -475,8 +475,8 @@ class TestOpenAPITools:
     
     def test_tool_names(self, sample_openapi_spec):
         """Test generated tool names."""
-        from pyagent.openapi.tools import create_tools_from_openapi
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         tools = create_tools_from_openapi(spec)
@@ -487,8 +487,8 @@ class TestOpenAPITools:
     
     def test_tool_has_description(self, sample_openapi_spec):
         """Test generated tools have descriptions."""
-        from pyagent.openapi.tools import create_tools_from_openapi
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         tools = create_tools_from_openapi(spec)
@@ -500,8 +500,8 @@ class TestOpenAPITools:
     
     def test_tool_has_parameters(self, sample_openapi_spec):
         """Test generated tools have parameter definitions."""
-        from pyagent.openapi.tools import create_tools_from_openapi
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         tools = create_tools_from_openapi(spec)
@@ -513,7 +513,7 @@ class TestOpenAPITools:
     
     def test_openapi_tools_class(self, sample_openapi_spec):
         """Test OpenAPITools class."""
-        from pyagent.openapi.tools import OpenAPITools
+        from pyai.openapi.tools import OpenAPITools
         
         api = OpenAPITools(sample_openapi_spec, base_url="https://api.example.com")
         
@@ -521,7 +521,7 @@ class TestOpenAPITools:
     
     def test_openapi_tools_list_operations(self, sample_openapi_spec):
         """Test listing operations."""
-        from pyagent.openapi.tools import OpenAPITools
+        from pyai.openapi.tools import OpenAPITools
         
         api = OpenAPITools(sample_openapi_spec, base_url="https://api.example.com")
         
@@ -530,7 +530,7 @@ class TestOpenAPITools:
     
     def test_openapi_tools_structure(self, sample_openapi_spec):
         """Test tool structure matches OpenAI format."""
-        from pyagent.openapi.tools import OpenAPITools
+        from pyai.openapi.tools import OpenAPITools
         
         api = OpenAPITools(sample_openapi_spec, base_url="https://api.example.com")
         
@@ -544,7 +544,7 @@ class TestOpenAPITools:
     @patch('requests.request')
     def test_openapi_tools_call(self, mock_request, sample_openapi_spec):
         """Test calling tool via OpenAPITools."""
-        from pyagent.openapi.tools import OpenAPITools
+        from pyai.openapi.tools import OpenAPITools
         
         mock_response = Mock()
         mock_response.json.return_value = [{"id": "1", "name": "Fluffy"}]
@@ -575,13 +575,13 @@ class TestOpenAPIDecorator:
     
     def test_openapi_tool_decorator_import(self):
         """Test decorator can be imported."""
-        from pyagent.openapi.tools import openapi_tool
+        from pyai.openapi.tools import openapi_tool
         
         assert callable(openapi_tool)
     
     def test_decorator_exists(self):
         """Test the decorator exists."""
-        from pyagent.openapi import tools
+        from pyai.openapi import tools
         
         assert hasattr(tools, 'openapi_tool')
 
@@ -595,8 +595,8 @@ class TestOpenAPIIntegration:
     
     def test_full_workflow(self, sample_openapi_spec):
         """Test complete workflow from spec to tools."""
-        from pyagent.openapi.parser import parse_openapi
-        from pyagent.openapi.tools import create_tools_from_openapi, OpenAPITools
+        from pyai.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi, OpenAPITools
         
         # Parse spec
         spec = parse_openapi(sample_openapi_spec)
@@ -611,15 +611,15 @@ class TestOpenAPIIntegration:
         assert len(api.tools) == 4
     
     def test_import_from_main_package(self):
-        """Test imports from main pyagent package."""
-        from pyagent import OpenAPITools, create_tools_from_openapi
+        """Test imports from main pyai package."""
+        from pyai import OpenAPITools, create_tools_from_openapi
         
         assert OpenAPITools is not None
         assert create_tools_from_openapi is not None
     
     def test_import_openapi_module(self):
         """Test importing openapi module."""
-        from pyagent.openapi import parse_openapi, OpenAPIClient, create_tools_from_openapi
+        from pyai.openapi import parse_openapi, OpenAPIClient, create_tools_from_openapi
         
         assert parse_openapi is not None
         assert OpenAPIClient is not None
@@ -635,14 +635,14 @@ class TestOpenAPIEdgeCases:
     
     def test_empty_paths(self, minimal_spec):
         """Test spec with no paths."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(minimal_spec)
         assert len(spec.operations) == 0
     
     def test_operation_without_id(self):
         """Test operation without operationId."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec_without_ids = {
             "openapi": "3.0.0",
@@ -663,7 +663,7 @@ class TestOpenAPIEdgeCases:
     
     def test_spec_no_servers(self):
         """Test spec without servers."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec_no_servers = {
             "openapi": "3.0.0",
@@ -677,7 +677,7 @@ class TestOpenAPIEdgeCases:
     
     def test_complex_parameters(self):
         """Test operations with complex parameters."""
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = {
             "openapi": "3.0.0",
@@ -720,8 +720,8 @@ class TestOpenAPIToolSchema:
     
     def test_tool_schema_types(self, sample_openapi_spec):
         """Test that tool schemas have correct types."""
-        from pyagent.openapi.tools import create_tools_from_openapi
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         tools = create_tools_from_openapi(spec)
@@ -734,8 +734,8 @@ class TestOpenAPIToolSchema:
     
     def test_required_params_in_schema(self, sample_openapi_spec):
         """Test required parameters are marked in schema."""
-        from pyagent.openapi.tools import create_tools_from_openapi
-        from pyagent.openapi.parser import parse_openapi
+        from pyai.openapi.tools import create_tools_from_openapi
+        from pyai.openapi.parser import parse_openapi
         
         spec = parse_openapi(sample_openapi_spec)
         tools = create_tools_from_openapi(spec)

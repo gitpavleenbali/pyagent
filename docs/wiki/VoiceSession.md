@@ -5,8 +5,8 @@ The `VoiceSession` class manages real-time voice conversations with AI agents.
 ## Import
 
 ```python
-from pyagent.voice import VoiceSession
-from pyagent.voice.session import SessionState
+from pyai.voice import VoiceSession
+from pyai.voice.session import SessionState
 ```
 
 ## Constructor

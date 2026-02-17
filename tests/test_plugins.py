@@ -1,4 +1,4 @@
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -22,12 +22,12 @@ class TestPluginFunction:
     
     def test_plugin_function_import(self):
         """Test that PluginFunction can be imported."""
-        from pyagent.plugins import PluginFunction
+        from pyai.plugins import PluginFunction
         assert PluginFunction is not None
     
     def test_plugin_function_from_function(self):
         """Test creating PluginFunction from a regular function."""
-        from pyagent.plugins.base import PluginFunction
+        from pyai.plugins.base import PluginFunction
         
         def my_func(name: str, count: int = 1) -> str:
             """Say hello."""
@@ -42,7 +42,7 @@ class TestPluginFunction:
     
     def test_plugin_function_call(self):
         """Test calling a plugin function."""
-        from pyagent.plugins.base import PluginFunction
+        from pyai.plugins.base import PluginFunction
         
         def add(a: int, b: int) -> int:
             return a + b
@@ -54,7 +54,7 @@ class TestPluginFunction:
     
     def test_plugin_function_to_tool_schema(self):
         """Test converting to tool schema."""
-        from pyagent.plugins.base import PluginFunction
+        from pyai.plugins.base import PluginFunction
         
         def search(query: str) -> str:
             """Search for something."""
@@ -73,13 +73,13 @@ class TestPlugin:
     
     def test_plugin_import(self):
         """Test that Plugin can be imported."""
-        from pyagent.plugins import Plugin
+        from pyai.plugins import Plugin
         assert Plugin is not None
     
     def test_plugin_creation(self):
         """Test creating a plugin."""
-        from pyagent.plugins import Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import Plugin
+        from pyai.plugins.decorators import function
         
         class TestPlugin(Plugin):
             name = "test"
@@ -97,8 +97,8 @@ class TestPlugin:
     
     def test_plugin_call_function(self):
         """Test calling a function through plugin."""
-        from pyagent.plugins import Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import Plugin
+        from pyai.plugins.decorators import function
         
         class MathPlugin(Plugin):
             name = "math"
@@ -115,8 +115,8 @@ class TestPlugin:
     
     def test_plugin_to_tools(self):
         """Test converting plugin to tools."""
-        from pyagent.plugins import Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import Plugin
+        from pyai.plugins.decorators import function
         
         class ToolPlugin(Plugin):
             name = "tools"
@@ -142,7 +142,7 @@ class TestPluginFromFunctions:
     
     def test_plugin_from_functions(self):
         """Test creating plugin from function list."""
-        from pyagent.plugins.base import PluginFromFunctions
+        from pyai.plugins.base import PluginFromFunctions
         
         def add(a: int, b: int) -> int:
             """Add two numbers."""
@@ -168,13 +168,13 @@ class TestPluginRegistry:
     
     def test_registry_import(self):
         """Test that PluginRegistry can be imported."""
-        from pyagent.plugins import PluginRegistry
+        from pyai.plugins import PluginRegistry
         assert PluginRegistry is not None
     
     def test_registry_register(self):
         """Test registering a plugin."""
-        from pyagent.plugins import PluginRegistry, Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import PluginRegistry, Plugin
+        from pyai.plugins.decorators import function
         
         class TestPlugin(Plugin):
             name = "test"
@@ -187,7 +187,7 @@ class TestPluginRegistry:
     
     def test_registry_get_plugin(self):
         """Test getting a plugin."""
-        from pyagent.plugins import PluginRegistry, Plugin
+        from pyai.plugins import PluginRegistry, Plugin
         
         class MyPlugin(Plugin):
             name = "my_plugin"
@@ -201,8 +201,8 @@ class TestPluginRegistry:
     
     def test_registry_get_function(self):
         """Test getting a function from registry."""
-        from pyagent.plugins import PluginRegistry, Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import PluginRegistry, Plugin
+        from pyai.plugins.decorators import function
         
         class CalcPlugin(Plugin):
             name = "calc"
@@ -221,8 +221,8 @@ class TestPluginRegistry:
     
     def test_registry_call(self):
         """Test calling function through registry."""
-        from pyagent.plugins import PluginRegistry, Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import PluginRegistry, Plugin
+        from pyai.plugins.decorators import function
         
         class StringPlugin(Plugin):
             name = "string"
@@ -240,8 +240,8 @@ class TestPluginRegistry:
     
     def test_registry_list_all_functions(self):
         """Test listing all functions."""
-        from pyagent.plugins import PluginRegistry, Plugin
-        from pyagent.plugins.decorators import function
+        from pyai.plugins import PluginRegistry, Plugin
+        from pyai.plugins.decorators import function
         
         class Plugin1(Plugin):
             name = "p1"
@@ -278,7 +278,7 @@ class TestDecorators:
     
     def test_function_decorator(self):
         """Test @function decorator."""
-        from pyagent.plugins.decorators import function
+        from pyai.plugins.decorators import function
         
         @function
         def my_func():
@@ -288,7 +288,7 @@ class TestDecorators:
     
     def test_function_decorator_with_args(self):
         """Test @function decorator with arguments."""
-        from pyagent.plugins.decorators import function
+        from pyai.plugins.decorators import function
         
         @function(name="custom_name", description="Custom desc")
         def my_func():
@@ -299,8 +299,8 @@ class TestDecorators:
     
     def test_plugin_decorator(self):
         """Test @plugin class decorator."""
-        from pyagent.plugins.decorators import plugin
-        from pyagent.plugins import Plugin
+        from pyai.plugins.decorators import plugin
+        from pyai.plugins import Plugin
         
         @plugin(name="decorated", description="A decorated plugin")
         class MyPlugin(Plugin):
@@ -315,7 +315,7 @@ class TestGlobalRegistry:
     
     def test_global_registry_exists(self):
         """Test that global registry exists."""
-        from pyagent.plugins import global_registry
+        from pyai.plugins import global_registry
         assert global_registry is not None
 
 
@@ -324,7 +324,7 @@ class TestPluginIntegration:
     
     def test_module_exports(self):
         """Test that all expected exports are available."""
-        from pyagent import plugins
+        from pyai import plugins
         
         assert hasattr(plugins, "Plugin")
         assert hasattr(plugins, "PluginFunction")
@@ -334,17 +334,17 @@ class TestPluginIntegration:
         assert hasattr(plugins, "plugin")
     
     def test_main_init_exports(self):
-        """Test that plugins is exported from main pyagent."""
-        import pyagent
+        """Test that plugins is exported from main pyai."""
+        import pyai
         
-        assert hasattr(pyagent, "plugins")
-        assert hasattr(pyagent, "Plugin")
-        assert hasattr(pyagent, "PluginRegistry")
+        assert hasattr(pyai, "plugins")
+        assert hasattr(pyai, "Plugin")
+        assert hasattr(pyai, "PluginRegistry")
     
     def test_full_plugin_workflow(self):
         """Test complete plugin workflow."""
-        from pyagent.plugins import Plugin, PluginRegistry
-        from pyagent.plugins.decorators import function, plugin
+        from pyai.plugins import Plugin, PluginRegistry
+        from pyai.plugins.decorators import function, plugin
         
         @plugin(name="weather", description="Weather functions")
         class WeatherPlugin(Plugin):

@@ -1,4 +1,4 @@
-# Copyright (c) 2026 PyAgent Contributors
+# Copyright (c) 2026 pyai Contributors
 # Licensed under the MIT License
 
 """
@@ -23,12 +23,12 @@ class TestSession:
     
     def test_session_import(self):
         """Test that Session can be imported."""
-        from pyagent.sessions import Session
+        from pyai.sessions import Session
         assert Session is not None
     
     def test_session_creation(self):
         """Test creating a new session."""
-        from pyagent.sessions.base import Session
+        from pyai.sessions.base import Session
         
         session = Session(id="test-123")
         
@@ -38,7 +38,7 @@ class TestSession:
     
     def test_session_add_message(self):
         """Test adding messages to a session."""
-        from pyagent.sessions.base import Session
+        from pyai.sessions.base import Session
         
         session = Session(id="test-123")
         
@@ -49,7 +49,7 @@ class TestSession:
     
     def test_session_context(self):
         """Test session context management."""
-        from pyagent.sessions.base import Session
+        from pyai.sessions.base import Session
         
         session = Session(id="test-123")
         
@@ -62,7 +62,7 @@ class TestSession:
     
     def test_session_to_dict(self):
         """Test session serialization."""
-        from pyagent.sessions.base import Session
+        from pyai.sessions.base import Session
         
         session = Session(id="test-123")
         session.add_message("user", "Hi")
@@ -76,7 +76,7 @@ class TestSession:
     
     def test_session_from_dict(self):
         """Test session deserialization."""
-        from pyagent.sessions.base import Session
+        from pyai.sessions.base import Session
         
         data = {
             "id": "restored-123",
@@ -98,7 +98,7 @@ class TestSessionMessage:
     
     def test_message_creation(self):
         """Test creating a session message."""
-        from pyagent.sessions.base import SessionMessage
+        from pyai.sessions.base import SessionMessage
         
         msg = SessionMessage(
             role="assistant",
@@ -111,7 +111,7 @@ class TestSessionMessage:
     
     def test_message_with_metadata(self):
         """Test message with metadata."""
-        from pyagent.sessions.base import SessionMessage
+        from pyai.sessions.base import SessionMessage
         
         msg = SessionMessage(
             role="user",
@@ -123,7 +123,7 @@ class TestSessionMessage:
     
     def test_message_to_dict(self):
         """Test message serialization."""
-        from pyagent.sessions.base import SessionMessage
+        from pyai.sessions.base import SessionMessage
         
         msg = SessionMessage(role="user", content="Hello")
         d = msg.to_dict()
@@ -139,13 +139,13 @@ class TestMemorySessionStore:
     
     def test_memory_store_import(self):
         """Test that MemorySessionStore can be imported."""
-        from pyagent.sessions import MemorySessionStore
+        from pyai.sessions import MemorySessionStore
         assert MemorySessionStore is not None
     
     def test_save_session(self):
         """Test saving a session."""
-        from pyagent.sessions.memory import MemorySessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.memory import MemorySessionStore
+        from pyai.sessions.base import Session
         
         store = MemorySessionStore()
         session = Session(id="user-123")
@@ -155,8 +155,8 @@ class TestMemorySessionStore:
     
     def test_load_session(self):
         """Test loading a session."""
-        from pyagent.sessions.memory import MemorySessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.memory import MemorySessionStore
+        from pyai.sessions.base import Session
         
         store = MemorySessionStore()
         session = Session(id="user-123")
@@ -169,7 +169,7 @@ class TestMemorySessionStore:
     
     def test_load_nonexistent_session(self):
         """Test loading a non-existent session."""
-        from pyagent.sessions.memory import MemorySessionStore
+        from pyai.sessions.memory import MemorySessionStore
         
         store = MemorySessionStore()
         result = store.load("nonexistent")
@@ -178,8 +178,8 @@ class TestMemorySessionStore:
     
     def test_save_and_modify(self):
         """Test saving a modified session."""
-        from pyagent.sessions.memory import MemorySessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.memory import MemorySessionStore
+        from pyai.sessions.base import Session
         
         store = MemorySessionStore()
         session = Session(id="user-123")
@@ -195,8 +195,8 @@ class TestMemorySessionStore:
     
     def test_delete_session(self):
         """Test deleting a session."""
-        from pyagent.sessions.memory import MemorySessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.memory import MemorySessionStore
+        from pyai.sessions.base import Session
         
         store = MemorySessionStore()
         session = Session(id="user-123")
@@ -208,8 +208,8 @@ class TestMemorySessionStore:
     
     def test_list_sessions(self):
         """Test listing sessions."""
-        from pyagent.sessions.memory import MemorySessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.memory import MemorySessionStore
+        from pyai.sessions.base import Session
         
         store = MemorySessionStore()
         store.save(Session(id="user-1"))
@@ -226,13 +226,13 @@ class TestSQLiteSessionStore:
     
     def test_sqlite_store_import(self):
         """Test that SQLiteSessionStore can be imported."""
-        from pyagent.sessions import SQLiteSessionStore
+        from pyai.sessions import SQLiteSessionStore
         assert SQLiteSessionStore is not None
     
     def test_save_in_memory(self):
         """Test saving to in-memory SQLite."""
-        from pyagent.sessions.sqlite import SQLiteSessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.sqlite import SQLiteSessionStore
+        from pyai.sessions.base import Session
         
         store = SQLiteSessionStore(":memory:")
         session = Session(id="user-123")
@@ -247,8 +247,8 @@ class TestSQLiteSessionStore:
         Note: Uses in-memory for Windows compatibility (avoids file locking issues).
         File-based persistence is tested in test_persistence via manual cleanup.
         """
-        from pyagent.sessions.sqlite import SQLiteSessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.sqlite import SQLiteSessionStore
+        from pyai.sessions.base import Session
         
         # Use in-memory instead of file for Windows compatibility
         store = SQLiteSessionStore(":memory:")
@@ -268,8 +268,8 @@ class TestSQLiteSessionStore:
         In production, file-based persistence works correctly.
         We test the save/load logic within a single store instance.
         """
-        from pyagent.sessions.sqlite import SQLiteSessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.sqlite import SQLiteSessionStore
+        from pyai.sessions.base import Session
         
         # Use in-memory - we're testing the storage logic, not file persistence
         store = SQLiteSessionStore(":memory:")
@@ -287,8 +287,8 @@ class TestSQLiteSessionStore:
     
     def test_crud_operations(self):
         """Test CRUD operations."""
-        from pyagent.sessions.sqlite import SQLiteSessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions.sqlite import SQLiteSessionStore
+        from pyai.sessions.base import Session
         
         store = SQLiteSessionStore(":memory:")
         
@@ -317,22 +317,22 @@ class TestRedisSessionStore:
     
     def test_redis_store_import(self):
         """Test that RedisSessionStore can be imported."""
-        from pyagent.sessions import RedisSessionStore
+        from pyai.sessions import RedisSessionStore
         assert RedisSessionStore is not None
     
     def test_redis_config(self):
         """Test Redis configuration options."""
-        from pyagent.sessions.redis import RedisSessionStore
+        from pyai.sessions.redis import RedisSessionStore
         
         # Should not raise even without Redis
         store = RedisSessionStore(
             host="localhost",
             port=6379,
             db=0,
-            prefix="pyagent:"
+            prefix="pyai:"
         )
         
-        assert store.prefix == "pyagent:"
+        assert store.prefix == "pyai:"
 
 
 class TestSessionManager:
@@ -340,20 +340,20 @@ class TestSessionManager:
     
     def test_manager_import(self):
         """Test that SessionManager can be imported."""
-        from pyagent.sessions import SessionManager
+        from pyai.sessions import SessionManager
         assert SessionManager is not None
     
     def test_default_manager(self):
         """Test creating default manager."""
-        from pyagent.sessions.manager import SessionManager
+        from pyai.sessions.manager import SessionManager
         
         manager = SessionManager()
         assert manager is not None
     
     def test_manager_with_memory_store(self):
         """Test manager with memory store."""
-        from pyagent.sessions.manager import SessionManager
-        from pyagent.sessions.memory import MemorySessionStore
+        from pyai.sessions.manager import SessionManager
+        from pyai.sessions.memory import MemorySessionStore
         
         store = MemorySessionStore()
         manager = SessionManager(store=store)
@@ -363,7 +363,7 @@ class TestSessionManager:
     
     def test_manager_get_or_create(self):
         """Test get_or_create functionality."""
-        from pyagent.sessions.manager import SessionManager
+        from pyai.sessions.manager import SessionManager
         
         manager = SessionManager(backend="memory")
         
@@ -377,7 +377,7 @@ class TestSessionManager:
     
     def test_manager_add_message(self):
         """Test adding messages through session."""
-        from pyagent.sessions.manager import SessionManager
+        from pyai.sessions.manager import SessionManager
         
         manager = SessionManager(backend="memory")
         session = manager.create(session_id="test-123")
@@ -395,7 +395,7 @@ class TestSessionConvenienceFunctions:
     
     def test_create_session_function(self):
         """Test create_session convenience function."""
-        from pyagent.sessions.manager import create_session
+        from pyai.sessions.manager import create_session
         
         session = create_session(session_id="test-conv-123", user_id="user-123")
         assert session is not None
@@ -403,7 +403,7 @@ class TestSessionConvenienceFunctions:
     
     def test_get_session_function(self):
         """Test get_session convenience function."""
-        from pyagent.sessions.manager import create_session, get_session
+        from pyai.sessions.manager import create_session, get_session
         
         created = create_session(session_id="test-456")
         retrieved = get_session("test-456")
@@ -417,7 +417,7 @@ class TestSessionIntegration:
     
     def test_module_exports(self):
         """Test that all expected exports are available."""
-        from pyagent import sessions
+        from pyai import sessions
         
         assert hasattr(sessions, "Session")
         assert hasattr(sessions, "SessionManager")
@@ -426,17 +426,17 @@ class TestSessionIntegration:
         assert hasattr(sessions, "RedisSessionStore")
     
     def test_main_init_exports(self):
-        """Test that sessions is exported from main pyagent."""
-        import pyagent
+        """Test that sessions is exported from main pyai."""
+        import pyai
         
-        assert hasattr(pyagent, "sessions")
-        assert hasattr(pyagent, "Session")
-        assert hasattr(pyagent, "SessionManager")
+        assert hasattr(pyai, "sessions")
+        assert hasattr(pyai, "Session")
+        assert hasattr(pyai, "SessionManager")
     
     def test_full_session_workflow(self):
         """Test complete session workflow."""
-        from pyagent.sessions import SessionManager, SQLiteSessionStore
-        from pyagent.sessions.base import Session
+        from pyai.sessions import SessionManager, SQLiteSessionStore
+        from pyai.sessions.base import Session
         
         # Use SQLite in memory
         store = SQLiteSessionStore(":memory:")

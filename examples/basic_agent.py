@@ -21,20 +21,20 @@ import sys
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Configure PyAgent with available credentials (supports OpenAI, Azure API Key, or Azure AD)
-from config_helper import setup_pyagent
-if not setup_pyagent():
+# Configure pyai with available credentials (supports OpenAI, Azure API Key, or Azure AD)
+from config_helper import setup_pyai
+if not setup_pyai():
     print("Please configure credentials - see instructions above")
     sys.exit(1)
 
 import asyncio
-from pyagent import Agent
-from pyagent.instructions import SystemPrompt
-from pyagent.skills import SearchSkill, CodeSkill
-from pyagent.core.llm import OpenAIProvider, AzureOpenAIProvider, LLMConfig
+from pyai import Agent
+from pyai.instructions import SystemPrompt
+from pyai.skills import SearchSkill, CodeSkill
+from pyai.core.llm import OpenAIProvider, AzureOpenAIProvider, LLMConfig
 
 
 def get_llm_provider():

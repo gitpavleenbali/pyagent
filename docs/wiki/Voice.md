@@ -7,7 +7,7 @@ Real-time voice interactions with AI agents.
 ## Quick Start
 
 ```python
-from pyagent.voice import VoiceSession
+from pyai.voice import VoiceSession
 
 # Create voice session
 session = VoiceSession()

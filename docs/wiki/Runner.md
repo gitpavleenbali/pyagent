@@ -5,13 +5,13 @@ The `Runner` class executes agents and manages their lifecycle.
 ## Import
 
 ```python
-from pyagent import Runner
+from pyai import Runner
 ```
 
 ## Basic Usage
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 agent = Agent(name="Assistant", instructions="You are helpful")
 
@@ -65,7 +65,7 @@ async for event in Runner.run_stream(agent, messages):
 ### Simple Execution
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 agent = Agent(
     name="Math Helper",
@@ -91,7 +91,7 @@ result = Runner.run_sync(
 
 ```python
 import asyncio
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 async def main():
     agent = Agent(name="Writer", instructions="You write stories")
@@ -106,7 +106,7 @@ asyncio.run(main())
 ### With Tools
 
 ```python
-from pyagent import Agent, Runner, tool
+from pyai import Agent, Runner, tool
 
 @tool
 def calculate(expression: str) -> str:
@@ -151,7 +151,7 @@ print(result.cost)            # Estimated cost
 ## Error Handling
 
 ```python
-from pyagent import Runner, RunnerError
+from pyai import Runner, RunnerError
 
 try:
     result = Runner.run_sync(agent, "Hello")

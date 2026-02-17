@@ -1,8 +1,8 @@
-# 🏗️ PyAgent Architecture Blueprint
+# 🏗️ pyai Architecture Blueprint
 
 ## Vision Statement
 
-**PyAgent** aims to be the **pandas of AI** - making AI development as simple as data manipulation. Just as pandas revolutionized data analysis by making complex operations one-liners, PyAgent revolutionizes AI development.
+**pyai** aims to be the **pandas of AI** - making AI development as simple as data manipulation. Just as pandas revolutionized data analysis by making complex operations one-liners, pyai revolutionizes AI development.
 
 ---
 
@@ -14,13 +14,13 @@ Traditional libraries are **2-dimensional**:
 - Function → Result
 - Input → Output
 
-PyAgent is **3-dimensional**:
+pyai is **3-dimensional**:
 - Function → **Context** → **Intelligence** → Result
 - Single call embeds: configuration, memory, reasoning, output formatting
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PYAGENT 3D ARCHITECTURE                       │
+│                    pyai 3D ARCHITECTURE                       │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │    USER LAYER (Dimension 1 - Surface)                           │
@@ -65,8 +65,8 @@ template = PromptTemplate(input_variables=["question"], template="{question}")
 chain = LLMChain(llm=llm, prompt=template)
 result = chain.run("What is AI?")
 
-# Good: PyAgent - one line
-from pyagent import ask
+# Good: pyai - one line
+from pyai import ask
 answer = ask("What is AI?")
 ```
 
@@ -85,7 +85,7 @@ answer = ask("What is AI?")
 answer = ask("What is AI?", detailed=True, model="gpt-4")
 
 # Level 3: Full control (5% of use cases)
-from pyagent import Agent, Memory, SystemPrompt
+from pyai import Agent, Memory, SystemPrompt
 agent = Agent(
     llm=OpenAIProvider(model="gpt-4"),
     memory=VectorMemory(size=1000),
@@ -98,7 +98,7 @@ agent = Agent(
 ## Module Architecture
 
 ```
-pyagent/
+pyai/
 ├── __init__.py          # Main entry point with lazy imports
 ├── __init__.pyi         # Type stubs for IDE support
 ├── py.typed             # PEP 561 marker
@@ -203,7 +203,7 @@ pyagent/
 
 ## Comparison with Competitors
 
-| Feature | LangChain | LlamaIndex | AutoGen | CrewAI | **PyAgent** |
+| Feature | LangChain | LlamaIndex | AutoGen | CrewAI | **pyai** |
 |---------|-----------|------------|---------|--------|-------------|
 | Lines for simple Q&A | 10+ | 8+ | 15+ | 12+ | **1** |
 | Lines for RAG | 20+ | 15+ | 25+ | 20+ | **2** |
@@ -221,7 +221,7 @@ pyagent/
 # __init__.py uses __getattr__ for lazy imports
 def __getattr__(name):
     if name == "ask":
-        from pyagent.easy.ask import ask
+        from pyai.easy.ask import ask
         return ask
 ```
 
@@ -260,7 +260,7 @@ class AzureProvider(LLMProvider): ...
 
 ### Custom Skills
 ```python
-from pyagent import Skill, SkillResult
+from pyai import Skill, SkillResult
 
 class MyCustomSkill(Skill):
     name = "my_skill"
@@ -273,7 +273,7 @@ class MyCustomSkill(Skill):
 
 ### Custom Personas
 ```python
-from pyagent import agent
+from pyai import agent
 
 # Register custom persona
 agent.register_persona(
@@ -285,7 +285,7 @@ agent.register_persona(
 
 ### Custom Memory
 ```python
-from pyagent import Memory
+from pyai import Memory
 
 class RedisMemory(Memory):
     def __init__(self, redis_url):
@@ -351,4 +351,4 @@ class RedisMemory(Memory):
 
 ---
 
-*This document is the architectural blueprint for PyAgent. For API reference, see [API_REFERENCE.md](./API_REFERENCE.md).*
+*This document is the architectural blueprint for pyai. For API reference, see [API_REFERENCE.md](./API_REFERENCE.md).*

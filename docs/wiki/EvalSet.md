@@ -5,7 +5,7 @@ An `EvalSet` is a collection of test cases grouped together for organized evalua
 ## Import
 
 ```python
-from pyagent.evaluation import EvalSet
+from pyai.evaluation import EvalSet
 ```
 
 ## Constructor
@@ -25,7 +25,7 @@ EvalSet(
 ### Basic Creation
 
 ```python
-from pyagent.evaluation import EvalSet, TestCase
+from pyai.evaluation import EvalSet, TestCase
 
 eval_set = EvalSet(
     name="Math Evaluation",
@@ -141,7 +141,7 @@ eval_set.export("benchmark_v1.zip")
 ## Built-in Benchmarks
 
 ```python
-from pyagent.evaluation.benchmarks import (
+from pyai.evaluation.benchmarks import (
     MMLU,
     HellaSwag,
     TruthfulQA,

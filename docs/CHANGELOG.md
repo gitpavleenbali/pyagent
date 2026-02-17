@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to PyAgent will be documented in this file.
+All notable changes to pyai will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -50,7 +50,7 @@ Major release achieving feature parity with industry-leading AI agent SDKs inclu
 
 ### 🎉 Initial Release - "The Pandas of AI"
 
-This is the first public release of PyAgent, the revolutionary AI library that makes complex AI tasks as simple as pandas operations.
+This is the first public release of pyai, the revolutionary AI library that makes complex AI tasks as simple as pandas operations.
 
 ### Added
 
@@ -154,8 +154,8 @@ template = PromptTemplate(input_variables=["q"], template="{q}")
 chain = LLMChain(llm=llm, prompt=template)
 result = chain.run("What is AI?")
 
-# After (PyAgent)
-from pyagent import ask
+# After (pyai)
+from pyai import ask
 result = ask("What is AI?")
 ```
 
@@ -170,8 +170,8 @@ index = VectorStoreIndex.from_documents(documents)
 query_engine = index.as_query_engine()
 response = query_engine.query("What is the summary?")
 
-# After (PyAgent)
-from pyagent import rag
+# After (pyai)
+from pyai import rag
 response = rag.ask("./docs", "What is the summary?")
 ```
 
@@ -185,4 +185,4 @@ response = rag.ask("./docs", "What is the summary?")
 
 ---
 
-*For feature requests or bug reports, please visit our [GitHub Issues](https://github.com/pyagent/pyagent/issues).*
+*For feature requests or bug reports, please visit our [GitHub Issues](https://github.com/pyai/pyai/issues).*

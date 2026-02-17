@@ -1,10 +1,10 @@
 # pyright: reportMissingImports=false, reportUnusedImport=false
 """
-PyAgent Weather App - Real-Time Weather Assistant
+pyai Weather App - Real-Time Weather Assistant
 ==================================================
 
 This example demonstrates how to build a complete weather application
-using PyAgent's simple one-liner functions.
+using pyai's simple one-liner functions.
 
 Features:
 - Get current weather for any city
@@ -23,7 +23,7 @@ Usage:
     python weather_app.py
 
 Requirements:
-    - PyAgent library
+    - pyai library
     - Azure OpenAI or OpenAI API key
 """
 
@@ -31,35 +31,35 @@ import os
 import sys
 
 # =============================================================================
-# SETUP: Add pyagent to path and configure credentials
+# SETUP: Add pyai to path and configure credentials
 # =============================================================================
 
 # Add paths for local development (works from any directory, including PyCharm)
 _examples_dir = os.path.dirname(os.path.abspath(__file__))
 _project_dir = os.path.dirname(_examples_dir)
-sys.path.insert(0, _project_dir)  # For pyagent imports
+sys.path.insert(0, _project_dir)  # For pyai imports
 sys.path.insert(0, _examples_dir)  # For config_helper import
 
-# Configure PyAgent with available credentials (supports OpenAI, Azure API Key, or Azure AD)
-from config_helper import setup_pyagent
-if not setup_pyagent():
+# Configure pyai with available credentials (supports OpenAI, Azure API Key, or Azure AD)
+from config_helper import setup_pyai
+if not setup_pyai():
     print("Please configure credentials - see instructions above")
     sys.exit(1)
 
-# Import pyagent functions
-from pyagent import ask, fetch, agent
+# import pyai functions
+from pyai import ask, fetch, agent
 
 
 # =============================================================================
 # FEATURE 1: Simple Weather Query
-# PyAgent makes getting weather data a one-liner!
+# pyai makes getting weather data a one-liner!
 # =============================================================================
 
 def get_weather(city: str) -> None:
     """
     Get current weather for a city.
     
-    This demonstrates PyAgent's fetch.weather() function which provides
+    This demonstrates pyai's fetch.weather() function which provides
     structured weather data in a single call.
     """
     print(f"\n[Temp] Weather for {city}")
@@ -85,7 +85,7 @@ def compare_weather(cities: list) -> None:
     Compare weather across multiple cities.
     
     This shows how easy it is to aggregate data from multiple sources
-    using PyAgent's simple API.
+    using pyai's simple API.
     """
     print(f"\n[Globe] Weather Comparison: {', '.join(cities)}")
     print("-" * 60)
@@ -113,14 +113,14 @@ def compare_weather(cities: list) -> None:
 
 # =============================================================================
 # FEATURE 3: AI Weather Assistant
-# Use PyAgent's agent() to create a smart weather assistant
+# Use pyai's agent() to create a smart weather assistant
 # =============================================================================
 
 def weather_assistant():
     """
     Create an AI-powered weather assistant.
     
-    This demonstrates PyAgent's agent() function to create a custom
+    This demonstrates pyai's agent() function to create a custom
     assistant that can answer weather-related questions intelligently.
     """
     print("\n[Bot] Weather Assistant")
@@ -154,14 +154,14 @@ def natural_weather_query(query: str) -> None:
     """
     Answer any weather-related question using natural language.
     
-    This shows how PyAgent's ask() function can handle any question,
+    This shows how pyai's ask() function can handle any question,
     including weather-related queries.
     """
     print("\n[Magic] Natural Language Query")
     print("-" * 40)
     print(f"Query: {query}")
     
-    # Ask any question - PyAgent handles it! [Target]
+    # Ask any question - pyai handles it! [Target]
     answer = ask(query, concise=True)
     
     print(f"Answer: {answer}")
@@ -176,7 +176,7 @@ def recommend_activities(city: str) -> None:
     """
     Recommend activities based on current weather.
     
-    This combines PyAgent's fetch and ask capabilities to create
+    This combines pyai's fetch and ask capabilities to create
     intelligent recommendations.
     """
     print(f"\n[Target] Activity Recommendations for {city}")
@@ -207,7 +207,7 @@ def recommend_activities(city: str) -> None:
 def main():
     """Run all weather app features."""
     print("=" * 60)
-    print("[Weather] PyAgent Weather App Demo")
+    print("[Weather] pyai Weather App Demo")
     print("=" * 60)
     
     # Feature 1: Simple weather query
@@ -230,7 +230,7 @@ def main():
     print("\n" + "=" * 60)
     print("[Done] Weather App Demo Complete!")
     print("=" * 60)
-    print("\nBuilt with PyAgent - AI development made simple! [PyAgent]")
+    print("\nBuilt with pyai - AI development made simple! [pyai]")
 
 
 if __name__ == "__main__":

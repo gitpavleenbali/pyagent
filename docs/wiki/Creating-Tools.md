@@ -5,7 +5,7 @@ Tools extend agent capabilities with custom functions.
 ## The @tool Decorator
 
 ```python
-from pyagent import tool
+from pyai import tool
 
 @tool
 def calculate(expression: str) -> str:
@@ -23,7 +23,7 @@ def calculate(expression: str) -> str:
 ## Basic Usage
 
 ```python
-from pyagent import Agent, tool
+from pyai import Agent, tool
 
 @tool
 def get_weather(city: str) -> str:
@@ -50,7 +50,7 @@ Tools use type hints for parameter validation:
 
 ```python
 from typing import List, Optional
-from pyagent import tool
+from pyai import tool
 
 @tool
 def process_data(
@@ -78,7 +78,7 @@ def process_data(
 ## Async Tools
 
 ```python
-from pyagent import tool
+from pyai import tool
 import aiohttp
 
 @tool
@@ -92,7 +92,7 @@ async def fetch_url(url: str) -> str:
 ## Tool with Context
 
 ```python
-from pyagent import tool, ToolContext
+from pyai import tool, ToolContext
 
 @tool
 def get_user_info(ctx: ToolContext) -> str:
@@ -104,7 +104,7 @@ def get_user_info(ctx: ToolContext) -> str:
 
 ```python
 from pydantic import BaseModel
-from pyagent import tool
+from pyai import tool
 
 class WeatherResponse(BaseModel):
     temperature: float
@@ -124,7 +124,7 @@ def get_detailed_weather(city: str) -> WeatherResponse:
 ## Tool Groups
 
 ```python
-from pyagent import ToolGroup
+from pyai import ToolGroup
 
 class MathTools(ToolGroup):
     """Mathematical operation tools"""
@@ -156,7 +156,7 @@ agent = Agent(
 ## Error Handling
 
 ```python
-from pyagent import tool, ToolError
+from pyai import tool, ToolError
 
 @tool
 def safe_divide(a: float, b: float) -> float:

@@ -7,7 +7,7 @@ The `Agent` class is the heart of PYAI's agent framework.
 ## Basic Usage
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 agent = Agent(
     name="Assistant",
@@ -38,8 +38,8 @@ print(result.final_output)
 ## With Tools
 
 ```python
-from pyagent import Agent, Runner
-from pyagent.skills import tool
+from pyai import Agent, Runner
+from pyai.skills import tool
 
 @tool(description="Search the web")
 async def search(query: str) -> str:
@@ -63,7 +63,7 @@ result = Runner.run_sync(agent, "What's the weather in NYC?")
 ## With Handoffs
 
 ```python
-from pyagent import Agent, Runner
+from pyai import Agent, Runner
 
 # Specialist agents
 billing = Agent(name="Billing", instructions="Handle billing questions")
@@ -88,8 +88,8 @@ result = Runner.run_sync(router, "I have a question about my invoice")
 ### OpenAI
 
 ```python
-from pyagent import Agent
-from pyagent.core import OpenAIProvider, LLMConfig
+from pyai import Agent
+from pyai.core import OpenAIProvider, LLMConfig
 
 provider = OpenAIProvider(LLMConfig(
     api_key="sk-...",
@@ -102,7 +102,7 @@ agent = Agent(name="Bot", instructions="...", llm=provider)
 ### Azure OpenAI
 
 ```python
-from pyagent.core import AzureOpenAIProvider, LLMConfig
+from pyai.core import AzureOpenAIProvider, LLMConfig
 
 # With API Key
 provider = AzureOpenAIProvider(LLMConfig(
@@ -124,7 +124,7 @@ agent = Agent(name="Bot", instructions="...", llm=provider)
 ### Anthropic
 
 ```python
-from pyagent.core import AnthropicProvider, LLMConfig
+from pyai.core import AnthropicProvider, LLMConfig
 
 provider = AnthropicProvider(LLMConfig(
     api_key="sk-ant-...",
@@ -135,7 +135,7 @@ provider = AnthropicProvider(LLMConfig(
 ### Ollama (Local)
 
 ```python
-from pyagent.core import OllamaProvider, LLMConfig
+from pyai.core import OllamaProvider, LLMConfig
 
 provider = OllamaProvider(LLMConfig(
     api_base="http://localhost:11434",
@@ -150,8 +150,8 @@ provider = OllamaProvider(LLMConfig(
 ### Conversation Memory
 
 ```python
-from pyagent import Agent
-from pyagent.core import ConversationMemory
+from pyai import Agent
+from pyai.core import ConversationMemory
 
 memory = ConversationMemory(max_messages=50)
 
@@ -172,7 +172,7 @@ agent = Agent(
 ### Vector Memory
 
 ```python
-from pyagent.core import VectorMemory
+from pyai.core import VectorMemory
 
 memory = VectorMemory(provider="chromadb")
 
@@ -188,8 +188,8 @@ agent = Agent(
 ## Advanced Configuration
 
 ```python
-from pyagent import Agent
-from pyagent.core import AgentConfig
+from pyai import Agent
+from pyai.core import AgentConfig
 
 config = AgentConfig(
     max_iterations=10,
@@ -242,7 +242,7 @@ result = await Runner.run_async(agent, "Hello")
 ### Streaming
 
 ```python
-from pyagent.runner import StreamingRunner
+from pyai.runner import StreamingRunner
 
 async for event in StreamingRunner.stream(agent, "Hello"):
     if event.type == "token":

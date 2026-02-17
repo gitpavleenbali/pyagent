@@ -5,7 +5,7 @@ Weaviate is an open-source vector database with GraphQL API and multi-modal supp
 ## Installation
 
 ```bash
-pip install pyagent[vectordb]
+pip install pyai[vectordb]
 # or specifically
 pip install weaviate-client
 ```
@@ -36,7 +36,7 @@ services:
 ## Connection
 
 ```python
-from pyagent.vectordb import connect
+from pyai.vectordb import connect
 
 # Local instance
 db = connect("weaviate", url="http://localhost:8080")
@@ -59,7 +59,7 @@ db = connect(
 ## Configuration
 
 ```python
-from pyagent.vectordb.weaviate import WeaviateStore
+from pyai.vectordb.weaviate import WeaviateStore
 
 store = WeaviateStore(
     url="http://localhost:8080",

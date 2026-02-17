@@ -13,7 +13,7 @@ Guardrails protect your AI applications with:
 ## Quick Start
 
 ```python
-from pyagent import guardrails, ask
+from pyai import guardrails, ask
 
 # Simple content filter
 safe_ask = guardrails.wrap(ask, block_pii=True)
@@ -26,7 +26,7 @@ safe_ask("My SSN is 123-45-6789")  # Blocked
 ### PII Detection
 
 ```python
-from pyagent import guardrails
+from pyai import guardrails
 
 # Check for PII
 result = guardrails.check_pii("My email is test@example.com")
@@ -70,7 +70,7 @@ def no_sql(text: str) -> bool:
 ### Input Validators
 
 ```python
-from pyagent import guardrails
+from pyai import guardrails
 
 @guardrails.input_validator
 def no_profanity(text: str) -> bool:
@@ -88,7 +88,7 @@ def max_length(text: str) -> bool:
 
 ```python
 import re
-from pyagent import guardrails
+from pyai import guardrails
 
 @guardrails.output_filter
 def redact_emails(text: str) -> str:
@@ -106,7 +106,7 @@ def redact_phone(text: str) -> str:
 ### Wrap Functions
 
 ```python
-from pyagent import guardrails, ask
+from pyai import guardrails, ask
 
 # Wrap with validators
 safe_ask = guardrails.protect(
@@ -144,7 +144,7 @@ safe_ask = guardrails.protect(
 ## GuardrailResult
 
 ```python
-from pyagent.easy.guardrails import GuardrailResult
+from pyai.easy.guardrails import GuardrailResult
 
 result = GuardrailResult(
     passed=False,
@@ -160,7 +160,7 @@ if not result:
 ## GuardrailViolation
 
 ```python
-from pyagent.easy.guardrails import GuardrailViolation
+from pyai.easy.guardrails import GuardrailViolation
 
 try:
     safe_ask("My SSN is 123-45-6789")
@@ -174,7 +174,7 @@ except GuardrailViolation as e:
 ### Wrap with Error Handling
 
 ```python
-from pyagent import guardrails, ask
+from pyai import guardrails, ask
 
 # Returns error message instead of raising
 safe_ask = guardrails.wrap(
@@ -206,7 +206,7 @@ print(result)  # None
 ### Automatic Redaction
 
 ```python
-from pyagent import guardrails, ask
+from pyai import guardrails, ask
 
 # Redact PII in outputs
 sanitized_ask = guardrails.sanitize_output(
@@ -231,7 +231,7 @@ def remove_code(text: str) -> str:
 ## Combining Guardrails
 
 ```python
-from pyagent import guardrails, ask, research
+from pyai import guardrails, ask, research
 
 # Create reusable guardrail config
 security_profile = guardrails.Profile(
@@ -255,7 +255,7 @@ safe_research = security_profile.protect(research)
 ## Integration with Agents
 
 ```python
-from pyagent import Agent, guardrails
+from pyai import Agent, guardrails
 
 agent = Agent(
     name="safe-agent",
