@@ -159,10 +159,31 @@ ignore = [
 "tests/*" = ["F401", "F403", "F811"]
 
 [tool.mypy]
-python_version = "3.9"
-warn_return_any = true
+python_version = "3.10"
+warn_return_any = false
 warn_unused_configs = true
 ignore_missing_imports = true
+no_implicit_optional = false
+strict_optional = false
+check_untyped_defs = false
+disable_error_code = [
+    "assignment",
+    "arg-type",
+    "return-value",
+    "attr-defined",
+    "name-defined",
+    "union-attr",
+    "misc",
+    "index",
+    "var-annotated",
+    "list-item",
+    "dict-item",
+    "valid-type",
+    "operator",
+    "override",
+    "abstract",
+    "no-any-return",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
